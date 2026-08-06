@@ -3,7 +3,7 @@ backend:
   repo: yanxianglou/yanxianglou.github.io
   branch: main
   # TODO：部署好Cloudflare Worker後，把下面這行網址換成你的Worker網址
-  base_url: https://yanxianglou-cms-auth.你的帳號.workers.dev
+  base_url: https://yanxianglou-cms-auth.yx23299968.workers.dev
   auth_endpoint: auth
 
 publish_mode: simple
