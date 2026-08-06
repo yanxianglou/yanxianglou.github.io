@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>炎香樓 — 網站規格說明</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6;
+    --ink:#26231D;
+    --ink-soft:#6B665A;
+    --line:#D9D2C1;
+    --indigo:#31405E;
+    --terracotta:#B25732;
+    --teal:#276358;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Serif TC', serif;
+    padding:64px 24px;
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+
+  .head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:20px;
+    margin-bottom:8px;
+  }
+  .head .eyebrow{
+    font-family:'Oswald', sans-serif;
+    font-size:12px;
+    letter-spacing:0.22em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  .head h1{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:0.04em;
+  }
+  .head .count{
+    font-family:'Oswald', sans-serif;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .cell{
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:32px 28px;
+  }
+  .cell:nth-child(3n){border-right:none;}
+  .cell:nth-child(n+7){border-bottom:none;}
+
+  .cell .num{
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    display:block;
+  }
+  .icon{
+    width:34px;height:34px;
+    stroke-width:1.4;
+    fill:none;
+    margin-bottom:18px;
+  }
+  .cell h3{
+    font-size:17px;
+    font-weight:500;
+    margin-bottom:4px;
+    letter-spacing:0.02em;
+  }
+  .cell .sub{
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .cell p{
+    font-size:13.5px;
+    line-height:1.75;
+    color:var(--ink-soft);
+    font-family:'Noto Serif TC', serif;
+  }
+
+  .row1 .icon{stroke:var(--indigo);}
+  .row2 .icon{stroke:var(--terracotta);}
+  .row3 .icon{stroke:var(--teal);}
+  .row1 .num, .row1 h3{color:var(--indigo);}
+  .row2 .num, .row2 h3{color:var(--terracotta);}
+  .row3 .num, .row3 h3{color:var(--teal);}
+
+  .foot{
+    margin-top:8px;
+    padding-top:20px;
+    border-top:1px solid var(--ink);
+    display:flex;
+    justify-content:space-between;
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+  }
+
+  @media(max-width:720px){
+    .grid{grid-template-columns:1fr;}
+    .cell{border-right:none !important;}
+    .cell:not(:last-child){border-bottom:1px solid var(--line) !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div>
+      <span class="eyebrow">Yan Heung Lau · Digital Foundation</span>
+    </div>
+    <h1>網站規格</h1>
+    <span class="count">01 — 09</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="cell row1">
+      <span class="num">01</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <circle cx="19" cy="19" r="10"/>
+        <line x1="26.5" y1="26.5" x2="38" y2="38" stroke-linecap="round"/>
+        <circle cx="19" cy="19" r="1.6" fill="var(--indigo)" stroke="none"/>
+      </svg>
+      <div class="sub">Discoverability</div>
+      <h3>搜尋可見度</h3>
+      <p>讓炎香樓在搜尋結果中，被真正想找這一味的人看見，而不只是被系統收錄。</p>
+    </div>
+
+    <div class="cell row1">
+      <span class="num">02</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <path d="M24 40 L14 12 A18 18 0 0 1 34 12 Z" stroke-linejoin="round"/>
+        <path d="M24 40 L18 14 M24 40 L24 12 M24 40 L30 14" stroke-linecap="round"/>
+      </svg>
+      <div class="sub">Responsive layout</div>
+      <h3>隨螢幕而變</h3>
+      <p>如摺扇開闔，電腦、平板、手機各自呈現，姿態仍是同一種從容。</p>
+    </div>
+
+    <div class="cell row1">
+      <span class="num">03</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <rect x="14" y="14" width="20" height="20" transform="rotate(45 24 24)"/>
+        <line x1="19" y1="24" x2="29" y2="24"/>
+        <line x1="24" y1="19" x2="24" y2="29"/>
+      </svg>
+      <div class="sub">Brand domain</div>
+      <h3>專屬印記</h3>
+      <p>一方印章，是落款也是憑證 — 專屬網域，是炎香樓在網路上唯一的署名。</p>
+    </div>
+
+    <div class="cell row2">
+      <span class="num">04</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <ellipse cx="14" cy="12" rx="5" ry="2.6"/>
+        <ellipse cx="14" cy="36" rx="5" ry="2.6"/>
+        <path d="M9 12 L9 36 M19 12 L19 36"/>
+        <line x1="24" y1="17" x2="36" y2="17" stroke-linecap="round"/>
+        <line x1="24" y1="24" x2="34" y2="24" stroke-linecap="round"/>
+        <line x1="24" y1="31" x2="32" y2="31" stroke-linecap="round"/>
+      </svg>
+      <div class="sub">Menu &amp; content</div>
+      <h3>自訂選單</h3>
+      <p>菜色隨時令更迭，版面內容亦能隨之調整，不受限於固定樣板。</p>
+    </div>
+
+    <div class="cell row2">
+      <span class="num">05</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <path d="M24 10 L24 30" stroke-linecap="round"/>
+        <path d="M17 30 Q24 24 31 30 Q28 40 24 40 Q20 40 17 30 Z" stroke-linejoin="round"/>
+        <line x1="24" y1="10" x2="24" y2="6" stroke-linecap="round"/>
+      </svg>
+      <div class="sub">Content editing</div>
+      <h3>細筆修訂</h3>
+      <p>如執筆潤字，內容編輯器讓每一處文字與版面，都能親自細細調整。</p>
+    </div>
+
+    <div class="cell row2">
+      <span class="num">06</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <rect x="10" y="14" width="28" height="20" rx="1"/>
+        <path d="M10 14 L24 26 L38 14"/>
+      </svg>
+      <div class="sub">Reservation &amp; inquiry</div>
+      <h3>訂席與回饋</h3>
+      <p>顧客的訂席心意與意見，透過表單，直接送達櫃檯而非遺落在留言區。</p>
+    </div>
+
+    <div class="cell row3">
+      <span class="num">07</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="13"/>
+        <path d="M24 17 L27 24 L24 31 L21 24 Z" stroke-linejoin="round"/>
+        <circle cx="24" cy="24" r="1.4" fill="var(--teal)" stroke="none"/>
+      </svg>
+      <div class="sub">Site search</div>
+      <h3>快速尋味</h3>
+      <p>訪客不必逐頁翻找，就能直接抵達心中想吃的那一道菜。</p>
+    </div>
+
+    <div class="cell row3">
+      <span class="num">08</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <rect x="10" y="10" width="28" height="28" rx="1"/>
+        <line x1="16" y1="10" x2="16" y2="38"/>
+        <line x1="24" y1="10" x2="24" y2="38"/>
+        <line x1="32" y1="10" x2="32" y2="38"/>
+        <circle cx="16" cy="18" r="2" fill="var(--teal)" stroke="none"/>
+        <circle cx="24" cy="28" r="2" fill="var(--teal)" stroke="none"/>
+        <circle cx="32" cy="20" r="2" fill="var(--teal)" stroke="none"/>
+      </svg>
+      <div class="sub">Analytics</div>
+      <h3>成效記帳</h3>
+      <p>如帳房記帳般，逐日掌握來客動線與轉換，讓經營判斷有據可依。</p>
+    </div>
+
+    <div class="cell row3">
+      <span class="num">09</span>
+      <svg class="icon" viewBox="0 0 48 48">
+        <rect x="16" y="22" width="16" height="14" rx="1"/>
+        <path d="M20 22 L20 16 A4 4 0 0 1 28 16 L28 22"/>
+        <circle cx="24" cy="28" r="1.6" fill="var(--indigo)" stroke="none"/>
+      </svg>
+      <div class="sub">Encrypted transfer</div>
+      <h3>門扉深鎖</h3>
+      <p>資料傳輸如深鎖門扉，往來之間，顧客的資訊安全皆有所守護。</p>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>炎香樓 · Yan Heung Lau</span>
+    <span>Site foundation — v1</span>
+  </div>
+
+</div>
+</body>
+</html>
