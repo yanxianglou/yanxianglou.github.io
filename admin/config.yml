@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: yanxianglou/yanxianglou.github.io
+  branch: main
+  # TODO：部署好Cloudflare Worker後，把下面這行網址換成你的Worker網址
+  base_url: https://yanxianglou-cms-auth.你的帳號.workers.dev
+  auth_endpoint: auth
+
+publish_mode: simple
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+
+  - name: "chef"
+    label: "主廚介紹"
+    files:
+      - file: "_data/chef.yml"
+        label: "主廚資料"
+        name: "chef"
+        fields:
+          - {label: "姓名", name: "name", widget: "string"}
+          - {label: "頭銜", name: "title", widget: "string"}
+          - {label: "簡介", name: "bio", widget: "text"}
+          - {label: "照片", name: "photo", widget: "image", required: false}
+
+  - name: "menu_tiers"
+    label: "菜單方案"
+    files:
+      - file: "_data/lunch-set.yml"
+        label: "平日商業午間套餐"
+        name: "lunch_set"
+        fields: &tier_fields
+          - {label: "名稱", name: "name", widget: "string"}
+          - {label: "適用對象", name: "audience", widget: "string"}
+          - {label: "價格", name: "price", widget: "string"}
+          - {label: "供應時段／備註", name: "availability", widget: "string"}
+          - {label: "說明文字", name: "description", widget: "text"}
+      - file: "_data/private-set.yml"
+        label: "個人化私人訂製"
+        name: "private_set"
+        fields: *tier_fields
+      - file: "_data/group-set.yml"
+        label: "4人套餐／隱藏版菜單"
+        name: "group_set"
+        fields: *tier_fields
+
+  - name: "news"
+    label: "最新消息"
+    folder: "_news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "日期", name: "date", widget: "datetime"}
+      - {label: "摘要（首頁卡片會顯示這段）", name: "excerpt", widget: "text"}
+      - {label: "圖片", name: "image", widget: "image", required: false}
+      - {label: "內文", name: "body", widget: "markdown", required: false}

@@ -127,14 +127,6 @@
   .news-inner-head{text-align:center;margin-bottom:56px;position:relative;}
   .news-inner-head > .eyebrow{color:var(--muted);margin-bottom:14px;display:block;}
   .news-inner-head > h2{font-size:32px;font-weight:700;}
-  .news-add{
-    position:absolute;top:-6px;right:0;
-    width:40px;height:40px;border-radius:50%;
-    background:var(--accent);color:var(--on-accent);
-    display:flex;align-items:center;justify-content:center;
-    font-size:20px;cursor:pointer;border:none;z-index:3;
-  }
-  .news-add:hover{background:var(--accent-light);}
   .news-list{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;}
   .news-card{
     background:#fff;border:1px solid #E4DECE;border-top:3px solid var(--accent);
@@ -345,36 +337,26 @@
       <div class="news-inner-head">
         <span class="eyebrow">NEWS</span>
         <h2>最新消息</h2>
-        <button class="news-add" id="newsAdd" title="新增一則消息(示範用，最多維持3則)">＋</button>
       </div>
       <div class="news-list" id="newsList">
+        {% assign news_sorted = site.news | sort: 'date' | reverse %}
+        {% for post in news_sorted limit: 3 %}
         <div class="news-card">
-          <div class="thumb">TODO 圖片</div>
+          <div class="thumb">
+            {% if post.image and post.image != "" %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
+            {% else %}
+              TODO 圖片
+            {% endif %}
+          </div>
           <div class="info">
-            <span class="date">TODO 日期</span>
-            <h4>TODO — 活動或公告標題</h4>
-            <p>TODO — 簡短說明文字，可放公告內容摘要。</p>
-            <span class="more">了解更多 →</span>
+            <span class="date">{{ post.date | date: "%Y.%m.%d" }}</span>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.excerpt }}</p>
+            <a class="more" href="{{ post.url | relative_url }}">了解更多 →</a>
           </div>
         </div>
-        <div class="news-card">
-          <div class="thumb">TODO 圖片</div>
-          <div class="info">
-            <span class="date">TODO 日期</span>
-            <h4>TODO — 活動或公告標題</h4>
-            <p>TODO — 簡短說明文字，可放公告內容摘要。</p>
-            <span class="more">了解更多 →</span>
-          </div>
-        </div>
-        <div class="news-card">
-          <div class="thumb">TODO 圖片</div>
-          <div class="info">
-            <span class="date">TODO 日期</span>
-            <h4>TODO — 活動或公告標題</h4>
-            <p>TODO — 簡短說明文字，可放公告內容摘要。</p>
-            <span class="more">了解更多 →</span>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -449,29 +431,6 @@
       dotsWrap.children[current].classList.add('active');
     }
     setInterval(() => { goTo((current + 1) % slides.length); }, 4000);
-  })();
-
-  (function(){
-    const list = document.getElementById('newsList');
-    const addBtn = document.getElementById('newsAdd');
-    let count = 0;
-    addBtn.addEventListener('click', () => {
-      count++;
-      const card = document.createElement('div');
-      card.className = 'news-card';
-      card.innerHTML = `
-        <div class="thumb">TODO 圖片</div>
-        <div class="info">
-          <span class="date">新消息 ${count}</span>
-          <h4>剛新增的公告標題</h4>
-          <p>示範用文字，實際使用時替換成真正的公告內容。</p>
-          <span class="more">了解更多 →</span>
-        </div>`;
-      list.insertBefore(card, list.firstChild);
-      while(list.children.length > 3){
-        list.removeChild(list.lastChild);
-      }
-    });
   })();
 </script>
 </body>
