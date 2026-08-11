@@ -25,7 +25,7 @@
     --on-accent:#FFFFFF;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Noto Serif TC', serif;background:var(--paper);color:var(--ink-dark);}
+  body{font-family:'Noto Serif TC', serif;background:var(--paper);color:var(--ink-dark);overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;}
   .btn{
@@ -35,11 +35,14 @@
   }
   .btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 
-  /* ===== 頁首 ===== */
+  /* ===== 頁首(疊在Hero上方，透明背景) ===== */
+  .hero-wrap{position:relative;}
   .site-header{
-    background:var(--black);color:var(--text-warm);
+    position:absolute;top:0;left:0;width:100%;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.55), transparent);
+    color:var(--text-warm);
     display:flex;justify-content:space-between;align-items:center;
-    padding:16px 48px;position:relative;z-index:50;
+    padding:20px 48px;z-index:50;
   }
   .logo-slot{
     width:120px;height:44px;
@@ -83,21 +86,46 @@
   }
   .social-icons a:hover{background:var(--accent-light);}
 
-  /* ===== Hero 輪播 ===== */
-  .hero-frame{background:var(--black);padding:0 48px;}
-  .hero-carousel{position:relative;height:560px;overflow:hidden;}
-  .slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:flex-end;justify-content:flex-start;}
-  .slide.active{opacity:1;}
-  .slide .bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(90,16,13,0.35), transparent 45%), linear-gradient(160deg, #2A1512 0%, #100E0A 70%);}
-  .slide .cap{position:relative;padding:32px 40px;font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.2em;color:var(--muted-light);text-transform:uppercase;}
-  .hero-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:5;}
+  /* ===== Hero 輪播(全螢幕沉浸式，仿日日敘結構) ===== */
+  .hero-carousel{position:relative;min-height:100vh;min-height:100dvh;overflow:hidden;}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:block;pointer-events:none;}
+  .slide.active{opacity:1;pointer-events:auto;}
+  .slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#100E0A;}
+  .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.55) 100%);}
+
+  .hero-center{
+    position:absolute;inset:0;z-index:3;pointer-events:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:0 24px;
+  }
+  .hero-center .eyebrow{color:var(--muted-light);margin-bottom:26px;}
+  .hero-center .hero-logo{
+    width:280px;max-width:70vw;height:110px;
+    border:1px dashed rgba(217,199,168,0.4);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--muted-light);
+    margin-bottom:26px;
+  }
+  .hero-center .hero-logo img{max-width:100%;max-height:100%;display:block;}
+  .hero-center .tagline{
+    font-size:17px;letter-spacing:0.08em;color:var(--text-warm);
+  }
+  .hero-scroll{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;
+  }
+  .hero-scroll .line{width:1px;height:46px;background:rgba(217,199,168,0.45);}
+  .hero-scroll .txt{font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.28em;color:var(--muted-light);}
+
+  .hero-dots{position:absolute;bottom:24px;right:32px;display:flex;gap:10px;z-index:6;}
   .hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(217,199,168,0.35);cursor:pointer;}
   .hero-dots span.active{background:var(--text-warm);}
 
-  /* ===== 品牌宣言 ===== */
-  .statement{padding:110px 48px;max-width:820px;margin:0 auto;text-align:center;}
-  .statement h2{font-size:30px;font-weight:700;line-height:1.6;margin-bottom:24px;}
-  .statement p{font-size:15px;line-height:2;color:var(--muted);margin-bottom:40px;}
+  /* ===== 品牌宣言(改深色，銜接Hero) ===== */
+  .statement{background:var(--black);color:var(--text-warm);padding:120px 48px;text-align:center;}
+  .statement-inner{max-width:820px;margin:0 auto;}
+  .statement h2{font-size:30px;font-weight:700;line-height:1.7;margin-bottom:24px;color:var(--text-warm);}
+  .statement p{font-size:15px;line-height:2;color:var(--muted-light);margin-bottom:40px;}
 
   /* ===== 匠心工藝 敘述 ===== */
   .craft{background:var(--black);color:var(--text-warm);padding:100px 48px 60px;position:relative;overflow:hidden;}
@@ -201,8 +229,17 @@
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
-    .hero-frame{padding:0 16px;}
-    .hero-carousel{height:340px;}
+    .hero-carousel{min-height:100vh;min-height:100dvh;}
+    .site-header{padding:16px 20px;}
+    .hero-center .hero-logo{width:200px;height:80px;margin-bottom:20px;}
+    .hero-center .eyebrow{margin-bottom:18px;font-size:11px;}
+    .hero-center .tagline{font-size:15px;}
+    .hero-scroll{bottom:24px;}
+    .hero-dots{right:20px;bottom:18px;}
+  }
+  @media(max-width:400px){
+    .hero-center .hero-logo{width:170px;height:70px;}
+    .social-icons a{width:28px;height:28px;}
   }
 </style>
 </head>
@@ -230,56 +267,69 @@
     </a>
   </div>
 
-  <!-- 頁首 -->
-  <header class="site-header">
-    <div class="logo-slot">
-      <!-- TODO: 換成 <img src="assets/img/logo.png" alt="炎香樓"> -->
-      上傳 LOGO
-    </div>
-    <nav class="site-nav">
-      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
-      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
-      <div class="nav-item">
-        <a href="menu-alacarte.html">菜單參考 <span class="caret">▾</span></a>
-        <div class="dropdown">
-          <a href="menu-alacarte.html">單點餐品</a>
-          <a href="menu-set.html">套餐餐品</a>
-        </div>
+  <!-- 頁首(疊在Hero上，透明) + Hero(全螢幕沉浸式) -->
+  <div class="hero-wrap">
+    <header class="site-header">
+      <div class="logo-slot">
+        <!-- TODO: 換成 <img src="assets/img/logo.png" alt="炎香樓"> -->
+        上傳 LOGO
       </div>
-      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a></div>
-      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a></div>
-    </nav>
-    <div class="social-icons">
-      <a href="#" title="Facebook">FB</a>
-      <a href="#" title="Instagram">IG</a>
-    </div>
-  </header>
+      <nav class="site-nav">
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
+        <div class="nav-item">
+          <a href="menu-alacarte.html">菜單參考 <span class="caret">▾</span></a>
+          <div class="dropdown">
+            <a href="menu-alacarte.html">單點餐品</a>
+            <a href="menu-set.html">套餐餐品</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a></div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a></div>
+      </nav>
+      <div class="social-icons">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Instagram">IG</a>
+      </div>
+    </header>
 
-  <!-- Hero 輪播 -->
-  <div class="hero-frame">
     <div class="hero-carousel" id="heroCarousel">
       {% assign slides = site.data['site-settings'].hero_slides %}
-      <a class="slide active" href="{{ slides[0].link }}" data-index="0">
-        <div class="bg"></div>
-        <div class="cap">{{ slides[0].caption }}</div>
+      <a class="slide active" href="{{ slides[0].link | default: '#' }}" data-index="0">
+        <div class="bg" style="{% if slides[0].image %}background-image:url('{{ slides[0].image | relative_url }}');{% else %}background:radial-gradient(circle at 30% 20%, rgba(90,16,13,0.35), transparent 45%), linear-gradient(160deg, #2A1512 0%, #100E0A 70%);{% endif %}"></div>
       </a>
-      <a class="slide" href="{{ slides[1].link }}" data-index="1">
-        <div class="bg" style="background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.4), transparent 45%), linear-gradient(160deg,#221310,#0E0C09);"></div>
-        <div class="cap">{{ slides[1].caption }}</div>
+      <a class="slide" href="{{ slides[1].link | default: '#' }}" data-index="1">
+        <div class="bg" style="{% if slides[1].image %}background-image:url('{{ slides[1].image | relative_url }}');{% else %}background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.4), transparent 45%), linear-gradient(160deg,#221310,#0E0C09);{% endif %}"></div>
       </a>
-      <a class="slide" href="{{ slides[2].link }}" data-index="2">
-        <div class="bg" style="background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);"></div>
-        <div class="cap">{{ slides[2].caption }}</div>
+      <a class="slide" href="{{ slides[2].link | default: '#' }}" data-index="2">
+        <div class="bg" style="{% if slides[2].image %}background-image:url('{{ slides[2].image | relative_url }}');{% else %}background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);{% endif %}"></div>
       </a>
+
+      <div class="hero-center">
+        <span class="eyebrow">YANXIANGLOU</span>
+        <div class="hero-logo">
+          <!-- TODO: 換成 <img src="assets/img/logo-script.png" alt="炎香樓"> (書法字體版logo) -->
+          上傳書法字LOGO
+        </div>
+        <div class="tagline">{{ site.data['site-settings'].hero_tagline }}</div>
+      </div>
+
+      <div class="hero-scroll">
+        <span class="line"></span>
+        <span class="txt">SCROLL</span>
+      </div>
+
       <div class="hero-dots" id="heroDots"></div>
     </div>
   </div>
 
   <!-- 品牌宣言 -->
   <section class="statement">
-    <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
-    <p>{{ site.data['site-settings'].statement.body }}</p>
-    <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
+    <div class="statement-inner">
+      <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
+      <p>{{ site.data['site-settings'].statement.body }}</p>
+      <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
+    </div>
   </section>
 
   <!-- 匠心工藝 敘述 -->

@@ -2,7 +2,7 @@ backend:
   name: github
   repo: yanxianglou/yanxianglou.github.io
   branch: main
-  # TODO：部署好Cloudflare Worker後，把下面這行網址換成你的Worker網址
+  # 已部署 Cloudflare Worker
   base_url: https://yanxianglou-cms-auth.yx23299968.workers.dev
   auth_endpoint: auth
 
@@ -41,9 +41,71 @@ collections:
         name: "private_set"
         fields: *tier_fields
       - file: "_data/group-set.yml"
-        label: "4人套餐／隱藏版菜單"
+        label: "4人套餐"
         name: "group_set"
         fields: *tier_fields
+      - file: "_data/hidden-menu.yml"
+        label: "隱藏版菜單"
+        name: "hidden_menu"
+        fields: *tier_fields
+
+  - name: "site_settings"
+    label: "網站文字設定"
+    files:
+      - file: "_data/site-settings.yml"
+        label: "首頁其他區塊"
+        name: "site_settings"
+        fields:
+          - label: "最新優惠（導覽列）"
+            name: "nav_promo"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "外帶訂餐（導覽列）"
+            name: "nav_takeout"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "媒體報導（導覽列）"
+            name: "nav_press"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "品牌故事（導覽列）"
+            name: "nav_story"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "Hero大標語"
+            name: "hero_tagline"
+            widget: "string"
+          - label: "Hero輪播（固定3張，可各自設定連結）"
+            name: "hero_slides"
+            widget: "list"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "點擊連結", name: "link", widget: "string", required: false}
+              - {label: "備註（僅供後台辨識，不會顯示在網站上）", name: "caption", widget: "string", required: false}
+          - label: "品牌宣言"
+            name: "statement"
+            widget: "object"
+            fields:
+              - {label: "標題第一行", name: "heading_line1", widget: "string"}
+              - {label: "標題第二行", name: "heading_line2", widget: "string"}
+              - {label: "說明文字", name: "body", widget: "text"}
+              - {label: "按鈕文字", name: "cta_text", widget: "string"}
+              - {label: "按鈕連結", name: "cta_link", widget: "string"}
+          - label: "常見問題（可新增/刪除）"
+            name: "faq"
+            widget: "list"
+            fields:
+              - {label: "問題", name: "question", widget: "string"}
+              - {label: "答案", name: "answer", widget: "text"}
+          - label: "頁尾聯絡資訊"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "地址", name: "address", widget: "string"}
+              - {label: "電話（顯示用）", name: "phone", widget: "string"}
+              - {label: "電話（純數字，供點擊撥號）", name: "phone_tel", widget: "string"}
+              - {label: "營業時間", name: "hours", widget: "string"}
+              - {label: "LINE ID", name: "line_id", widget: "string"}
 
   - name: "news"
     label: "最新消息"
