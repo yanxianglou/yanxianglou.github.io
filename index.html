@@ -201,6 +201,8 @@
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
+    .hero-frame{padding:0 16px;}
+    .hero-carousel{height:340px;}
   }
 </style>
 </head>
@@ -214,7 +216,7 @@
       </span>
       <span class="label">專人服務</span>
     </a>
-    <a class="float-item" href="tel:0423299968" title="點擊直接撥打">
+    <a class="float-item" href="tel:{{ site.data['site-settings'].footer.phone_tel }}" title="點擊直接撥打">
       <span class="icon-wrap">
         <svg class="icon" viewBox="0 0 24 24"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z" stroke-width="1.4" stroke-linejoin="round"/></svg>
       </span>
@@ -235,8 +237,8 @@
       上傳 LOGO
     </div>
     <nav class="site-nav">
-      <div class="nav-item"><a href="#news">最新優惠</a></div>
-      <div class="nav-item"><a href="#">外帶訂餐</a></div>
+      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
+      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
       <div class="nav-item">
         <a href="menu-alacarte.html">菜單參考 <span class="caret">▾</span></a>
         <div class="dropdown">
@@ -244,8 +246,8 @@
           <a href="menu-set.html">套餐餐品</a>
         </div>
       </div>
-      <div class="nav-item"><a href="#">媒體報導</a></div>
-      <div class="nav-item"><a href="#">品牌故事</a></div>
+      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a></div>
+      <div class="nav-item"><a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a></div>
     </nav>
     <div class="social-icons">
       <a href="#" title="Facebook">FB</a>
@@ -256,17 +258,18 @@
   <!-- Hero 輪播 -->
   <div class="hero-frame">
     <div class="hero-carousel" id="heroCarousel">
-      <a class="slide active" href="menu-alacarte.html" data-index="0">
+      {% assign slides = site.data['site-settings'].hero_slides %}
+      <a class="slide active" href="{{ slides[0].link }}" data-index="0">
         <div class="bg"></div>
-        <div class="cap">TODO — 招牌菜品情境照 01 · 可設定連結</div>
+        <div class="cap">{{ slides[0].caption }}</div>
       </a>
-      <a class="slide" href="menu-set.html" data-index="1">
+      <a class="slide" href="{{ slides[1].link }}" data-index="1">
         <div class="bg" style="background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.4), transparent 45%), linear-gradient(160deg,#221310,#0E0C09);"></div>
-        <div class="cap">TODO — 大轉輪蒸籠情境照 02 · 可設定連結</div>
+        <div class="cap">{{ slides[1].caption }}</div>
       </a>
-      <a class="slide" href="#" data-index="2">
+      <a class="slide" href="{{ slides[2].link }}" data-index="2">
         <div class="bg" style="background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);"></div>
-        <div class="cap">TODO — 主廚形象照 03 · 可設定連結</div>
+        <div class="cap">{{ slides[2].caption }}</div>
       </a>
       <div class="hero-dots" id="heroDots"></div>
     </div>
@@ -274,9 +277,9 @@
 
   <!-- 品牌宣言 -->
   <section class="statement">
-    <h2>我們並非僅僅呈現一道菜，<br>而是重現一段幾近失傳的粵式風味</h2>
-    <p>從陳偉強主廚的手上功夫，到全台第一座大轉輪蒸籠裡蒸騰的每一縷氣息，每一道菜，都源於我們對「老派工藝」的堅持。</p>
-    <a class="btn solid" href="menu-alacarte.html">立即了解菜單 →</a>
+    <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
+    <p>{{ site.data['site-settings'].statement.body }}</p>
+    <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
   </section>
 
   <!-- 匠心工藝 敘述 -->
@@ -288,8 +291,8 @@
     <div class="craft-inner">
       <span class="eyebrow">YANXIANGLOU</span>
       <h2>匠心工藝</h2>
-      <h3>由世界廚神主理的粵式饗宴</h3>
-      <p>無論是精緻的個人套餐，或是氣派的宴席場合，炎香樓都以同一套標準看待——大式粵菜技法無法為求快速而妥協，每一道工序，都值得等待。TODO：可再置入陳偉強主廚具體經歷與得獎紀錄。</p>
+      <h3>由{{ site.data.chef.title }}主理的粵式饗宴</h3>
+      <p>{{ site.data.chef.bio }}</p>
     </div>
   </section>
 
@@ -297,35 +300,35 @@
   <section class="tier-section">
     <div class="tier-grid">
       <div class="tier-card">
-        <div class="head">平日商業午間套餐</div>
+        <div class="head">{{ site.data['lunch-set'].name }}</div>
         <div class="body">
-          <span class="avail">個人／2人以內 · 平日午間限定</span>
-          <div class="price">TODO</div>
-          <p class="desc">個人份量邏輯，親民入門價格，是認識炎香樓的第一步。</p>
+          <span class="avail">{{ site.data['lunch-set'].audience }} · {{ site.data['lunch-set'].availability }}</span>
+          <div class="price">{{ site.data['lunch-set'].price }}</div>
+          <p class="desc">{{ site.data['lunch-set'].description }}</p>
         </div>
       </div>
       <div class="tier-card">
-        <div class="head">個人化私人訂製</div>
+        <div class="head">{{ site.data['private-set'].name }}</div>
         <div class="body">
-          <span class="avail">個人／2人以內 · 需預約</span>
-          <div class="price">TODO</div>
-          <p class="desc">沿用午間套餐的個人份量邏輯，每人低消提高，多一分細緻與彈性。</p>
+          <span class="avail">{{ site.data['private-set'].audience }} · {{ site.data['private-set'].availability }}</span>
+          <div class="price">{{ site.data['private-set'].price }}</div>
+          <p class="desc">{{ site.data['private-set'].description }}</p>
         </div>
       </div>
       <div class="tier-card">
-        <div class="head">4人套餐</div>
+        <div class="head">{{ site.data['group-set'].name }}</div>
         <div class="body">
-          <span class="avail">4人固定 · 需預約</span>
-          <div class="price">TODO</div>
-          <p class="desc">標準團體用餐，適合家庭聚會與朋友小酌。</p>
+          <span class="avail">{{ site.data['group-set'].audience }} · {{ site.data['group-set'].availability }}</span>
+          <div class="price">{{ site.data['group-set'].price }}</div>
+          <p class="desc">{{ site.data['group-set'].description }}</p>
         </div>
       </div>
       <div class="tier-card">
-        <div class="head">隱藏版菜單</div>
+        <div class="head">{{ site.data['hidden-menu'].name }}</div>
         <div class="body">
-          <span class="avail">6人以上 · 洽詢預約</span>
-          <div class="price">TODO</div>
-          <p class="desc">真正的私人訂製，僅限6人以上開放，搭配大轉輪蒸籠上桌儀式。</p>
+          <span class="avail">{{ site.data['hidden-menu'].audience }} · {{ site.data['hidden-menu'].availability }}</span>
+          <div class="price">{{ site.data['hidden-menu'].price }}</div>
+          <p class="desc">{{ site.data['hidden-menu'].description }}</p>
         </div>
       </div>
     </div>
@@ -366,30 +369,14 @@
     <h2>常見問題</h2>
     <span class="eyebrow">FAQ</span>
     <div class="faq-grid">
+      {% for item in site.data['site-settings'].faq %}
       <div class="flip">
         <div class="flip-inner">
-          <div class="flip-front"><div class="q">Q</div><div class="qtext">私人訂製的每人低消是多少？</div></div>
-          <div class="flip-back">每人低消高於平日午間套餐，確切金額請洽訂位人員。</div>
+          <div class="flip-front"><div class="q">Q</div><div class="qtext">{{ item.question }}</div></div>
+          <div class="flip-back">{{ item.answer }}</div>
         </div>
       </div>
-      <div class="flip">
-        <div class="flip-inner">
-          <div class="flip-front"><div class="q">Q</div><div class="qtext">隱藏版菜單最少要幾人？</div></div>
-          <div class="flip-back">僅開放6人以上訂席，恕無法接受6人以下訂位。</div>
-        </div>
-      </div>
-      <div class="flip">
-        <div class="flip-inner">
-          <div class="flip-front"><div class="q">Q</div><div class="qtext">午間套餐跟私人訂製差在哪？</div></div>
-          <div class="flip-back">供應時段與低消不同，午間限平日中午，私人訂製全時段可約。</div>
-        </div>
-      </div>
-      <div class="flip">
-        <div class="flip-inner">
-          <div class="flip-front"><div class="q">Q</div><div class="qtext">訂位需要提前多久？</div></div>
-          <div class="flip-back">TODO — 依實際營運狀況填入建議天數。</div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </section>
 
@@ -403,8 +390,8 @@
       <span class="eyebrow" style="color:var(--muted)">YANXIANGLOU</span>
     </div>
     <div class="footer-info">
-      <div>地址：台中市西區精誠八街<br>電話：04-2329-9968</div>
-      <div>營業時間：TODO<br>LINE：TODO</div>
+      <div>地址：{{ site.data['site-settings'].footer.address }}<br>電話：{{ site.data['site-settings'].footer.phone }}</div>
+      <div>營業時間：{{ site.data['site-settings'].footer.hours }}<br>LINE：{{ site.data['site-settings'].footer.line_id }}</div>
     </div>
     <div class="footer-bottom">
       Copyright © 2026 yanxianglou. All rights reserved.
