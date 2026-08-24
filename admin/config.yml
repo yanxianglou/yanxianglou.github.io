@@ -56,6 +56,10 @@ collections:
         label: "首頁其他區塊"
         name: "site_settings"
         fields:
+          - label: "Favicon（瀏覽器分頁小圖示，建議正方形，至少 64×64px）"
+            name: "favicon"
+            widget: "image"
+            required: false
           - label: "頁首 LOGO（建議透明背景 PNG，高度約 44px 尺寸即可）"
             name: "header_logo"
             widget: "image"
