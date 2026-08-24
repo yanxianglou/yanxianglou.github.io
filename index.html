@@ -54,6 +54,7 @@
   /* 之後把炎香樓實際LOGO檔放進 assets/img/logo.png，把下面這行 img 的 src 換掉，
      並把上面 .logo-slot 的 border 拿掉即可 */
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  .logo-slot.has-image{border:none;}
 
   .site-nav{display:flex;align-items:center;gap:32px;}
   .nav-item{position:relative;}
@@ -107,6 +108,7 @@
     margin-bottom:26px;
   }
   .hero-center .hero-logo img{max-width:100%;max-height:100%;display:block;}
+  .hero-center .hero-logo.has-image{border:none;}
   .hero-center .tagline{
     font-size:17px;letter-spacing:0.08em;color:var(--text-warm);
   }
@@ -270,9 +272,12 @@
   <!-- 頁首(疊在Hero上，透明) + Hero(全螢幕沉浸式) -->
   <div class="hero-wrap">
     <header class="site-header">
-      <div class="logo-slot">
-        <!-- TODO: 換成 <img src="assets/img/logo.png" alt="炎香樓"> -->
-        上傳 LOGO
+      <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+        {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+          <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+        {% else %}
+          上傳 LOGO
+        {% endif %}
       </div>
       <nav class="site-nav">
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
@@ -307,9 +312,12 @@
 
       <div class="hero-center">
         <span class="eyebrow">YANXIANGLOU</span>
-        <div class="hero-logo">
-          <!-- TODO: 換成 <img src="assets/img/logo-script.png" alt="炎香樓"> (書法字體版logo) -->
-          上傳書法字LOGO
+        <div class="hero-logo{% if site.data['site-settings'].hero_logo and site.data['site-settings'].hero_logo != "" %} has-image{% endif %}">
+          {% if site.data['site-settings'].hero_logo and site.data['site-settings'].hero_logo != "" %}
+            <img src="{{ site.data['site-settings'].hero_logo | relative_url }}" alt="炎香樓">
+          {% else %}
+            上傳書法字LOGO
+          {% endif %}
         </div>
         <div class="tagline">{{ site.data['site-settings'].hero_tagline }}</div>
       </div>

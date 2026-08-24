@@ -1,3 +1,6 @@
+header_logo: ""
+hero_logo: ""
+
 nav_promo:
   label: "最新優惠"
   link: "#news"
