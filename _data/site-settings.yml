@@ -1,6 +1,10 @@
 header_logo: ""
 hero_logo: ""
 
+social:
+  facebook: ""
+  instagram: ""
+
 nav_promo:
   label: "最新優惠"
   link: "#news"

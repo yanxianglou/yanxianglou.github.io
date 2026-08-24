@@ -21,6 +21,8 @@
   .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
   header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
   .logo-slot{width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
 
   .page-head{padding:70px 48px 40px;text-align:center;}
@@ -29,9 +31,9 @@
 
   .carousel-wrap{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;}
   .carousel{position:relative;height:440px;overflow:hidden;border:1px solid var(--line);}
-  .c-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;display:flex;align-items:flex-end;}
+  .c-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;display:flex;align-items:flex-end;background-size:cover;background-position:center;}
   .c-slide.active{opacity:1;}
-  .c-slide .bg{position:absolute;inset:0;}
+  .c-slide.placeholder{background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);}
   .c-slide .tag{
     position:relative;padding:36px 40px 28px;width:100%;
     background:linear-gradient(to top, rgba(0,0,0,.8), transparent);
@@ -53,6 +55,7 @@
   .set-info{max-width:1100px;margin:40px auto 0;padding:0 48px;text-align:center;}
   .set-info h2{font-size:24px;font-weight:700;margin-bottom:14px;}
   .set-info p{font-size:13.5px;color:var(--muted-light);max-width:600px;margin:0 auto 28px;line-height:1.9;}
+  .btn-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
   .btn{
     display:inline-flex;align-items:center;gap:10px;
     font-family:'Oswald', sans-serif;font-size:13px;letter-spacing:0.12em;
@@ -61,7 +64,6 @@
   .btn:hover{background:var(--accent-light);}
   .btn.outline{background:none;border-color:var(--text-warm);color:var(--text-warm);}
   .btn.outline:hover{background:var(--text-warm);color:var(--black);}
-  .btn-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
   .set-note{max-width:1100px;margin:60px auto 100px;padding:0 48px;font-size:12.5px;color:var(--muted-light);line-height:1.9;border-left:2px solid var(--accent);padding-left:20px;}
 </style>
@@ -69,30 +71,29 @@
 <body>
 
 <header>
-  <div class="logo-slot">上傳 LOGO</div>
+  <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </div>
   <a class="back" href="index.html">← 回首頁</a>
 </header>
 
 <div class="page-head">
   <span class="eyebrow">SET MENU</span>
-  <h1>多人套餐 / 客製化宴席</h1>
-  <p>以手動輪播呈現不同宴席情境，每張圖片皆可點擊查看完整菜單，CTA按鈕獨立置於輪播下方。</p>
+  <h1>{{ site.data.setmenu.page_title }}</h1>
+  <p>{{ site.data.setmenu.intro }}</p>
 </div>
 
 <div class="carousel-wrap">
   <div class="carousel" id="setCarousel">
-    <a class="c-slide active" href="assets/menu-set.pdf" target="_blank" data-i="0">
-      <div class="bg" style="background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);"></div>
-      <div class="tag">TODO — 4人套餐情境照 · 點擊可查看完整菜單</div>
+    {% for slide in site.data.setmenu.slides %}
+    <a class="c-slide{% if forloop.first %} active{% endif %}{% unless slide.image and slide.image != "" %} placeholder{% endunless %}" href="{{ site.data.setmenu.pdf_link }}" target="_blank" data-i="{{ forloop.index0 }}"{% if slide.image and slide.image != "" %} style="background-image:url('{{ slide.image | relative_url }}');"{% endif %}>
+      <div class="tag">{{ slide.tag }}</div>
     </a>
-    <a class="c-slide" href="assets/menu-set.pdf" target="_blank" data-i="1">
-      <div class="bg" style="background:radial-gradient(circle at 70% 30%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#221310,#0E0C09);"></div>
-      <div class="tag">TODO — 隱藏版菜單／大轉輪蒸籠上桌情境照 · 點擊可查看完整菜單</div>
-    </a>
-    <a class="c-slide" href="assets/menu-set.pdf" target="_blank" data-i="2">
-      <div class="bg" style="background:radial-gradient(circle at 50% 70%, rgba(90,16,13,.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);"></div>
-      <div class="tag">TODO — 宴席包廂情境照 · 點擊可查看完整菜單</div>
-    </a>
+    {% endfor %}
 
     <div class="c-arrow prev" id="prevBtn">‹</div>
     <div class="c-arrow next" id="nextBtn">›</div>
@@ -101,28 +102,27 @@
 </div>
 
 <div class="set-info">
-  <h2>客製化宴席，量身而定</h2>
-  <p>4人固定套餐適合家庭與朋友聚會；6人以上開放隱藏版菜單，搭配大轉輪蒸籠上桌儀式，是炎香樓最具代表性的宴客體驗。</p>
+  <h2>{{ site.data.setmenu.info.heading }}</h2>
+  <p>{{ site.data.setmenu.info.body }}</p>
   <div class="btn-group">
-    <a class="btn" href="#" title="TODO：設定連結目標(可導向LINE OA或訂位系統)">桌宴預約 →</a>
-    <a class="btn outline" href="assets/menu-set.pdf" target="_blank">查看桌宴菜單 →</a>
+    <a class="btn" href="{{ site.data.setmenu.info.cta_link }}">{{ site.data.setmenu.info.cta_text }} →</a>
+    <a class="btn outline" href="{{ site.data.setmenu.pdf_link }}" target="_blank">查看桌宴菜單 →</a>
   </div>
 </div>
 
 <div class="set-note">
-  <strong>備忘：</strong>CTA 連結目前是 TODO 佔位，之後可指向 LINE OA 對話、線上訂位系統，或先導到聯絡電話 04-2329-9968。
-  隱藏版菜單務必在頁面上明確標示「6人以上」門檻，避免與4人套餐混淆造成過度承諾。
+  <strong>備忘：</strong>隱藏版菜單務必在頁面上明確標示「6人以上」門檻，避免與4人套餐混淆造成過度承諾。
 </div>
 
 <script>
   (function(){
-    const slides = document.querySelectorAll('#setCarousel .c-slide');
-    const dotsWrap = document.getElementById('setDots');
-    let current = 0;
-    slides.forEach((s, i) => {
-      const dot = document.createElement('span');
+    var slides = document.querySelectorAll('#setCarousel .c-slide');
+    var dotsWrap = document.getElementById('setDots');
+    var current = 0;
+    slides.forEach(function(s, i){
+      var dot = document.createElement('span');
       if(i === 0) dot.classList.add('active');
-      dot.addEventListener('click', (e) => { e.preventDefault(); goTo(i); });
+      dot.addEventListener('click', function(e){ e.preventDefault(); goTo(i); });
       dotsWrap.appendChild(dot);
     });
     function goTo(i){
@@ -132,9 +132,8 @@
       slides[current].classList.add('active');
       dotsWrap.children[current].classList.add('active');
     }
-    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
-    // 手動輪播，不自動播放
+    document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+    document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
   })();
 </script>
 </body>

@@ -64,6 +64,12 @@ collections:
             name: "hero_logo"
             widget: "image"
             required: false
+          - label: "社群連結"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook 網址", name: "facebook", widget: "string", required: false}
+              - {label: "Instagram 網址", name: "instagram", widget: "string", required: false}
           - label: "最新優惠（導覽列）"
             name: "nav_promo"
             widget: "object"
@@ -114,6 +120,66 @@ collections:
               - {label: "電話（純數字，供點擊撥號）", name: "phone_tel", widget: "string"}
               - {label: "營業時間", name: "hours", widget: "string"}
               - {label: "LINE ID", name: "line_id", widget: "string"}
+
+  - name: "alacarte"
+    label: "單點餐品頁"
+    files:
+      - file: "_data/alacarte.yml"
+        label: "單點餐品內容"
+        name: "alacarte"
+        fields:
+          - label: "完整菜單PDF連結"
+            name: "cta_pdf_link"
+            widget: "string"
+          - label: "六道菜（固定6個，對應首頁六宮格）"
+            name: "dishes"
+            widget: "list"
+            fields:
+              - {label: "菜名", name: "name", widget: "string"}
+              - {label: "副標／食材說明", name: "subtitle", widget: "string", required: false}
+              - label: "照片（可放多張，會自動輪播）"
+                name: "images"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "照片", name: "image", widget: "image"}
+          - label: "橫幅 Banner"
+            name: "banner"
+            widget: "object"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "備用文字（沒放照片時顯示）", name: "caption", widget: "string", required: false}
+          - label: "右下角 CTA 卡"
+            name: "cta_card"
+            widget: "object"
+            fields:
+              - {label: "文字", name: "text", widget: "string"}
+              - {label: "連結", name: "link", widget: "string"}
+
+  - name: "setmenu"
+    label: "套餐餐品頁"
+    files:
+      - file: "_data/setmenu.yml"
+        label: "套餐餐品內容"
+        name: "setmenu"
+        fields:
+          - {label: "頁面標題", name: "page_title", widget: "string"}
+          - {label: "說明文字", name: "intro", widget: "text"}
+          - label: "輪播（可自由增減張數，手動箭頭切換）"
+            name: "slides"
+            widget: "list"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "備註文字", name: "tag", widget: "string", required: false}
+          - {label: "完整菜單PDF連結（輪播圖點擊後跳轉）", name: "pdf_link", widget: "string"}
+          - label: "下方說明區塊"
+            name: "info"
+            widget: "object"
+            fields:
+              - {label: "標題", name: "heading", widget: "string"}
+              - {label: "說明文字", name: "body", widget: "text"}
+              - {label: "按鈕文字", name: "cta_text", widget: "string"}
+              - {label: "按鈕連結", name: "cta_link", widget: "string"}
 
   - name: "news"
     label: "最新消息"

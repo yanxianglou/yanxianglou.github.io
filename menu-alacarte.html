@@ -21,6 +21,8 @@
   .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
   header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
   .logo-slot{width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
 
   .page-head{padding:70px 48px 30px;text-align:center;}
@@ -39,9 +41,13 @@
   .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px;}
 
   .cell{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--black2);border:1px solid var(--line);cursor:pointer;}
-  .cell .frame{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;}
+  .cell .frame{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;background-size:cover;background-position:center;}
   .cell .frame.active{opacity:1;}
-  .cell .frame .bg{position:absolute;inset:0;}
+  .cell .frame.placeholder{
+    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:16px;
+  }
 
   .cell .caption{
     position:absolute;left:0;right:0;bottom:0;z-index:4;
@@ -58,10 +64,10 @@
   .cell .dots span{width:5px;height:5px;border-radius:50%;background:rgba(217,199,168,.4);}
   .cell .dots span.active{background:var(--text-warm);}
 
-  /* 下方保留兩格：banner + CTA */
   .extra-row{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:20px;}
   .banner-cell{
     background:radial-gradient(circle at 30% 30%, rgba(90,16,13,.4), transparent 55%), linear-gradient(160deg,#241511,#100D0A);
+    background-size:cover;background-position:center;
     border:1px solid var(--line);min-height:200px;
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.1em;color:var(--muted-light);text-align:center;padding:20px;
@@ -71,87 +77,87 @@
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;
   }
   .cta-cell .t{font-size:15px;font-weight:500;}
+
+  @media(max-width:900px){
+    .grid{grid-template-columns:1fr 1fr;}
+    .extra-row{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-slot">上傳 LOGO</div>
+  <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </div>
   <a class="back" href="index.html">← 回首頁</a>
 </header>
 
 <div class="page-head">
   <span class="eyebrow">À LA CARTE</span>
   <h1>單點餐品</h1>
-  <p>每一格滑鼠移入會顯示菜名主副標，並自動輪播多張照片。TODO：實際菜名、價格、照片待補。</p>
-  <a class="btn outline" href="assets/menu-alacarte.pdf" target="_blank">查看單點完整菜單 →</a>
+  <p>每一格滑鼠移入會顯示菜名主副標，並自動輪播多張照片。</p>
+  <a class="btn outline" href="{{ site.data.alacarte.cta_pdf_link }}" target="_blank">查看單點完整菜單 →</a>
 </div>
 
 <div class="wrap">
-  <div class="grid" id="grid"></div>
+  <div class="grid">
+    {% for dish in site.data.alacarte.dishes %}
+    <div class="cell" data-images='{% if dish.images and dish.images.size > 0 %}[{% for img in dish.images %}"{{ img | relative_url }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% else %}[]{% endif %}'>
+      {% if dish.images and dish.images.size > 0 %}
+        {% for img in dish.images %}
+          <div class="frame{% if forloop.first %} active{% endif %}" style="background-image:url('{{ img | relative_url }}');" data-f="{{ forloop.index0 }}"></div>
+        {% endfor %}
+        {% if dish.images.size > 1 %}
+        <div class="dots">
+          {% for img in dish.images %}<span class="{% if forloop.first %}active{% endif %}"></span>{% endfor %}
+        </div>
+        {% endif %}
+      {% else %}
+        <div class="frame placeholder active">尚未上傳照片</div>
+      {% endif %}
+      <div class="caption">
+        <div class="main-title">{{ dish.name }}</div>
+        <div class="sub-title">{{ dish.subtitle }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 
   <div class="extra-row">
-    <div class="banner-cell">TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖</div>
+    <div class="banner-cell"{% if site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %} style="background-image:url('{{ site.data.alacarte.banner.image | relative_url }}');"{% endif %}>
+      {% unless site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %}{{ site.data.alacarte.banner.caption }}{% endunless %}
+    </div>
     <div class="cta-cell">
-      <div class="t">想看更完整的菜色？</div>
-      <a class="btn" href="assets/menu-alacarte.pdf" target="_blank">查看完整菜單 →</a>
+      <div class="t">{{ site.data.alacarte.cta_card.text }}</div>
+      <a class="btn" href="{{ site.data.alacarte.cta_card.link }}" target="_blank">查看完整菜單 →</a>
     </div>
   </div>
 </div>
 
 <script>
-  // 6格示範資料，之後串接實際菜品照片與主副標文字
-  const dishes = Array.from({length:6}).map((_, i) => ({
-    main: `TODO 菜名 ${i+1}`,
-    sub: 'TODO 副標／食材說明',
-    frames: 3
-  }));
-
-  const grid = document.getElementById('grid');
-  const bgVariants = [
-    'radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A)',
-    'radial-gradient(circle at 70% 30%, rgba(90,16,13,.3), transparent 50%), linear-gradient(160deg,#221310,#0E0C09)',
-    'radial-gradient(circle at 50% 70%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#241511,#100D0A)'
-  ];
-
-  dishes.forEach((dish, idx) => {
-    const cell = document.createElement('div');
-    cell.className = 'cell';
-
-    let framesHtml = '';
-    for(let f=0; f<dish.frames; f++){
-      framesHtml += `
-        <div class="frame ${f===0?'active':''}" data-f="${f}">
-          <div class="bg" style="background:${bgVariants[f % bgVariants.length]}"></div>
-        </div>`;
-    }
-    let dotsHtml = '';
-    for(let f=0; f<dish.frames; f++){
-      dotsHtml += `<span class="${f===0?'active':''}"></span>`;
-    }
-
-    cell.innerHTML = framesHtml + `
-      <div class="dots">${dotsHtml}</div>
-      <div class="caption">
-        <div class="main-title">${dish.main}</div>
-        <div class="sub-title">${dish.sub}</div>
-      </div>`;
-    grid.appendChild(cell);
-
-    const frames = cell.querySelectorAll('.frame');
-    const dots = cell.querySelectorAll('.dots span');
-    let cur = 0;
-    let timer = setInterval(next, 2600 + idx*150);
-
+  document.querySelectorAll('.cell').forEach(function(cell, idx){
+    var frames = cell.querySelectorAll('.frame');
+    var dots = cell.querySelectorAll('.dots span');
+    if(frames.length <= 1) return;
+    var cur = 0;
+    var timer = setInterval(next, 2600 + idx*150);
     function next(){
       frames[cur].classList.remove('active');
-      dots[cur].classList.remove('active');
+      if(dots[cur]) dots[cur].classList.remove('active');
       cur = (cur + 1) % frames.length;
       frames[cur].classList.add('active');
-      dots[cur].classList.add('active');
+      if(dots[cur]) dots[cur].classList.add('active');
     }
-    cell.addEventListener('mouseenter', () => clearInterval(timer));
-    cell.addEventListener('mouseleave', () => { timer = setInterval(next, 2600); });
+    cell.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    cell.addEventListener('mouseleave', function(){ timer = setInterval(next, 2600); });
   });
 </script>
 </body>
