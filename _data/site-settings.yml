@@ -3,7 +3,7 @@ header_logo: /assets/img/uploads/android-icon-144x144.png
 hero_logo: ""
 social:
   facebook: https://www.facebook.com/yanxianglou
-  instagram: https://www.facebook.com/yanxianglou
+  instagram: https://www.instagram.com/yanxianglou/
 nav_promo:
   label: 最新優惠
   link: "#news"
@@ -43,5 +43,5 @@ footer:
   address: 台中市西區精誠八街12巷2號
   phone: 04-2329-9968
   phone_tel: "0423299968"
-  hours: 週一至週日 11:00–14:00, 17:00–21:30
+  hours: 週一至週日 11:00–14:00, 17:00–21:00 (21:30閉店)
   line_id: "@mew1122i"
