@@ -134,6 +134,7 @@
     transition:transform .4s ease, opacity .4s ease;
   }
   .tier-card:hover .v-image{transform:translateY(-100%);opacity:0;}
+  .tier-card.flipped .v-image{transform:translateY(-100%);opacity:0;}
   .tier-card .v-text{
     position:absolute;inset:0;padding:20px;
     display:flex;flex-direction:column;justify-content:center;
@@ -141,6 +142,7 @@
     transition:transform .4s ease, opacity .4s ease;
   }
   .tier-card:hover .v-text{transform:translateY(0);opacity:1;}
+  .tier-card.flipped .v-text{transform:translateY(0);opacity:1;}
   .tier-card .avail{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--muted-light);text-transform:uppercase;margin-bottom:10px;display:block;}
   .tier-card .price{font-family:'Oswald', sans-serif;font-size:20px;color:var(--text-warm);margin-bottom:10px;}
   .tier-card .desc{font-size:12.5px;line-height:1.8;color:var(--muted-light);}
@@ -504,6 +506,15 @@
     btn.addEventListener('click', () => {
       btn.classList.toggle('open');
       panel.classList.toggle('open');
+    });
+  })();
+
+  // 四格卡片：點擊切換圖片/文字（手機不用長按，桌機仍保留 hover）
+  (function(){
+    document.querySelectorAll('.tier-card').forEach(function(card){
+      card.addEventListener('click', function(){
+        card.classList.toggle('flipped');
+      });
     });
   })();
 </script>
