@@ -8,7 +8,7 @@ floating_cta:
   booking_link: https://inline.app/booking/-OF6-73H20NuMHBEK308:inline-live-3/-OF6-7Aaxcy1yb5cdiq6?language=zh-tw
 nav_promo:
   label: 最新消息
-  link: news.html
+  link: https://yanxianglou.github.io/news.html
 nav_takeout:
   label: 外帶訂餐
   link: https://yanxianglou.oddle.me/zh_TW
