@@ -398,9 +398,18 @@
         <h2>最新消息</h2>
       </div>
       <div class="news-list" id="newsList">
-        {% assign active_news = site.news | where_exp: "post", "post.expire_date == nil or post.expire_date == '' or post.expire_date >= site.time" %}
-        {% assign news_sorted = active_news | sort: 'date' | reverse %}
-        {% for post in news_sorted limit: 3 %}
+        {% assign news_sorted = site.news | sort: 'date' | reverse %}
+        {% assign shown_count = 0 %}
+        {% for post in news_sorted %}
+          {% if shown_count < 3 %}
+            {% assign is_expired = false %}
+            {% if post.expire_date and post.expire_date != "" %}
+              {% if post.expire_date < site.time %}
+                {% assign is_expired = true %}
+              {% endif %}
+            {% endif %}
+            {% unless is_expired %}
+              {% assign shown_count = shown_count | plus: 1 %}
         <div class="news-card">
           <div class="thumb">
             {% if post.image and post.image != "" %}
@@ -416,6 +425,8 @@
             <a class="more" href="{{ post.url | relative_url }}">了解更多 →</a>
           </div>
         </div>
+            {% endunless %}
+          {% endif %}
         {% endfor %}
       </div>
     </div>
