@@ -9,14 +9,14 @@ nav_promo:
   link: "#news"
 nav_takeout:
   label: 外帶訂餐
-  link: "#"
+  link: https://yanxianglou.oddle.me/zh_TW
 nav_press:
   label: 媒體報導
   link: "#"
 nav_story:
   label: 品牌故事
   link: "#"
-hero_tagline: 嚴選正宗粵菜工藝｜大式技法傳承
+hero_tagline: .
 hero_slides:
   - caption: TODO — 招牌菜品情境照 01 · 可設定連結
     link: menu-alacarte.html
