@@ -1,0 +1,29 @@
+tiers:
+  - name: "平日商業午間套餐"
+    audience: "個人／2人以內"
+    price: "TODO"
+    availability: "平日午間限定"
+    description: "個人份量邏輯，親民入門價格，是認識炎香樓的第一步。"
+    image: ""
+    visible: true
+  - name: "個人化私人訂製"
+    audience: "個人／2人以內"
+    price: "TODO"
+    availability: "需預約"
+    description: "沿用午間套餐的個人份量邏輯，每人低消提高，多一分細緻與彈性。"
+    image: ""
+    visible: true
+  - name: "4人套餐"
+    audience: "4人固定"
+    price: "TODO"
+    availability: "需預約"
+    description: "標準團體用餐，適合家庭聚會與朋友小酌。"
+    image: ""
+    visible: true
+  - name: "隱藏版菜單"
+    audience: "6人以上"
+    price: "TODO"
+    availability: "洽詢預約"
+    description: "真正的私人訂製，僅限6人以上開放，搭配大轉輪蒸籠上桌儀式。"
+    image: ""
+    visible: true

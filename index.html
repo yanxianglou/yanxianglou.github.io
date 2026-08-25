@@ -35,14 +35,12 @@
   }
   .btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 
-  /* ===== 頁首(疊在Hero上方，透明背景) ===== */
-  .hero-wrap{position:relative;}
+  /* ===== 頁首 ===== */
   .site-header{
-    position:absolute;top:0;left:0;width:100%;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.55), transparent);
+    background:var(--black);
     color:var(--text-warm);
     display:flex;justify-content:space-between;align-items:center;
-    padding:20px 48px;z-index:50;
+    padding:20px 48px;position:relative;z-index:50;
   }
   .logo-slot{
     width:120px;height:44px;
@@ -51,15 +49,14 @@
     font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.1em;
     color:var(--muted);text-align:center;line-height:1.4;
   }
-  /* 之後把炎香樓實際LOGO檔放進 assets/img/logo.png，把下面這行 img 的 src 換掉，
-     並把上面 .logo-slot 的 border 拿掉即可 */
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   .logo-slot.has-image{border:none;}
 
+  .nav-social-group{display:flex;align-items:center;gap:28px;}
   .site-nav{display:flex;align-items:center;gap:32px;}
   .nav-item{position:relative;}
   .nav-item > a{
-    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.14em;color:var(--muted-light);
+    font-family:'Oswald', sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--muted-light);
     display:flex;align-items:center;gap:4px;padding:8px 0;
   }
   .nav-item:hover > a{color:var(--text-warm);}
@@ -75,7 +72,7 @@
   .nav-item:hover .dropdown{opacity:1;visibility:visible;translate:0 0;}
   .dropdown a{
     display:block;padding:10px 20px;font-family:'Oswald', sans-serif;
-    font-size:12px;letter-spacing:0.08em;color:var(--muted-light);white-space:nowrap;
+    font-size:13px;letter-spacing:0.08em;color:var(--muted-light);white-space:nowrap;
   }
   .dropdown a:hover{color:var(--on-accent);background:var(--accent);}
 
@@ -87,71 +84,74 @@
   }
   .social-icons a:hover{background:var(--accent-light);}
 
-  /* ===== Hero 輪播(全螢幕沉浸式，仿日日敘結構) ===== */
-  .hero-carousel{position:relative;min-height:100vh;min-height:100dvh;overflow:hidden;}
+  /* ===== Hero 輪播(固定尺寸 1400x600，等比例縮放) ===== */
+  .hero-frame{background:var(--black);padding:32px 24px 48px;display:flex;justify-content:center;}
+  .hero-carousel{position:relative;width:100%;max-width:1400px;aspect-ratio:1400/600;overflow:hidden;}
   .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:block;pointer-events:none;}
   .slide.active{opacity:1;pointer-events:auto;}
   .slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#100E0A;}
-  .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.55) 100%);}
+  .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,.68) 100%);}
 
-  .hero-center{
-    position:absolute;inset:0;z-index:3;pointer-events:none;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:0 24px;
+  .hero-caption{
+    position:absolute;left:0;right:0;bottom:0;z-index:3;
+    padding:32px 40px;text-align:center;pointer-events:none;
   }
-  .hero-center .eyebrow{color:var(--muted-light);margin-bottom:26px;}
-  .hero-center .hero-logo{
-    width:280px;max-width:70vw;height:110px;
-    border:1px dashed rgba(217,199,168,0.4);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--muted-light);
-    margin-bottom:26px;
+  .hero-caption h2{
+    font-size:22px;font-weight:700;line-height:1.6;color:var(--text-warm);
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
   }
-  .hero-center .hero-logo img{max-width:100%;max-height:100%;display:block;}
-  .hero-center .hero-logo.has-image{border:none;}
-  .hero-center .tagline{
-    font-size:17px;letter-spacing:0.08em;color:var(--text-warm);
-  }
-  .hero-scroll{
-    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
-    z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;
-  }
-  .hero-scroll .line{width:1px;height:46px;background:rgba(217,199,168,0.45);}
-  .hero-scroll .txt{font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.28em;color:var(--muted-light);}
 
-  .hero-dots{position:absolute;bottom:24px;right:32px;display:flex;gap:10px;z-index:6;}
-  .hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(217,199,168,0.35);cursor:pointer;}
+  .hero-dots{position:absolute;bottom:16px;right:20px;display:flex;gap:10px;z-index:6;}
+  .hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(217,199,168,0.4);cursor:pointer;}
   .hero-dots span.active{background:var(--text-warm);}
 
-  /* ===== 品牌宣言(改深色，銜接Hero) ===== */
-  .statement{background:var(--black);color:var(--text-warm);padding:120px 48px;text-align:center;}
+  /* ===== 品牌宣言(接續Hero) ===== */
+  .statement{background:var(--black);color:var(--text-warm);padding:0 48px 120px;text-align:center;}
   .statement-inner{max-width:820px;margin:0 auto;}
-  .statement h2{font-size:30px;font-weight:700;line-height:1.7;margin-bottom:24px;color:var(--text-warm);}
   .statement p{font-size:15px;line-height:2;color:var(--muted-light);margin-bottom:40px;}
 
   /* ===== 匠心工藝 敘述 ===== */
   .craft{background:var(--black);color:var(--text-warm);padding:100px 48px 60px;position:relative;overflow:hidden;}
-  .craft-inner{max-width:640px;position:relative;z-index:2;}
-  .chef-photo{width:96px;height:96px;border-radius:50%;overflow:hidden;border:1px solid var(--line);margin-bottom:24px;}
+  .craft-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+  .craft-inner{text-align:center;}
+  .chef-photo{width:96px;height:96px;border-radius:50%;overflow:hidden;border:1px solid var(--line);margin:0 auto 24px;}
   .chef-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .craft .eyebrow{color:var(--muted-light);margin-bottom:18px;}
   .craft h2{font-size:34px;font-weight:700;margin-bottom:28px;}
   .craft h3{font-size:18px;font-weight:500;color:var(--text-warm);margin-bottom:20px;}
   .craft p{font-size:14.5px;line-height:2;color:var(--muted-light);}
   .craft-deco{position:absolute;right:-60px;top:-40px;width:520px;height:520px;opacity:0.5;}
+  .craft-video{position:relative;width:100%;aspect-ratio:16/9;background:var(--black2);border:1px solid var(--line);overflow:hidden;}
+  .craft-video iframe{width:100%;height:100%;border:0;display:block;}
+  .craft-video.empty{display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:20px;}
+  @media(max-width:900px){.craft-grid{grid-template-columns:1fr;}}
 
   /* ===== 四格卡片 ===== */
   .tier-section{background:var(--black);padding:40px 48px 100px;}
   .tier-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:20px;max-width:1200px;margin:0 auto;}
-  .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;height:230px;transition:transform .35s ease, box-shadow .35s ease;}
+  .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;height:260px;transition:transform .35s ease, box-shadow .35s ease;}
   .tier-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(0,0,0,0.4);}
-  .tier-card .head{background:var(--accent);color:var(--on-accent);padding:18px 20px;font-size:15px;font-weight:700;text-align:center;}
-  .tier-card .body{padding:22px 20px;}
+  .tier-card .head{background:var(--accent);color:var(--on-accent);padding:18px 20px;font-size:15px;font-weight:700;text-align:center;position:relative;z-index:3;}
+  .tier-card .visual{position:relative;height:calc(100% - 56px);overflow:hidden;}
+  .tier-card .v-image{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#241511,#100D0A);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:16px;
+    transition:transform .4s ease, opacity .4s ease;
+  }
+  .tier-card:hover .v-image{transform:translateY(-100%);opacity:0;}
+  .tier-card .v-text{
+    position:absolute;inset:0;padding:20px;
+    display:flex;flex-direction:column;justify-content:center;
+    transform:translateY(100%);opacity:0;
+    transition:transform .4s ease, opacity .4s ease;
+  }
+  .tier-card:hover .v-text{transform:translateY(0);opacity:1;}
   .tier-card .avail{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--muted-light);text-transform:uppercase;margin-bottom:10px;display:block;}
-  .tier-card .price{font-family:'Oswald', sans-serif;font-size:20px;color:var(--text-warm);margin-bottom:10px;transition:opacity .3s, transform .3s;}
-  .tier-card .desc{font-size:12.5px;line-height:1.85;color:var(--muted-light);position:absolute;left:20px;right:20px;bottom:22px;transform:translateY(40px);opacity:0;transition:transform .35s ease, opacity .35s ease;}
-  .tier-card:hover .desc{transform:translateY(0);opacity:1;}
-  .tier-card:hover .price{opacity:0;transform:translateY(-10px);}
+  .tier-card .price{font-family:'Oswald', sans-serif;font-size:20px;color:var(--text-warm);margin-bottom:10px;}
+  .tier-card .desc{font-size:12.5px;line-height:1.8;color:var(--muted-light);}
 
   /* ===== 最新消息(格子式，米白底) ===== */
   .news{background:var(--paper);color:var(--ink-dark);padding:100px 48px;position:relative;}
@@ -233,25 +233,38 @@
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
-    .hero-carousel{min-height:100vh;min-height:100dvh;}
     .site-header{padding:16px 20px;}
-    .hero-center .hero-logo{width:200px;height:80px;margin-bottom:20px;}
-    .hero-center .eyebrow{margin-bottom:18px;font-size:11px;}
-    .hero-center .tagline{font-size:15px;}
-    .hero-scroll{bottom:24px;}
-    .hero-dots{right:20px;bottom:18px;}
+    .hero-frame{padding:20px 12px 32px;}
+    .hero-caption{padding:20px 20px;}
+    .hero-caption h2{font-size:16px;}
+    body{padding-bottom:64px;}
+    .mobile-minibar{display:flex;}
+    .float-reel{bottom:74px;top:auto;right:14px;transform:none;}
   }
   @media(max-width:400px){
-    .hero-center .hero-logo{width:170px;height:70px;}
     .social-icons a{width:28px;height:28px;}
   }
+
+  /* ===== 手機版底部快速導覽 ===== */
+  .mobile-minibar{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
+    background:var(--black2);border-top:1px solid var(--line);
+    justify-content:space-around;align-items:center;padding:8px 0;
+  }
+  .mobile-minibar a{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    color:var(--muted-light);font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.04em;
+  }
+  .mobile-minibar a svg{width:20px;height:20px;stroke:var(--muted-light);fill:none;}
+  .mobile-minibar a:active, .mobile-minibar a:hover{color:var(--text-warm);}
+  .mobile-minibar a:active svg, .mobile-minibar a:hover svg{stroke:var(--text-warm);}
 </style>
 </head>
 <body>
 
   <!-- 浮動CTA滾輪：icon固定在左，文字統一向右滑出 -->
   <div class="float-reel">
-    <a class="float-item" href="#" title="TODO：串接LINE官方帳號">
+    <a class="float-item" href="{{ site.data['site-settings'].floating_cta.line_link | default: '#' }}" title="LINE官方帳號" target="_blank">
       <span class="icon-wrap">
         <svg class="icon" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9-.1.7-.5 2.3-.6 2.7 0 0-.1.5.2.6.3.1.7-.1.7-.1.9-.6 4.9-3.3 6.7-5.6.1-.1.2-.2.3-.3C20.2 14.9 22 13.1 22 11c0-4.4-4.5-8-10-8z" stroke-width="1.4" stroke-linejoin="round"/></svg>
       </span>
@@ -263,7 +276,7 @@
       </span>
       <span class="label">電話預訂</span>
     </a>
-    <a class="float-item" href="#" title="TODO：串接線上訂位系統">
+    <a class="float-item" href="{{ site.data['site-settings'].floating_cta.booking_link | default: '#' }}" title="線上訂位" target="_blank">
       <span class="icon-wrap">
         <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1" stroke-width="1.6"/><path d="M4 9h16M8 3v4M16 3v4" stroke-width="1.6" stroke-linecap="round"/></svg>
       </span>
@@ -271,16 +284,16 @@
     </a>
   </div>
 
-  <!-- 頁首(疊在Hero上，透明) + Hero(全螢幕沉浸式) -->
-  <div class="hero-wrap">
-    <header class="site-header">
-      <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
-        {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
-          <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
-        {% else %}
-          上傳 LOGO
-        {% endif %}
-      </div>
+  <!-- 頁首 -->
+  <header class="site-header">
+    <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+      {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+        <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+      {% else %}
+        上傳 LOGO
+      {% endif %}
+    </div>
+    <div class="nav-social-group">
       <nav class="site-nav">
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
@@ -298,8 +311,11 @@
         <a href="{{ site.data['site-settings'].social.facebook | default: '#' }}" title="Facebook" target="_blank">FB</a>
         <a href="{{ site.data['site-settings'].social.instagram | default: '#' }}" title="Instagram" target="_blank">IG</a>
       </div>
-    </header>
+    </div>
+  </header>
 
+  <!-- Hero 輪播(固定 1400x600 比例) -->
+  <div class="hero-frame">
     <div class="hero-carousel" id="heroCarousel">
       {% assign slides = site.data['site-settings'].hero_slides %}
       <a class="slide active" href="{{ slides[0].link | default: '#' }}" data-index="0">
@@ -312,31 +328,17 @@
         <div class="bg" style="{% if slides[2].image %}background-image:url('{{ slides[2].image | relative_url }}');{% else %}background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);{% endif %}"></div>
       </a>
 
-      <div class="hero-center">
-        <span class="eyebrow">YANXIANGLOU</span>
-        <div class="hero-logo{% if site.data['site-settings'].hero_logo and site.data['site-settings'].hero_logo != "" %} has-image{% endif %}">
-          {% if site.data['site-settings'].hero_logo and site.data['site-settings'].hero_logo != "" %}
-            <img src="{{ site.data['site-settings'].hero_logo | relative_url }}" alt="炎香樓">
-          {% else %}
-            上傳書法字LOGO
-          {% endif %}
-        </div>
-        <div class="tagline">{{ site.data['site-settings'].hero_tagline }}</div>
-      </div>
-
-      <div class="hero-scroll">
-        <span class="line"></span>
-        <span class="txt">SCROLL</span>
+      <div class="hero-caption">
+        <h2>{{ site.data['site-settings'].statement.heading_line1 }}{{ site.data['site-settings'].statement.heading_line2 }}</h2>
       </div>
 
       <div class="hero-dots" id="heroDots"></div>
     </div>
   </div>
 
-  <!-- 品牌宣言 -->
+  <!-- 品牌宣言(接續Hero，僅保留內文與CTA) -->
   <section class="statement">
     <div class="statement-inner">
-      <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
       <p>{{ site.data['site-settings'].statement.body }}</p>
       <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
     </div>
@@ -348,52 +350,43 @@
       <path d="M0 260 C 150 150, 200 400, 340 300 S 450 120, 520 220" stroke="#D9C7A8" stroke-width="1.2" fill="none" opacity="0.35"/>
       <path d="M0 300 C 150 190, 220 440, 360 340 S 470 160, 520 260" stroke="#5A100D" stroke-width="1" fill="none" opacity="0.6"/>
     </svg>
-    <div class="craft-inner">
-      {% if site.data.chef.photo and site.data.chef.photo != "" %}
-        <div class="chef-photo"><img src="{{ site.data.chef.photo | relative_url }}" alt="{{ site.data.chef.name }}"></div>
+    <div class="craft-grid">
+      <div class="craft-inner">
+        {% if site.data.chef.photo and site.data.chef.photo != "" %}
+          <div class="chef-photo"><img src="{{ site.data.chef.photo | relative_url }}" alt="{{ site.data.chef.name }}"></div>
+        {% endif %}
+        <span class="eyebrow">YANXIANGLOU</span>
+        <h2>匠心工藝</h2>
+        <h3>由{{ site.data.chef.title }}主理的粵式饗宴</h3>
+        <p>{{ site.data.chef.bio }}</p>
+      </div>
+      {% if site.data.chef.video_url and site.data.chef.video_url != "" %}
+        <div class="craft-video"><iframe src="{{ site.data.chef.video_url }}" title="炎香樓介紹影片" allowfullscreen loading="lazy"></iframe></div>
+      {% else %}
+        <div class="craft-video empty">尚未設定影片<br>可在後台「主廚介紹」貼上 YouTube 嵌入連結</div>
       {% endif %}
-      <span class="eyebrow">YANXIANGLOU</span>
-      <h2>匠心工藝</h2>
-      <h3>由{{ site.data.chef.title }}主理的粵式饗宴</h3>
-      <p>{{ site.data.chef.bio }}</p>
     </div>
   </section>
 
   <!-- 四格卡片 -->
   <section class="tier-section">
     <div class="tier-grid">
+      {% assign visible_tiers = site.data['menu-tiers'].tiers | where: 'visible', true %}
+      {% for tier in visible_tiers %}
       <div class="tier-card">
-        <div class="head">{{ site.data['lunch-set'].name }}</div>
-        <div class="body">
-          <span class="avail">{{ site.data['lunch-set'].audience }} · {{ site.data['lunch-set'].availability }}</span>
-          <div class="price">{{ site.data['lunch-set'].price }}</div>
-          <p class="desc">{{ site.data['lunch-set'].description }}</p>
+        <div class="head">{{ tier.name }}</div>
+        <div class="visual">
+          <div class="v-image"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
+            {% unless tier.image and tier.image != "" %}尚未上傳照片{% endunless %}
+          </div>
+          <div class="v-text">
+            <span class="avail">{{ tier.audience }} · {{ tier.availability }}</span>
+            <div class="price">{{ tier.price }}</div>
+            <p class="desc">{{ tier.description }}</p>
+          </div>
         </div>
       </div>
-      <div class="tier-card">
-        <div class="head">{{ site.data['private-set'].name }}</div>
-        <div class="body">
-          <span class="avail">{{ site.data['private-set'].audience }} · {{ site.data['private-set'].availability }}</span>
-          <div class="price">{{ site.data['private-set'].price }}</div>
-          <p class="desc">{{ site.data['private-set'].description }}</p>
-        </div>
-      </div>
-      <div class="tier-card">
-        <div class="head">{{ site.data['group-set'].name }}</div>
-        <div class="body">
-          <span class="avail">{{ site.data['group-set'].audience }} · {{ site.data['group-set'].availability }}</span>
-          <div class="price">{{ site.data['group-set'].price }}</div>
-          <p class="desc">{{ site.data['group-set'].description }}</p>
-        </div>
-      </div>
-      <div class="tier-card">
-        <div class="head">{{ site.data['hidden-menu'].name }}</div>
-        <div class="body">
-          <span class="avail">{{ site.data['hidden-menu'].audience }} · {{ site.data['hidden-menu'].availability }}</span>
-          <div class="price">{{ site.data['hidden-menu'].price }}</div>
-          <p class="desc">{{ site.data['hidden-menu'].description }}</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </section>
 
@@ -405,7 +398,8 @@
         <h2>最新消息</h2>
       </div>
       <div class="news-list" id="newsList">
-        {% assign news_sorted = site.news | sort: 'date' | reverse %}
+        {% assign active_news = site.news | where_exp: "post", "post.expire_date == nil or post.expire_date == '' or post.expire_date >= site.time" %}
+        {% assign news_sorted = active_news | sort: 'date' | reverse %}
         {% for post in news_sorted limit: 3 %}
         <div class="news-card">
           <div class="thumb">
@@ -461,6 +455,26 @@
       <div class="footer-credit">DESIGNED FOR EN</div>
     </div>
   </footer>
+
+  <!-- 手機版底部快速導覽 -->
+  <nav class="mobile-minibar">
+    <a href="{{ '/' | relative_url }}">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9z"/></svg>
+      首頁
+    </a>
+    <a href="menu-alacarte.html">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M6 4v16M6 4c4 0 4 3 8 3M6 12c4 0 4 3 8 3M18 4v16"/></svg>
+      菜單
+    </a>
+    <a href="{{ '/' | relative_url }}#news">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
+      消息
+    </a>
+    <a href="tel:{{ site.data['site-settings'].footer.phone_tel }}">
+      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z"/></svg>
+      聯絡
+    </a>
+  </nav>
 
 <script>
   (function(){

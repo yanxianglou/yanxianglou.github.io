@@ -1,49 +1,58 @@
-favicon: /assets/img/uploads/apple-icon-60x60.png
-header_logo: /assets/img/uploads/炎香樓logo-橫式-三角形-直式-02.png
-hero_logo: ""
+header_logo: ""
+favicon: ""
+
 social:
-  facebook: https://www.facebook.com/yanxianglou
-  instagram: https://www.instagram.com/yanxianglou/
+  facebook: ""
+  instagram: ""
+
+floating_cta:
+  line_link: ""
+  booking_link: ""
+
 nav_promo:
-  label: 最新優惠
+  label: "最新優惠"
   link: "#news"
 nav_takeout:
-  label: 外帶訂餐
-  link: https://yanxianglou.oddle.me/zh_TW
+  label: "外帶訂餐"
+  link: "#"
 nav_press:
-  label: 媒體報導
+  label: "媒體報導"
   link: "#"
 nav_story:
-  label: 品牌故事
+  label: "品牌故事"
   link: "#"
-hero_tagline: .
+
 hero_slides:
-  - caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
-    link: menu-alacarte.html
-    image: /assets/img/uploads/0824_商午1480x600.jpg
-  - caption: TODO — 招牌菜品情境照 01 · 可設定連結
-    link: menu-set.html
-    image: /assets/img/uploads/0824_商午1480x600.png
-  - caption: TODO — 主廚形象照 03 · 可設定連結
+  - image: ""
+    caption: "TODO — 招牌菜品情境照 01 · 可設定連結"
+    link: "menu-alacarte.html"
+  - image: ""
+    caption: "TODO — 大轉輪蒸籠情境照 02 · 可設定連結"
+    link: "menu-set.html"
+  - image: ""
+    caption: "TODO — 主廚形象照 03 · 可設定連結"
     link: "#"
+
 statement:
-  heading_line1: 我們並非僅僅呈現一道菜，
-  heading_line2: 而是重現一段幾近失傳的粵式風味
-  body: 從陳偉強主廚的手上功夫，到全台第一座大轉輪蒸籠裡蒸騰的每一縷氣息，每一道菜，都源於我們對「老派工藝」的堅持。
-  cta_text: 立即了解菜單
-  cta_link: https://yanxianglou.oddle.me/zh_TW
+  heading_line1: "我們並非僅僅呈現一道菜，"
+  heading_line2: "而是重現一段幾近失傳的粵式風味"
+  body: "從陳偉強主廚的手上功夫，到全台第一座大轉輪蒸籠裡蒸騰的每一縷氣息，每一道菜，都源於我們對「老派工藝」的堅持。"
+  cta_text: "立即了解菜單"
+  cta_link: "menu-alacarte.html"
+
 faq:
-  - question: 私人訂製的每人低消是多少？
-    answer: 每人低消高於平日午間套餐，確切金額請洽訂位人員。
-  - question: 隱藏版菜單最少要幾人？
-    answer: 僅開放6人以上訂席，恕無法接受6人以下訂位。
-  - question: 午間套餐跟私人訂製差在哪？
-    answer: 供應時段與低消不同，午間限平日中午，私人訂製全時段可約。
-  - question: 訂位需要提前多久？
-    answer: TODO — 依實際營運狀況填入建議天數。
+  - question: "私人訂製的每人低消是多少？"
+    answer: "每人低消高於平日午間套餐，確切金額請洽訂位人員。"
+  - question: "隱藏版菜單最少要幾人？"
+    answer: "僅開放6人以上訂席，恕無法接受6人以下訂位。"
+  - question: "午間套餐跟私人訂製差在哪？"
+    answer: "供應時段與低消不同，午間限平日中午，私人訂製全時段可約。"
+  - question: "訂位需要提前多久？"
+    answer: "TODO — 依實際營運狀況填入建議天數。"
+
 footer:
-  address: 台中市西區精誠八街12巷2號
-  phone: 04-2329-9968
+  address: "台中市西區精誠八街"
+  phone: "04-2329-9968"
   phone_tel: "0423299968"
-  hours: 週一至週日 11:00–14:00, 17:00–21:00 (21:30閉店)
-  line_id: "@mew1122i"
+  hours: "TODO"
+  line_id: "TODO"

@@ -23,31 +23,27 @@ collections:
           - {label: "頭銜", name: "title", widget: "string"}
           - {label: "簡介", name: "bio", widget: "text"}
           - {label: "照片", name: "photo", widget: "image", required: false}
+          - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID）", name: "video_url", widget: "string", required: false}
 
   - name: "menu_tiers"
     label: "菜單方案"
     files:
-      - file: "_data/lunch-set.yml"
-        label: "平日商業午間套餐"
-        name: "lunch_set"
-        fields: &tier_fields
-          - {label: "名稱", name: "name", widget: "string"}
-          - {label: "適用對象", name: "audience", widget: "string"}
-          - {label: "價格", name: "price", widget: "string"}
-          - {label: "供應時段／備註", name: "availability", widget: "string"}
-          - {label: "說明文字", name: "description", widget: "text"}
-      - file: "_data/private-set.yml"
-        label: "個人化私人訂製"
-        name: "private_set"
-        fields: *tier_fields
-      - file: "_data/group-set.yml"
-        label: "4人套餐"
-        name: "group_set"
-        fields: *tier_fields
-      - file: "_data/hidden-menu.yml"
-        label: "隱藏版菜單"
-        name: "hidden_menu"
-        fields: *tier_fields
+      - file: "_data/menu-tiers.yml"
+        label: "四格菜單卡片（可拖曳排序、可隱藏）"
+        name: "menu_tiers"
+        fields:
+          - label: "卡片清單"
+            name: "tiers"
+            widget: "list"
+            hint: "拖曳每張卡片左側的圖示可以調整順序；關閉「顯示於首頁」則會從首頁隱藏這張卡片但不會刪除資料。"
+            fields:
+              - {label: "顯示於首頁", name: "visible", widget: "boolean", default: true}
+              - {label: "名稱", name: "name", widget: "string"}
+              - {label: "適用對象", name: "audience", widget: "string"}
+              - {label: "價格", name: "price", widget: "string"}
+              - {label: "供應時段／備註", name: "availability", widget: "string"}
+              - {label: "說明文字（滑鼠移入卡片時顯示）", name: "description", widget: "text"}
+              - {label: "預設圖片（滑鼠移入前顯示）", name: "image", widget: "image", required: false}
 
   - name: "site_settings"
     label: "網站文字設定"
@@ -64,16 +60,18 @@ collections:
             name: "header_logo"
             widget: "image"
             required: false
-          - label: "Hero 書法字 LOGO（建議透明背景 PNG，較大尺寸）"
-            name: "hero_logo"
-            widget: "image"
-            required: false
           - label: "社群連結"
             name: "social"
             widget: "object"
             fields:
               - {label: "Facebook 網址", name: "facebook", widget: "string", required: false}
               - {label: "Instagram 網址", name: "instagram", widget: "string", required: false}
+          - label: "右側浮動CTA連結"
+            name: "floating_cta"
+            widget: "object"
+            fields:
+              - {label: "LINE 專人服務連結", name: "line_link", widget: "string", required: false}
+              - {label: "線上訂位連結", name: "booking_link", widget: "string", required: false}
           - label: "最新優惠（導覽列）"
             name: "nav_promo"
             widget: "object"
@@ -90,9 +88,6 @@ collections:
             name: "nav_story"
             widget: "object"
             fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
-          - label: "Hero大標語"
-            name: "hero_tagline"
-            widget: "string"
           - label: "Hero輪播（固定3張，可各自設定連結）"
             name: "hero_slides"
             widget: "list"
@@ -141,12 +136,11 @@ collections:
             fields:
               - {label: "菜名", name: "name", widget: "string"}
               - {label: "副標／食材說明", name: "subtitle", widget: "string", required: false}
-              - label: "照片（可放多張，會自動輪播）"
+              - label: "照片（可一次選取多張，會自動輪播）"
                 name: "images"
-                widget: "list"
+                widget: "image"
+                multiple: true
                 required: false
-                fields:
-                  - {label: "照片", name: "image", widget: "image"}
           - label: "橫幅 Banner"
             name: "banner"
             widget: "object"
@@ -193,6 +187,8 @@ collections:
     fields:
       - {label: "標題", name: "title", widget: "string"}
       - {label: "日期", name: "date", widget: "datetime"}
+      - {label: "下架時間（過了這個時間，首頁與消息列表就不會再顯示這則，留空則永久顯示）", name: "expire_date", widget: "datetime", required: false}
       - {label: "摘要（首頁卡片會顯示這段）", name: "excerpt", widget: "text"}
       - {label: "圖片", name: "image", widget: "image", required: false}
+      - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID，選填）", name: "video_url", widget: "string", required: false}
       - {label: "內文", name: "body", widget: "markdown", required: false}

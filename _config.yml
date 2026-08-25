@@ -17,6 +17,13 @@ collections:
     output: true
     permalink: /news/:slug/
 
+defaults:
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "news-post"
+
 restaurant:
   phone: "04-2329-9968"
   address: "台中市西區精誠八街"
