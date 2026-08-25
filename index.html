@@ -42,7 +42,7 @@
     display:flex;justify-content:center;align-items:center;gap:48px;
     padding:20px 48px;position:relative;z-index:50;
   }
-  .logo-slot{
+  .logo-slot{cursor:pointer;
     width:120px;height:44px;
     border:1px dashed var(--line);
     display:flex;align-items:center;justify-content:center;
@@ -290,13 +290,13 @@
 
   <!-- 頁首 -->
   <header class="site-header">
-    <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+    <a class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}" href="{{ '/' | relative_url }}" title="回首頁">
       {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
         <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
       {% else %}
         上傳 LOGO
       {% endif %}
-    </div>
+    </a>
     <div class="nav-social-group">
       <nav class="site-nav">
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
