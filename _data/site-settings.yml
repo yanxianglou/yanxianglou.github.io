@@ -3,9 +3,6 @@ header_logo: /assets/img/uploads/炎香樓logo-橫式-三角形-直式-02.png
 social:
   facebook: https://www.facebook.com/yanxianglou
   instagram: https://www.instagram.com/yanxianglou/
-floating_cta:
-  line_link: https://lin.ee/pHKJvkh
-  booking_link: https://inline.app/booking/-OF6-73H20NuMHBEK308:inline-live-3/-OF6-7Aaxcy1yb5cdiq6?language=zh-tw
 nav_promo:
   label: 最新優惠
   link: "#news"
@@ -18,16 +15,17 @@ nav_press:
 nav_story:
   label: 品牌故事
   link: "#"
+hero_tagline: .
 hero_slides:
+  - image: /assets/img/uploads/0824_巨籠宴1480x600.png
+    caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
+    link: menu-set.html
+  - image: /assets/img/uploads/0824_私訂_私人訂製1480x600-2.png
+    caption: TODO — 主廚形象照 03 · 可設定連結
+    link: "#"
   - image: /assets/img/uploads/0824_商午1480x600.jpg
     caption: 可設定連結
     link: menu-alacarte.html
-  - image: ""
-    caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
-    link: menu-set.html
-  - image: ""
-    caption: TODO — 主廚形象照 03 · 可設定連結
-    link: "#"
 statement:
   heading_line1: 我們並非僅僅呈現一道菜，
   heading_line2: 而是重現一段幾近失傳的粵式風味
@@ -43,6 +41,9 @@ faq:
     answer: 供應時段與低消不同，午間限平日中午，私人訂製全時段可約。
   - question: 訂位需要提前多久？
     answer: TODO — 依實際營運狀況填入建議天數。
+floating_cta:
+  line_link: https://lin.ee/pHKJvkh
+  booking_link: https://inline.app/booking/-OF6-73H20NuMHBEK308:inline-live-3/-OF6-7Aaxcy1yb5cdiq6?language=zh-tw
 footer:
   address: 台中市西區精誠八街12巷2號
   phone: 04-2329-9968
