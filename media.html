@@ -1,0 +1,173 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>媒體報導 — 炎香樓 yanxianglou</title>
+{% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#14120E;--black2:#1F1B15;--accent:#3B0503;--accent-light:#5A100D;
+    --text-warm:#D9C7A8;--muted:#8A8370;--muted-light:#B9AC92;--line:#3A3427;--on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .logo-slot{width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
+
+  .page-head{padding:70px 48px 30px;text-align:center;}
+  .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
+
+  /* 上方輪播（照片或影片皆可，手動箭頭） */
+  .carousel-wrap{max-width:1100px;margin:40px auto 0;padding:0 48px;position:relative;}
+  .carousel{position:relative;height:440px;overflow:hidden;border:1px solid var(--line);background:var(--black2);}
+  .c-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
+  .c-slide.active{opacity:1;}
+  .c-slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .c-slide .bg.placeholder{background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);}
+  .c-slide iframe{width:100%;height:100%;border:0;display:block;}
+  .c-slide .tag{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    padding:24px 32px;background:linear-gradient(to top, rgba(0,0,0,.8), transparent);
+    font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.12em;color:var(--muted-light);
+    pointer-events:none;
+  }
+  .c-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;
+    background:var(--black2);border:1px solid var(--line);color:var(--text-warm);
+    display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;z-index:5;
+  }
+  .c-arrow:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
+  .c-arrow.prev{left:16px;}
+  .c-arrow.next{right:16px;}
+  .c-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;}
+  .c-dots span{width:7px;height:7px;border-radius:50%;background:rgba(217,199,168,.35);cursor:pointer;}
+  .c-dots span.active{background:var(--text-warm);}
+
+  /* 介紹文字區塊 */
+  .intro{max-width:800px;margin:70px auto;padding:0 48px;text-align:center;}
+  .intro h2{font-size:26px;font-weight:700;margin-bottom:24px;}
+  .intro .body{font-size:14.5px;line-height:2.1;color:var(--muted-light);text-align:left;}
+  .intro .body p{margin-bottom:1.2em;}
+
+  /* 影片牆：兩格一列 */
+  .video-wall{max-width:1100px;margin:0 auto 100px;padding:0 48px;}
+  .video-wall h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:36px;}
+  .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .video-card{background:var(--black2);border:1px solid var(--line);}
+  .video-card .frame{width:100%;aspect-ratio:16/9;background:#100E0A;}
+  .video-card .frame iframe{width:100%;height:100%;border:0;display:block;}
+  .video-card .frame.empty{display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:16px;}
+  .video-card .info{padding:18px 20px;}
+  .video-card h4{font-size:15px;font-weight:500;margin-bottom:8px;}
+  .video-card p{font-size:12.5px;line-height:1.8;color:var(--muted-light);}
+
+  @media(max-width:700px){
+    .carousel{height:260px;}
+    .video-grid{grid-template-columns:1fr;}
+    .page-head{padding:50px 24px 20px;}
+    .intro{padding:0 24px;margin:50px auto;}
+    .video-wall{padding:0 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </div>
+  <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">MEDIA</span>
+  <h1>{{ site.data.media.intro.heading }}</h1>
+</div>
+
+<div class="carousel-wrap">
+  <div class="carousel" id="mediaCarousel">
+    {% for slide in site.data.media.carousel %}
+    <div class="c-slide{% if forloop.first %} active{% endif %}">
+      {% if slide.video_url and slide.video_url != "" %}
+        <iframe src="{{ slide.video_url }}" title="{{ slide.caption }}" allowfullscreen loading="lazy"></iframe>
+      {% elsif slide.image and slide.image != "" %}
+        <div class="bg" style="background-image:url('{{ slide.image | relative_url }}');"></div>
+      {% else %}
+        <div class="bg placeholder"></div>
+      {% endif %}
+      {% if slide.caption and slide.caption != "" %}<div class="tag">{{ slide.caption }}</div>{% endif %}
+    </div>
+    {% endfor %}
+    <div class="c-arrow prev" id="prevBtn">‹</div>
+    <div class="c-arrow next" id="nextBtn">›</div>
+    <div class="c-dots" id="mediaDots"></div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="body">{{ site.data.media.intro.body | markdownify }}</div>
+</div>
+
+<div class="video-wall">
+  <h2>相關影片</h2>
+  <div class="video-grid">
+    {% for v in site.data.media.videos %}
+    <div class="video-card">
+      <div class="frame{% unless v.video_url and v.video_url != "" %} empty{% endunless %}">
+        {% if v.video_url and v.video_url != "" %}
+          <iframe src="{{ v.video_url }}" title="{{ v.title }}" allowfullscreen loading="lazy"></iframe>
+        {% else %}
+          尚未設定影片
+        {% endif %}
+      </div>
+      <div class="info">
+        <h4>{{ v.title }}</h4>
+        {% if v.description and v.description != "" %}<p>{{ v.description }}</p>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  (function(){
+    const slides = document.querySelectorAll('#mediaCarousel .c-slide');
+    const dotsWrap = document.getElementById('mediaDots');
+    let current = 0;
+    slides.forEach((s, i) => {
+      const dot = document.createElement('span');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    function goTo(i){
+      slides[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    if(prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+    if(nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  })();
+</script>
+</body>
+</html>
