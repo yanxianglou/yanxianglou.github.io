@@ -7,9 +7,10 @@ dishes:
     subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
     images:
       - /assets/img/uploads/image_s清爽果絲鴨.png
-  - name: TODO 菜名 3
-    subtitle: TODO 副標／食材說明
-    images: []
+  - name: 沙母蚧炒糯米飯 (訂製)
+    subtitle: 沙母蟹膏鮮香入米，大火鑊氣交織，粒粒糯米吸滿蟹鮮，入口濃郁鮮甜、油潤不膩。
+    images:
+      - /assets/img/uploads/image_s沙母蚧炒糯米飯.png
   - name: TODO 菜名 4
     subtitle: TODO 副標／食材說明
     images: []
