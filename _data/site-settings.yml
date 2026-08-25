@@ -14,7 +14,7 @@ nav_takeout:
   link: https://yanxianglou.oddle.me/zh_TW
 nav_press:
   label: 媒體報導
-  link: "#"
+  link: https://yanxianglou.github.io/media.html
 hero_slides:
   - image: /assets/img/uploads/0824_大圖輪播_巨籠宴1480x600.png
     caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
@@ -28,7 +28,7 @@ hero_slides:
 hero_tagline: .
 nav_story:
   label: 品牌故事
-  link: "#"
+  link: https://yanxianglou.github.io/story.html
 statement:
   heading_line1: 我們並非僅僅呈現一道菜，
   heading_line2: 而是重現一段幾近失傳的粵式風味
