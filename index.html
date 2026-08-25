@@ -39,7 +39,7 @@
   .site-header{
     background:var(--black);
     color:var(--text-warm);
-    display:flex;justify-content:space-between;align-items:center;
+    display:flex;justify-content:center;align-items:center;gap:48px;
     padding:20px 48px;position:relative;z-index:50;
   }
   .logo-slot{
@@ -92,22 +92,14 @@
   .slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#100E0A;}
   .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,.68) 100%);}
 
-  .hero-caption{
-    position:absolute;left:0;right:0;bottom:0;z-index:3;
-    padding:32px 40px;text-align:center;pointer-events:none;
-  }
-  .hero-caption h2{
-    font-size:22px;font-weight:700;line-height:1.6;color:var(--text-warm);
-    text-shadow:0 2px 10px rgba(0,0,0,0.5);
-  }
-
   .hero-dots{position:absolute;bottom:16px;right:20px;display:flex;gap:10px;z-index:6;}
   .hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(217,199,168,0.4);cursor:pointer;}
   .hero-dots span.active{background:var(--text-warm);}
 
   /* ===== 品牌宣言(接續Hero) ===== */
-  .statement{background:var(--black);color:var(--text-warm);padding:0 48px 120px;text-align:center;}
+  .statement{background:var(--black);color:var(--text-warm);padding:80px 48px 120px;text-align:center;}
   .statement-inner{max-width:820px;margin:0 auto;}
+  .statement h2{font-size:28px;font-weight:700;line-height:1.7;margin-bottom:24px;color:var(--text-warm);}
   .statement p{font-size:15px;line-height:2;color:var(--muted-light);margin-bottom:40px;}
 
   /* ===== 匠心工藝 敘述 ===== */
@@ -249,8 +241,6 @@
     .site-nav{display:none;}
     .site-header{padding:16px 20px;}
     .hero-frame{padding:20px 12px 32px;}
-    .hero-caption{padding:20px 20px;}
-    .hero-caption h2{font-size:16px;}
     body{padding-bottom:64px;}
     .mobile-minibar{display:flex;}
     .float-reel{bottom:74px;top:auto;right:14px;transform:none;}
@@ -328,17 +318,14 @@
         <div class="bg" style="{% if slides[2].image %}background-image:url('{{ slides[2].image | relative_url }}');{% else %}background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);{% endif %}"></div>
       </a>
 
-      <div class="hero-caption">
-        <h2>{{ site.data['site-settings'].statement.heading_line1 }}{{ site.data['site-settings'].statement.heading_line2 }}</h2>
-      </div>
-
       <div class="hero-dots" id="heroDots"></div>
     </div>
   </div>
 
-  <!-- 品牌宣言(接續Hero，僅保留內文與CTA) -->
+  <!-- 品牌宣言(接續Hero，標題+內文+CTA) -->
   <section class="statement">
     <div class="statement-inner">
+      <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
       <p>{{ site.data['site-settings'].statement.body }}</p>
       <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
     </div>
