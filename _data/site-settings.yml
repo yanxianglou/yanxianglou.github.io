@@ -3,19 +3,18 @@ header_logo: /assets/img/uploads/炎香樓logo-橫式-三角形-直式-02.png
 social:
   facebook: https://www.facebook.com/yanxianglou
   instagram: https://www.instagram.com/yanxianglou/
+floating_cta:
+  line_link: https://lin.ee/pHKJvkh
+  booking_link: https://inline.app/booking/-OF6-73H20NuMHBEK308:inline-live-3/-OF6-7Aaxcy1yb5cdiq6?language=zh-tw
 nav_promo:
-  label: 最新優惠
-  link: "#news"
+  label: 最新消息
+  link: news.html
 nav_takeout:
   label: 外帶訂餐
   link: https://yanxianglou.oddle.me/zh_TW
 nav_press:
   label: 媒體報導
   link: "#"
-nav_story:
-  label: 品牌故事
-  link: "#"
-hero_tagline: .
 hero_slides:
   - image: /assets/img/uploads/0824_大圖輪播_巨籠宴1480x600.png
     caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
@@ -26,12 +25,16 @@ hero_slides:
   - image: /assets/img/uploads/0824_大圖輪播_私人訂製1480x600-03.png
     caption: 可設定連結
     link: menu-alacarte.html
+hero_tagline: .
+nav_story:
+  label: 品牌故事
+  link: "#"
 statement:
   heading_line1: 我們並非僅僅呈現一道菜，
   heading_line2: 而是重現一段幾近失傳的粵式風味
   body: 從陳偉強主廚的手上功夫，到全台第一座大轉輪蒸籠裡蒸騰的每一縷氣息，每一道菜，都源於我們對「老派工藝」的堅持。
-  cta_text: 立即了解菜單
-  cta_link: menu-alacarte.html
+  cta_text: 立即專人洽詢
+  cta_link: https://page.line.me/mew1122i?oat_content=url&openQrModal=true
 faq:
   - question: 私人訂製的每人低消是多少？
     answer: 每人低消高於平日午間套餐，確切金額請洽訂位人員。
@@ -41,9 +44,6 @@ faq:
     answer: 供應時段與低消不同，午間限平日中午，私人訂製全時段可約。
   - question: 訂位需要提前多久？
     answer: TODO — 依實際營運狀況填入建議天數。
-floating_cta:
-  line_link: https://lin.ee/pHKJvkh
-  booking_link: https://inline.app/booking/-OF6-73H20NuMHBEK308:inline-live-3/-OF6-7Aaxcy1yb5cdiq6?language=zh-tw
 footer:
   address: 台中市西區精誠八街12巷2號
   phone: 04-2329-9968
