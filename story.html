@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>美饌全菜單 — 炎香樓 yanxianglou</title>
+<title>品牌故事 — 炎香樓 yanxianglou</title>
 {% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,38 +25,30 @@
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
 
-  .page-head{padding:70px 48px 20px;text-align:center;}
-  .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
-  .page-head p{font-size:14px;color:var(--muted-light);max-width:520px;margin:0 auto;}
+  .hero-img{
+    height:360px;background-size:cover;background-position:center;
+    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);
+    display:flex;align-items:flex-end;
+  }
+  .hero-img .tag{padding:32px 48px;font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.15em;color:var(--muted-light);}
 
-  .hub-grid{
-    max-width:1000px;margin:50px auto 100px;padding:0 48px;
-    display:grid;grid-template-columns:1fr 1fr;gap:28px;
-  }
-  .hub-card{
-    background:var(--black2);border:1px solid var(--line);
-    display:flex;flex-direction:column;
-  }
-  .hub-card .thumb{
-    aspect-ratio:4/3;
-    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);
-  }
-  .hub-card .info{padding:28px 26px;flex:1;display:flex;flex-direction:column;}
-  .hub-card h2{font-size:20px;font-weight:700;margin-bottom:12px;}
-  .hub-card p{font-size:13.5px;line-height:1.9;color:var(--muted-light);margin-bottom:20px;flex:1;}
-  .hub-card .links{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.1em;
-    padding:12px 22px;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);cursor:pointer;
-  }
-  .btn:hover{background:var(--accent-light);}
-  .btn.outline{background:none;border-color:var(--text-warm);color:var(--text-warm);}
-  .btn.outline:hover{background:var(--text-warm);color:var(--black);}
+  .page-head{padding:50px 48px 10px;text-align:center;}
+  .page-head h1{font-size:32px;font-weight:700;margin:14px 0;}
 
-  @media(max-width:700px){
-    .hub-grid{grid-template-columns:1fr;padding:0 24px;}
-    .page-head{padding:50px 24px 16px;}
+  .story-body{max-width:720px;margin:30px auto 70px;padding:0 48px;font-size:14.5px;line-height:2.1;color:var(--muted-light);}
+  .story-body p{margin-bottom:1.3em;}
+
+  .milestones{max-width:720px;margin:0 auto 100px;padding:0 48px;}
+  .milestones h2{font-size:20px;font-weight:700;text-align:center;margin-bottom:36px;}
+  .m-row{display:flex;gap:24px;padding:20px 0;border-top:1px solid var(--line);}
+  .m-row:last-child{border-bottom:1px solid var(--line);}
+  .m-row .year{font-family:'Oswald', sans-serif;font-size:15px;color:var(--accent-light);flex:0 0 80px;}
+  .m-row .text{font-size:13.5px;color:var(--muted-light);line-height:1.9;}
+
+  @media(max-width:600px){
+    .page-head{padding:40px 24px 8px;}
+    .story-body, .milestones{padding:0 24px;}
+    .hero-img .tag{padding:20px 24px;}
   }
 </style>
 </head>
@@ -73,24 +65,25 @@
   <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
 </header>
 
-<div class="page-head">
-  <span class="eyebrow">FULL MENU</span>
-  <h1>{{ site.data['menu-full'].page_title }}</h1>
-  <p>{{ site.data['menu-full'].intro }}</p>
+<div class="hero-img"{% if site.data.story.hero_image and site.data.story.hero_image != "" %} style="background-image:url('{{ site.data.story.hero_image | relative_url }}');"{% endif %}>
+  <span class="tag">{% unless site.data.story.hero_image and site.data.story.hero_image != "" %}TODO — 主視覺情境照{% endunless %}</span>
 </div>
 
-<div class="hub-grid">
-  {% for card in site.data['menu-full'].cards %}
-  <div class="hub-card">
-    <div class="thumb"{% if card.image and card.image != "" %} style="background-image:url('{{ card.image | relative_url }}');background-size:cover;background-position:center;"{% endif %}></div>
-    <div class="info">
-      <h2>{{ card.title }}</h2>
-      <p>{{ card.description }}</p>
-      <div class="links">
-        <a class="btn" href="{{ card.link }}">查看菜色 →</a>
-        <a class="btn outline" href="{{ card.pdf_link }}" target="_blank">完整菜單PDF</a>
-      </div>
-    </div>
+<div class="page-head">
+  <span class="eyebrow">OUR STORY</span>
+  <h1>{{ site.data.story.page_title }}</h1>
+</div>
+
+<div class="story-body">
+  {{ site.data.story.body | markdownify }}
+</div>
+
+<div class="milestones">
+  <h2>大事紀</h2>
+  {% for m in site.data.story.milestones %}
+  <div class="m-row">
+    <div class="year">{{ m.year }}</div>
+    <div class="text">{{ m.text }}</div>
   </div>
   {% endfor %}
 </div>

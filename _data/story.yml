@@ -1,0 +1,11 @@
+page_title: "品牌故事"
+hero_image: ""
+body: >
+  TODO — 這裡可以撰寫炎香樓的品牌故事，例如創立緣起、經營理念、
+  大式粵菜技法的傳承脈絡等，支援分段落編輯。
+
+milestones:
+  - year: "2017"
+    text: "炎香樓於台中西區精誠八街重裝登場。"
+  - year: "TODO"
+    text: "TODO 里程碑事件"
