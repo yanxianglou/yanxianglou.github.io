@@ -66,20 +66,6 @@
   .btn.outline:hover{background:var(--text-warm);color:var(--black);}
 
   .set-note{max-width:1100px;margin:60px auto 100px;padding:0 48px;font-size:12.5px;color:var(--muted-light);line-height:1.9;border-left:2px solid var(--accent);padding-left:20px;}
-
-  body{padding-bottom:0;}
-  @media(max-width:900px){ body{padding-bottom:64px;} }
-  .mobile-minibar{
-    display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
-    background:var(--black2);border-top:1px solid var(--line);
-    justify-content:space-around;align-items:center;padding:8px 0;
-  }
-  .mobile-minibar a{
-    display:flex;flex-direction:column;align-items:center;gap:4px;
-    color:var(--muted-light);font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.04em;
-  }
-  .mobile-minibar a svg{width:20px;height:20px;stroke:var(--muted-light);fill:none;}
-  @media(max-width:900px){ .mobile-minibar{display:flex;} }
 </style>
 </head>
 <body>
@@ -151,11 +137,5 @@
   })();
 </script>
 
-<nav class="mobile-minibar">
-  <a href="index.html"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9z"/></svg>首頁</a>
-  <a href="menu-alacarte.html"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M6 4v16M6 4c4 0 4 3 8 3M6 12c4 0 4 3 8 3M18 4v16"/></svg>菜單</a>
-  <a href="index.html#news"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>消息</a>
-  <a href="tel:{{ site.data['site-settings'].footer.phone_tel }}"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z"/></svg>聯絡</a>
-</nav>
 </body>
 </html>

@@ -220,30 +220,42 @@
   }
   .float-item:hover .label{opacity:1;transform:translateX(0);}
 
-  /* ===== 手機版底部快速導覽 ===== */
-  .mobile-minibar{
-    display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
-    background:var(--black2);border-top:1px solid var(--line);
-    justify-content:space-around;align-items:center;padding:8px 0;
+  /* ===== 手機版：漢堡選單 + 下拉導覽（跟桌機版同一套品項） ===== */
+  .hamburger{
+    display:none;width:32px;height:32px;border:none;background:none;cursor:pointer;
+    flex-direction:column;justify-content:center;align-items:center;gap:5px;
   }
-  .mobile-minibar a{
-    display:flex;flex-direction:column;align-items:center;gap:4px;
-    color:var(--muted-light);font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.04em;
+  .hamburger span{width:22px;height:2px;background:var(--text-warm);transition:transform .25s ease, opacity .25s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-nav-panel{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;z-index:60;
+    background:var(--black2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    flex-direction:column;padding:8px 0;
   }
-  .mobile-minibar a svg{width:20px;height:20px;stroke:var(--muted-light);fill:none;}
-  .mobile-minibar a:active, .mobile-minibar a:hover{color:var(--text-warm);}
-  .mobile-minibar a:active svg, .mobile-minibar a:hover svg{stroke:var(--text-warm);}
+  .mobile-nav-panel.open{display:flex;}
+  .mobile-nav-panel a{
+    padding:14px 24px;font-family:'Oswald', sans-serif;font-size:14px;letter-spacing:.08em;
+    color:var(--muted-light);border-bottom:1px solid var(--line);
+  }
+  .mobile-nav-panel a:last-child{border-bottom:none;}
+  .mobile-nav-panel a.sub{padding-left:40px;font-size:13px;color:var(--muted);}
+  .mobile-nav-panel a:active{color:var(--text-warm);}
 
   @media(max-width:900px){
     .tier-grid{grid-template-columns:repeat(2, 1fr);}
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
-    .site-header{padding:16px 20px;}
+    .site-header{padding:16px 20px;justify-content:space-between;}
     .hero-frame{padding:20px 12px 32px;}
-    body{padding-bottom:64px;}
-    .mobile-minibar{display:flex;}
-    .float-reel{bottom:74px;top:auto;right:14px;transform:none;}
+    .statement{padding:56px 24px 90px;}
+    .statement h2{font-size:19px;line-height:1.65;margin-bottom:18px;}
+    .statement p{font-size:13.5px;}
+    .hamburger{display:flex;}
   }
   @media(max-width:400px){
     .social-icons a{width:28px;height:28px;}
@@ -302,6 +314,16 @@
         <a href="{{ site.data['site-settings'].social.instagram | default: '#' }}" title="Instagram" target="_blank">IG</a>
       </div>
     </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="選單"><span></span><span></span><span></span></button>
+    <nav class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a>
+      <a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a>
+      <a href="menu-alacarte.html">菜單參考</a>
+      <a class="sub" href="menu-alacarte.html">單點餐品</a>
+      <a class="sub" href="menu-set.html">套餐餐品</a>
+      <a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a>
+      <a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a>
+    </nav>
   </header>
 
   <!-- Hero 輪播(固定 1400x600 比例) -->
@@ -454,26 +476,6 @@
     </div>
   </footer>
 
-  <!-- 手機版底部快速導覽 -->
-  <nav class="mobile-minibar">
-    <a href="{{ '/' | relative_url }}">
-      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9z"/></svg>
-      首頁
-    </a>
-    <a href="menu-alacarte.html">
-      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M6 4v16M6 4c4 0 4 3 8 3M6 12c4 0 4 3 8 3M18 4v16"/></svg>
-      菜單
-    </a>
-    <a href="{{ '/' | relative_url }}#news">
-      <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
-      消息
-    </a>
-    <a href="tel:{{ site.data['site-settings'].footer.phone_tel }}">
-      <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z"/></svg>
-      聯絡
-    </a>
-  </nav>
-
 <script>
   (function(){
     const slides = document.querySelectorAll('#heroCarousel .slide');
@@ -493,6 +495,16 @@
       dotsWrap.children[current].classList.add('active');
     }
     setInterval(() => { goTo((current + 1) % slides.length); }, 4000);
+  })();
+
+  (function(){
+    const btn = document.getElementById('hamburgerBtn');
+    const panel = document.getElementById('mobileNavPanel');
+    if(!btn || !panel) return;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      panel.classList.toggle('open');
+    });
   })();
 </script>
 </body>
