@@ -228,6 +228,20 @@
   }
   .float-item:hover .label{opacity:1;transform:translateX(0);}
 
+  /* ===== 手機版底部快速導覽 ===== */
+  .mobile-minibar{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
+    background:var(--black2);border-top:1px solid var(--line);
+    justify-content:space-around;align-items:center;padding:8px 0;
+  }
+  .mobile-minibar a{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    color:var(--muted-light);font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.04em;
+  }
+  .mobile-minibar a svg{width:20px;height:20px;stroke:var(--muted-light);fill:none;}
+  .mobile-minibar a:active, .mobile-minibar a:hover{color:var(--text-warm);}
+  .mobile-minibar a:active svg, .mobile-minibar a:hover svg{stroke:var(--text-warm);}
+
   @media(max-width:900px){
     .tier-grid{grid-template-columns:repeat(2, 1fr);}
     .faq-grid{grid-template-columns:1fr;}
@@ -244,20 +258,6 @@
   @media(max-width:400px){
     .social-icons a{width:28px;height:28px;}
   }
-
-  /* ===== 手機版底部快速導覽 ===== */
-  .mobile-minibar{
-    display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
-    background:var(--black2);border-top:1px solid var(--line);
-    justify-content:space-around;align-items:center;padding:8px 0;
-  }
-  .mobile-minibar a{
-    display:flex;flex-direction:column;align-items:center;gap:4px;
-    color:var(--muted-light);font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.04em;
-  }
-  .mobile-minibar a svg{width:20px;height:20px;stroke:var(--muted-light);fill:none;}
-  .mobile-minibar a:active, .mobile-minibar a:hover{color:var(--text-warm);}
-  .mobile-minibar a:active svg, .mobile-minibar a:hover svg{stroke:var(--text-warm);}
 </style>
 </head>
 <body>
