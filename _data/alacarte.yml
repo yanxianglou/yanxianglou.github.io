@@ -1,12 +1,12 @@
 cta_pdf_link: assets/menu-alacarte.pdf
 dishes:
-  - name: TODO 菜名 1
-    subtitle: TODO 副標／食材說明
+  - name: 三臘聚香飯 (訂製)
+    subtitle: 淋上秘製臘味醬汁，臘香、醬香、米香與蔥香層層綻放
+    images: /assets/img/uploads/image_s三臘聚香飯.png
+  - name: 清爽果絲鴨 (訂製)
+    subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
     images:
-      - /assets/img/uploads/image_三臘聚香飯.png
-  - name: TODO 菜名 2
-    subtitle: TODO 副標／食材說明
-    images: []
+      - /assets/img/uploads/image_s清爽果絲鴨.png
   - name: TODO 菜名 3
     subtitle: TODO 副標／食材說明
     images: []
