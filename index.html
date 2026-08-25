@@ -302,10 +302,11 @@
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
         <div class="nav-item">
-          <a href="menu-alacarte.html">菜單參考 <span class="caret">▾</span></a>
+          <a href="menu-full.html">菜單參考 <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="menu-alacarte.html">單點餐品</a>
             <a href="menu-set.html">套餐餐品</a>
+            <a href="menu-full.html">美饌全菜單</a>
           </div>
         </div>
         <div class="nav-item"><a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a></div>
@@ -320,9 +321,10 @@
     <nav class="mobile-nav-panel" id="mobileNavPanel">
       <a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a>
       <a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a>
-      <a href="menu-alacarte.html">菜單參考</a>
+      <a href="menu-full.html">菜單參考</a>
       <a class="sub" href="menu-alacarte.html">單點餐品</a>
       <a class="sub" href="menu-set.html">套餐餐品</a>
+      <a class="sub" href="menu-full.html">美饌全菜單</a>
       <a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a>
       <a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a>
     </nav>
@@ -460,7 +462,7 @@
   </section>
 
   <!-- 結尾CTA -->
-  <div class="cta-banner"><div class="box">立即訂位，品味粵菜真味</div></div>
+  <a class="cta-banner" href="{{ site.data['site-settings'].floating_cta.booking_link | default: '#' }}" target="_blank"><div class="box">立即訂位，品味粵菜真味</div></a>
 
   <!-- 頁尾 -->
   <footer class="site-footer">

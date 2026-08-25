@@ -1,0 +1,104 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>最新消息 — 炎香樓 yanxianglou</title>
+{% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#14120E;--black2:#1F1B15;--accent:#3B0503;--accent-light:#5A100D;
+    --text-warm:#D9C7A8;--muted:#8A8370;--muted-light:#B9AC92;--line:#3A3427;--on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
+
+  .page-head{padding:70px 48px 40px;text-align:center;}
+  .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
+
+  .news-list{max-width:800px;margin:0 auto 100px;padding:0 48px;}
+  .news-row{
+    display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);
+  }
+  .news-row .thumb{
+    width:150px;height:110px;flex:0 0 auto;overflow:hidden;background:linear-gradient(135deg,#2A1512,#100E0A);
+  }
+  .news-row .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .news-row .info{flex:1;}
+  .news-row .date{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.12em;color:var(--accent-light);display:block;margin-bottom:8px;}
+  .news-row h3{font-size:17px;font-weight:500;margin-bottom:8px;}
+  .news-row p{font-size:13px;color:var(--muted-light);line-height:1.8;}
+  .news-row .more{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.08em;color:var(--muted-light);margin-top:8px;display:inline-block;}
+
+  .empty-state{text-align:center;padding:60px 24px;color:var(--muted-light);font-size:14px;}
+
+  @media(max-width:600px){
+    .news-row{flex-direction:column;}
+    .news-row .thumb{width:100%;height:180px;}
+    .page-head{padding:50px 24px 24px;}
+    .news-list{padding:0 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}" href="{{ '/' | relative_url }}" title="回首頁">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </a>
+  <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">NEWS</span>
+  <h1>最新消息</h1>
+</div>
+
+<div class="news-list">
+  {% assign news_sorted = site.news | sort: 'date' | reverse %}
+  {% assign has_any = false %}
+  {% for post in news_sorted %}
+    {% assign is_expired = false %}
+    {% if post.expire_date and post.expire_date != "" %}
+      {% if post.expire_date < site.time %}
+        {% assign is_expired = true %}
+      {% endif %}
+    {% endif %}
+    {% unless is_expired %}
+      {% assign has_any = true %}
+      <div class="news-row">
+        <div class="thumb">
+          {% if post.image and post.image != "" %}<img src="{{ post.image | relative_url }}" alt="{{ post.title }}">{% endif %}
+        </div>
+        <div class="info">
+          <span class="date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+          <a class="more" href="{{ post.url | relative_url }}">了解更多 →</a>
+        </div>
+      </div>
+    {% endunless %}
+  {% endfor %}
+  {% unless has_any %}
+    <div class="empty-state">目前沒有上架中的最新消息</div>
+  {% endunless %}
+</div>
+
+</body>
+</html>

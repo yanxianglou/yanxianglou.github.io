@@ -1,0 +1,108 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美饌全菜單 — 炎香樓 yanxianglou</title>
+{% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#14120E;--black2:#1F1B15;--accent:#3B0503;--accent-light:#5A100D;
+    --text-warm:#D9C7A8;--muted:#8A8370;--muted-light:#B9AC92;--line:#3A3427;--on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
+
+  .page-head{padding:70px 48px 20px;text-align:center;}
+  .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
+  .page-head p{font-size:14px;color:var(--muted-light);max-width:520px;margin:0 auto;}
+
+  .hub-grid{
+    max-width:1000px;margin:50px auto 100px;padding:0 48px;
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  }
+  .hub-card{
+    background:var(--black2);border:1px solid var(--line);
+    display:flex;flex-direction:column;
+  }
+  .hub-card .thumb{
+    aspect-ratio:4/3;
+    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);
+  }
+  .hub-card .info{padding:28px 26px;flex:1;display:flex;flex-direction:column;}
+  .hub-card h2{font-size:20px;font-weight:700;margin-bottom:12px;}
+  .hub-card p{font-size:13.5px;line-height:1.9;color:var(--muted-light);margin-bottom:20px;flex:1;}
+  .hub-card .links{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.1em;
+    padding:12px 22px;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);cursor:pointer;
+  }
+  .btn:hover{background:var(--accent-light);}
+  .btn.outline{background:none;border-color:var(--text-warm);color:var(--text-warm);}
+  .btn.outline:hover{background:var(--text-warm);color:var(--black);}
+
+  @media(max-width:700px){
+    .hub-grid{grid-template-columns:1fr;padding:0 24px;}
+    .page-head{padding:50px 24px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}" href="{{ '/' | relative_url }}" title="回首頁">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </a>
+  <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">FULL MENU</span>
+  <h1>美饌全菜單</h1>
+  <p>炎香樓提供單點餐品與多人套餐兩種用餐形式，點選下方分類查看詳細內容與完整菜單。</p>
+</div>
+
+<div class="hub-grid">
+  <div class="hub-card">
+    <div class="thumb"></div>
+    <div class="info">
+      <h2>單點餐品</h2>
+      <p>個人／小桌用餐首選，六道招牌菜色一次呈現，適合平日輕鬆用餐。</p>
+      <div class="links">
+        <a class="btn" href="menu-alacarte.html">查看菜色 →</a>
+        <a class="btn outline" href="{{ site.data.alacarte.cta_pdf_link }}" target="_blank">完整菜單PDF</a>
+      </div>
+    </div>
+  </div>
+  <div class="hub-card">
+    <div class="thumb"></div>
+    <div class="info">
+      <h2>套餐餐品</h2>
+      <p>多人套餐與客製化宴席，適合家庭聚會、商務宴請與6人以上隱藏版菜單體驗。</p>
+      <div class="links">
+        <a class="btn" href="menu-set.html">查看套餐 →</a>
+        <a class="btn outline" href="{{ site.data.setmenu.pdf_link }}" target="_blank">完整菜單PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
