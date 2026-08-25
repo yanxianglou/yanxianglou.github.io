@@ -1,29 +1,27 @@
-cta_pdf_link: "assets/menu-alacarte.pdf"
-
+cta_pdf_link: assets/menu-alacarte.pdf
 dishes:
-  - name: "TODO 菜名 1"
-    subtitle: "TODO 副標／食材說明"
+  - name: TODO 菜名 1
+    subtitle: TODO 副標／食材說明
+    images:
+      - /assets/img/uploads/image_三臘聚香飯.png
+  - name: TODO 菜名 2
+    subtitle: TODO 副標／食材說明
     images: []
-  - name: "TODO 菜名 2"
-    subtitle: "TODO 副標／食材說明"
+  - name: TODO 菜名 3
+    subtitle: TODO 副標／食材說明
     images: []
-  - name: "TODO 菜名 3"
-    subtitle: "TODO 副標／食材說明"
+  - name: TODO 菜名 4
+    subtitle: TODO 副標／食材說明
     images: []
-  - name: "TODO 菜名 4"
-    subtitle: "TODO 副標／食材說明"
+  - name: TODO 菜名 5
+    subtitle: TODO 副標／食材說明
     images: []
-  - name: "TODO 菜名 5"
-    subtitle: "TODO 副標／食材說明"
+  - name: TODO 菜名 6
+    subtitle: TODO 副標／食材說明
     images: []
-  - name: "TODO 菜名 6"
-    subtitle: "TODO 副標／食材說明"
-    images: []
-
 banner:
   image: ""
-  caption: "TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖"
-
+  caption: TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖
 cta_card:
-  text: "想看更完整的菜色？"
-  link: "assets/menu-alacarte.pdf"
+  text: 想看更完整的菜色？
+  link: assets/menu-alacarte.pdf
