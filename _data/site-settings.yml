@@ -17,13 +17,13 @@ nav_story:
   link: "#"
 hero_tagline: .
 hero_slides:
-  - image: /assets/img/uploads/0824_巨籠宴1480x600.png
+  - image: /assets/img/uploads/0824_大圖輪播_巨籠宴1480x600.png
     caption: TODO — 大轉輪蒸籠情境照 02 · 可設定連結
     link: menu-set.html
-  - image: /assets/img/uploads/0824_私訂_私人訂製1480x600-2.png
+  - image: /assets/img/uploads/0824_大圖輪播_私人訂製1480x600-2.png
     caption: TODO — 主廚形象照 03 · 可設定連結
     link: "#"
-  - image: /assets/img/uploads/0824_商午1480x600.jpg
+  - image: /assets/img/uploads/0824_大圖輪播_私人訂製1480x600-03.png
     caption: 可設定連結
     link: menu-alacarte.html
 statement:
