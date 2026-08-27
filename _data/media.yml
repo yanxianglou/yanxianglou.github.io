@@ -1,18 +1,15 @@
 carousel:
-  - image: ""
+  - image: /assets/img/uploads/0120-170125-0011_orig.jpg
     video_url: ""
-    caption: "TODO — 媒體採訪／得獎情境照或影片，可放照片也可放YouTube影片"
-
+    caption: TODO — 媒體採訪／得獎情境照或影片，可放照片也可放YouTube影片
 intro:
-  heading: "媒體報導"
-  body: >
-    TODO — 這裡可以編輯一段整體介紹文字，例如各家媒體採訪炎香樓的背景說明，
-    支援基本排版（可分段落）。
-
+  heading: 媒體報導
+  body: |
+    TODO — 這裡可以編輯一段整體介紹文字，例如各家媒體採訪炎香樓的背景說明， 支援基本排版（可分段落）。
 videos:
-  - title: "TODO 影片標題 1"
-    video_url: ""
-    description: "TODO 簡短說明文字"
-  - title: "TODO 影片標題 2"
-    video_url: ""
-    description: "TODO 簡短說明文字"
+  - title: TODO 影片標題 1
+    video_url: "123"
+    description: TODO 簡短說明文字
+  - title: TODO 影片標題 2
+    video_url: "223"
+    description: TODO 簡短說明文字
