@@ -6,7 +6,6 @@ url: "https://yanxianglou.github.io"
 baseurl: ""
 
 markdown: kramdown
-permalink: pretty
 
 plugins:
   - jekyll-seo-tag
