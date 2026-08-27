@@ -111,7 +111,8 @@
   .craft .eyebrow{color:var(--muted-light);margin-bottom:18px;}
   .craft h2{font-size:34px;font-weight:700;margin-bottom:28px;}
   .craft h3{font-size:18px;font-weight:500;color:var(--text-warm);margin-bottom:20px;}
-  .craft p{font-size:14.5px;line-height:2;color:var(--muted-light);}
+  .craft p{font-size:14.5px;line-height:2;color:var(--muted-light);text-align:left;margin-bottom:20px;word-break:normal;overflow-wrap:break-word;}
+  .craft p:last-child{margin-bottom:0;}
   .craft-deco{position:absolute;right:-60px;top:-40px;width:520px;height:520px;opacity:0.5;}
   .craft-video{position:relative;width:100%;aspect-ratio:16/9;background:var(--black2);border:1px solid var(--line);overflow:hidden;}
   .craft-video iframe{width:100%;height:100%;border:0;display:block;}
@@ -370,8 +371,15 @@
         {% endif %}
         <span class="eyebrow">YANXIANGLOU</span>
         <h2>匠心工藝</h2>
-        <h3>由{{ site.data.chef.title }}主理的粵式饗宴</h3>
-        <p>{{ site.data.chef.bio }}</p>
+        <h3>{{ site.data.chef.title }}</h3>
+        {% assign bio_paragraphs = site.data.chef.bio | split: "
+" %}
+        {% for para in bio_paragraphs %}
+          {% assign para_trimmed = para | strip %}
+          {% if para_trimmed != "" %}
+            <p>{{ para_trimmed }}</p>
+          {% endif %}
+        {% endfor %}
       </div>
       {% if site.data.chef.video_url and site.data.chef.video_url != "" %}
         <div class="craft-video"><iframe src="{{ site.data.chef.video_url }}" title="炎香樓介紹影片" allowfullscreen loading="lazy"></iframe></div>
