@@ -94,7 +94,6 @@ collections:
         label: "主廚資料"
         name: "chef"
         fields:
-          - {label: "姓名", name: "name", widget: "string"}
           - {label: "頭銜", name: "title", widget: "string"}
           - {label: "簡介", name: "bio", widget: "text"}
           - {label: "照片", name: "photo", widget: "image", required: false}
