@@ -12,8 +12,7 @@ dishes:
     images: /assets/img/uploads/image_s沙母蚧炒糯米飯hot.png
   - name: 西施龍皇泡飯
     subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
-    images:
-      - /assets/img/uploads/image_s西施龍皇泡飯.png
+    images: /assets/img/uploads/image_s西施龍皇泡飯1.png
   - name: 炎香燒鵝三吃(需預訂)
     subtitle: 脆皮果香馥郁、鵝腿嫩香、鵝丁鍋飯濃香十足！
     images:
