@@ -1,0 +1,257 @@
+backend:
+  name: github
+  repo: yanxianglou/yanxianglou.github.io
+  branch: main
+  # 已部署 Cloudflare Worker
+  base_url: https://yanxianglou-cms-auth.yx23299968.workers.dev
+  auth_endpoint: auth
+
+publish_mode: simple
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+
+  - name: "site_settings"
+    label: "導覽頁設定"
+    files:
+      - file: "_data/site-settings.yml"
+        label: "首頁其他區塊"
+        name: "site_settings"
+        fields:
+          - label: "Favicon（瀏覽器分頁小圖示，建議正方形，至少 64×64px）"
+            name: "favicon"
+            widget: "image"
+            required: false
+          - label: "頁首 LOGO（建議透明背景 PNG，高度約 44px 尺寸即可）"
+            name: "header_logo"
+            widget: "image"
+            required: false
+          - label: "社群連結"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook 網址", name: "facebook", widget: "string", required: false}
+              - {label: "Instagram 網址", name: "instagram", widget: "string", required: false}
+          - label: "右側浮動CTA連結"
+            name: "floating_cta"
+            widget: "object"
+            fields:
+              - {label: "LINE 專人服務連結", name: "line_link", widget: "string", required: false}
+              - {label: "線上訂位連結", name: "booking_link", widget: "string", required: false}
+          - label: "最新優惠（導覽列）"
+            name: "nav_promo"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "外帶訂餐（導覽列）"
+            name: "nav_takeout"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "媒體報導（導覽列）"
+            name: "nav_press"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "品牌故事（導覽列）"
+            name: "nav_story"
+            widget: "object"
+            fields: [{label: "文字", name: "label", widget: "string"}, {label: "連結", name: "link", widget: "string"}]
+          - label: "Hero輪播（固定3張，可各自設定連結）"
+            name: "hero_slides"
+            widget: "list"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "點擊連結", name: "link", widget: "string", required: false}
+              - {label: "備註（僅供後台辨識，不會顯示在網站上）", name: "caption", widget: "string", required: false}
+          - label: "品牌宣言"
+            name: "statement"
+            widget: "object"
+            fields:
+              - {label: "標題第一行", name: "heading_line1", widget: "string"}
+              - {label: "標題第二行", name: "heading_line2", widget: "string"}
+              - {label: "說明文字", name: "body", widget: "text", required: false}
+              - {label: "按鈕文字", name: "cta_text", widget: "string"}
+              - {label: "按鈕連結", name: "cta_link", widget: "string"}
+          - label: "常見問題（可新增/刪除）"
+            name: "faq"
+            widget: "list"
+            fields:
+              - {label: "問題", name: "question", widget: "string"}
+              - {label: "答案", name: "answer", widget: "text"}
+          - label: "頁尾聯絡資訊"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "地址", name: "address", widget: "string"}
+              - {label: "電話（顯示用）", name: "phone", widget: "string"}
+              - {label: "電話（純數字，供點擊撥號）", name: "phone_tel", widget: "string"}
+              - {label: "營業時間", name: "hours", widget: "string"}
+              - {label: "LINE ID", name: "line_id", widget: "string"}
+
+  - name: "chef"
+    label: "匠心工藝"
+    files:
+      - file: "_data/chef.yml"
+        label: "主廚資料"
+        name: "chef"
+        fields:
+          - {label: "頭銜", name: "title", widget: "string"}
+          - {label: "簡介", name: "bio", widget: "text"}
+          - {label: "照片", name: "photo", widget: "image", required: false}
+          - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID）", name: "video_url", widget: "string", required: false}
+
+  - name: "menu_tiers"
+    label: "四格主推項目"
+    files:
+      - file: "_data/menu-tiers.yml"
+        label: "四格菜單卡片（可拖曳排序、可隱藏）"
+        name: "menu_tiers"
+        fields:
+          - label: "卡片清單"
+            name: "tiers"
+            widget: "list"
+            hint: "拖曳每張卡片左側的圖示可以調整順序；關閉「顯示於首頁」則會從首頁隱藏這張卡片但不會刪除資料。"
+            fields:
+              - {label: "顯示於首頁", name: "visible", widget: "boolean", default: true}
+              - {label: "名稱", name: "name", widget: "string"}
+              - {label: "適用對象", name: "audience", widget: "string"}
+              - {label: "價格", name: "price", widget: "string"}
+              - {label: "供應時段／備註", name: "availability", widget: "string"}
+              - {label: "說明文字（滑鼠移入卡片時顯示）", name: "description", widget: "text", required: false}
+              - {label: "預設圖片（滑鼠移入前顯示）", name: "image", widget: "image", required: false}
+
+  - name: "news"
+    label: "最新消息"
+    folder: "_news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "日期", name: "date", widget: "datetime"}
+      - {label: "下架時間（過了這個時間，首頁與消息列表就不會再顯示這則，留空則永久顯示）", name: "expire_date", widget: "datetime", required: false}
+      - {label: "摘要（首頁卡片會顯示這段）", name: "excerpt", widget: "text"}
+      - {label: "圖片", name: "image", widget: "image", required: false}
+      - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID，選填）", name: "video_url", widget: "string", required: false}
+      - {label: "內文", name: "body", widget: "markdown", required: false}
+
+  - name: "alacarte"
+    label: "單點餐品頁"
+    files:
+      - file: "_data/alacarte.yml"
+        label: "單點餐品內容"
+        name: "alacarte"
+        fields:
+          - label: "完整菜單PDF"
+            name: "cta_pdf_link"
+            widget: "file"
+          - label: "六道菜（固定6個，對應首頁六宮格）"
+            name: "dishes"
+            widget: "list"
+            fields:
+              - {label: "菜名", name: "name", widget: "string"}
+              - {label: "副標／食材說明", name: "subtitle", widget: "string", required: false}
+              - label: "照片（可一次選取多張，會自動輪播）"
+                name: "images"
+                widget: "image"
+                multiple: true
+                required: false
+          - label: "橫幅 Banner"
+            name: "banner"
+            widget: "object"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "備用文字（沒放照片時顯示）", name: "caption", widget: "string", required: false}
+          - label: "右下角 CTA 卡"
+            name: "cta_card"
+            widget: "object"
+            fields:
+              - {label: "文字", name: "text", widget: "string"}
+              - {label: "連結", name: "link", widget: "string"}
+
+  - name: "setmenu"
+    label: "套餐餐品頁"
+    files:
+      - file: "_data/setmenu.yml"
+        label: "套餐餐品內容"
+        name: "setmenu"
+        fields:
+          - {label: "頁面標題", name: "page_title", widget: "string"}
+          - {label: "說明文字", name: "intro", widget: "text", required: false}
+          - label: "輪播（可自由增減張數，手動箭頭切換）"
+            name: "slides"
+            widget: "list"
+            fields:
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "備註文字", name: "tag", widget: "string", required: false}
+          - {label: "完整菜單PDF（輪播圖點擊後跳轉）", name: "pdf_link", widget: "file"}
+          - label: "下方說明區塊"
+            name: "info"
+            widget: "object"
+            fields:
+              - {label: "標題", name: "heading", widget: "string"}
+              - {label: "說明文字", name: "body", widget: "text", required: false}
+              - {label: "按鈕文字", name: "cta_text", widget: "string"}
+              - {label: "按鈕連結", name: "cta_link", widget: "string"}
+
+  - name: "menu_full"
+    label: "美饌全菜單"
+    files:
+      - file: "_data/menu-full.yml"
+        label: "美饌全菜單頁內容"
+        name: "menu_full"
+        fields:
+          - {label: "頁面標題", name: "page_title", widget: "string"}
+          - {label: "說明文字", name: "intro", widget: "text", required: false}
+          - label: "分類卡片"
+            name: "cards"
+            widget: "list"
+            fields:
+              - {label: "名稱", name: "title", widget: "string"}
+              - {label: "說明文字", name: "description", widget: "text", required: false}
+              - {label: "照片", name: "image", widget: "image", required: false}
+              - {label: "查看連結", name: "link", widget: "string"}
+              - {label: "完整菜單PDF", name: "pdf_link", widget: "file"}
+
+  - name: "story"
+    label: "品牌故事"
+    files:
+      - file: "_data/story.yml"
+        label: "品牌故事頁內容"
+        name: "story"
+        fields:
+          - {label: "頁面標題", name: "page_title", widget: "string"}
+          - {label: "主視覺照片", name: "hero_image", widget: "image", required: false}
+          - {label: "品牌故事內文（可分段落）", name: "body", widget: "markdown"}
+          - label: "大事紀（可自由增減）"
+            name: "milestones"
+            widget: "list"
+            fields:
+              - {label: "年份／時間", name: "year", widget: "string"}
+              - {label: "內容", name: "text", widget: "string"}
+
+  - name: "media"
+    label: "媒體報導"
+    files:
+      - file: "_data/media.yml"
+        label: "媒體報導頁內容"
+        name: "media"
+        fields:
+          - label: "上方輪播（照片或影片皆可，可自由增減張數）"
+            name: "carousel"
+            widget: "list"
+            fields:
+              - {label: "照片（若這則是影片，可留空）", name: "image", widget: "image", required: false}
+              - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID，若這則是照片可留空）", name: "video_url", widget: "string", required: false}
+              - {label: "備註文字", name: "caption", widget: "string", required: false}
+          - label: "介紹區塊"
+            name: "intro"
+            widget: "object"
+            fields:
+              - {label: "標題", name: "heading", widget: "string"}
+              - {label: "內文（可分段落）", name: "body", widget: "markdown"}
+          - label: "影片牆（兩格一列，可自由增減）"
+            name: "videos"
+            widget: "list"
+            fields:
+              - {label: "影片標題", name: "title", widget: "string"}
+              - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID）", name: "video_url", widget: "string"}
+              - {label: "說明文字", name: "description", widget: "text", required: false}
