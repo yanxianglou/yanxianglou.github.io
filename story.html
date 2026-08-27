@@ -25,12 +25,18 @@
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
 
-  .hero-img{
-    height:360px;background-size:cover;background-position:center;
+  .hero-img{max-width:1100px;margin:40px auto 0;padding:0 48px;}
+  .hero-img-frame{
+    position:relative;height:440px;overflow:hidden;border:1px solid var(--line);
+    background-size:cover;background-position:center;
     background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);
     display:flex;align-items:flex-end;
   }
-  .hero-img .tag{padding:32px 48px;font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.15em;color:var(--muted-light);}
+  .hero-img-frame .tag{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    padding:32px 32px 24px;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.6) 45%, rgba(0,0,0,0) 100%);
+    font-family:'Oswald', sans-serif;font-size:13px;letter-spacing:.15em;color:var(--text-warm);
+  }
 
   .page-head{padding:50px 48px 10px;text-align:center;}
   .page-head h1{font-size:32px;font-weight:700;margin:14px 0;}
@@ -48,7 +54,9 @@
   @media(max-width:600px){
     .page-head{padding:40px 24px 8px;}
     .story-body, .milestones{padding:0 24px;}
-    .hero-img .tag{padding:20px 24px;}
+    .hero-img{padding:0 24px;}
+    .hero-img-frame{height:260px;}
+    .hero-img-frame .tag{padding:20px 24px;}
   }
 </style>
 </head>
@@ -65,8 +73,10 @@
   <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
 </header>
 
-<div class="hero-img"{% if site.data.story.hero_image and site.data.story.hero_image != "" %} style="background-image:url('{{ site.data.story.hero_image | relative_url }}');"{% endif %}>
-  <span class="tag">{% unless site.data.story.hero_image and site.data.story.hero_image != "" %}TODO — 主視覺情境照{% endunless %}</span>
+<div class="hero-img">
+  <div class="hero-img-frame"{% if site.data.story.hero_image and site.data.story.hero_image != "" %} style="background-image:url('{{ site.data.story.hero_image | relative_url }}');"{% endif %}>
+    <span class="tag">{% unless site.data.story.hero_image and site.data.story.hero_image != "" %}TODO — 主視覺情境照{% endunless %}</span>
+  </div>
 </div>
 
 <div class="page-head">
