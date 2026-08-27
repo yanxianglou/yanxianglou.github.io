@@ -9,8 +9,7 @@ dishes:
       - /assets/img/uploads/image_s清爽果絲鴨.png
   - name: 沙母蚧炒糯米飯 (訂製)
     subtitle: 沙母蟹膏鮮香入米，大火鑊氣交織，粒粒糯米吸滿蟹鮮，入口濃郁鮮甜、油潤不膩。
-    images:
-      - /assets/img/uploads/image_s沙母蚧炒糯米飯.png
+    images: /assets/img/uploads/image_s沙母蚧炒糯米飯hot.png
   - name: 西施龍皇泡飯
     subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
     images:
