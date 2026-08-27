@@ -15,8 +15,7 @@ dishes:
     images: /assets/img/uploads/image_s西施龍皇泡飯1.png
   - name: 炎香燒鵝三吃(需預訂)
     subtitle: 脆皮果香馥郁、鵝腿嫩香、鵝丁鍋飯濃香十足！
-    images:
-      - /assets/img/uploads/image_s燒鵝三吃.png
+    images: /assets/img/uploads/image_s燒鵝三吃-2-.png
   - name: 黑蒜炒波龍
     subtitle: 黑蒜醇香入味，波龍鮮嫩彈牙，鮮香濃郁、層次十足
     images:
