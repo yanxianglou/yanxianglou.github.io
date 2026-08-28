@@ -258,3 +258,24 @@ collections:
               - {label: "影片標題（必填）", name: "title", widget: "string"}
               - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID）（必填）", name: "video_url", widget: "string"}
               - {label: "說明文字（選填）", name: "description", widget: "text", required: false}
+
+  - name: "faq"
+    label: "常見問題頁（完整版）"
+    files:
+      - file: "_data/faq.yml"
+        label: "常見問題頁內容"
+        name: "faq"
+        fields:
+          - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
+          - {label: "頁面說明文字（選填）", name: "intro", widget: "text", required: false}
+          - label: "分類（可自由增減）"
+            name: "categories"
+            widget: "list"
+            fields:
+              - {label: "分類名稱（必填）", name: "name", widget: "string"}
+              - label: "這個分類底下的問題（可自由增減）"
+                name: "questions"
+                widget: "list"
+                fields:
+                  - {label: "問題（必填）", name: "question", widget: "string"}
+                  - {label: "答案（必填）", name: "answer", widget: "text"}
