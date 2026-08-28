@@ -6,16 +6,16 @@ dishes:
       - src: /assets/img/uploads/image_s順德生滾龍虎魚湯-1-hot.png
         name: ""
         subtitle: ""
-      - src: /assets/img/uploads/image_三臘聚香飯.png
-        name: 西施龍皇泡飯
-        subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
-      - src: /assets/img/uploads/image_s西施龍皇泡飯1.png
-        name: 西施龍皇泡飯
-        subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
-  - name: 炎香燒鵝三吃(需預訂)
-    subtitle: 脆皮果香馥郁、鵝腿嫩香、鵝丁鍋飯濃香十足！
+      - src: /assets/img/uploads/image_s蜜瓜爵士湯.png
+        name: 蜜瓜爵士湯(預訂)
+        subtitle: 蜜瓜清甜融入鮮醇湯香，清爽甘潤，層次雅緻。
+      - src: /assets/img/uploads/image_s雲吞濃雞湯hot.png
+        name: 雲吞濃雞湯
+        subtitle: 濃醇雞湯慢熬鮮香，手工雲吞飽滿，口口溫潤。
+  - name: 清爽果絲鴨(私人訂製)
+    subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
     images:
-      - src: /assets/img/uploads/image_s燒鵝三吃-2-.png
+      - src: /assets/img/uploads/image_s清爽果絲鴨.png
         name: ""
         subtitle: ""
   - name: 西施龍皇泡飯
