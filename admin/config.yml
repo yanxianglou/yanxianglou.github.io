@@ -149,11 +149,11 @@ collections:
             fields:
               - {label: "菜名（必填）", name: "name", widget: "string"}
               - {label: "副標／食材說明（選填）", name: "subtitle", widget: "string", required: false}
-              - label: "照片（可一次選取多張，會自動輪播）（選填）"
+              - label: "照片／影片（可新增多張，會自動輪播；支援 jpg/png/gif/mp4）"
                 name: "images"
-                widget: "image"
-                multiple: true
+                widget: "list"
                 required: false
+                field: {label: "檔案", name: "src", widget: "file"}
           - label: "橫幅 Banner"
             name: "banner"
             widget: "object"
