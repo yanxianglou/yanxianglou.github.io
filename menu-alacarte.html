@@ -158,20 +158,26 @@
 </div>
 
 <script>
-  document.querySelectorAll('.cell').forEach(function(cell, idx){
-    var frames = cell.querySelectorAll('.frame');
-    var dots = cell.querySelectorAll('.dots span');
-    if(frames.length <= 1) return;
-    var cur = 0;
-    var timer = setInterval(next, 2600 + idx*150);
-    function next(){
-      frames[cur].classList.remove('active');
-      if(dots[cur]) dots[cur].classList.remove('active');
-      cur = (cur + 1) % frames.length;
-      frames[cur].classList.add('active');
-      if(dots[cur]) dots[cur].classList.add('active');
-    }
-  });
+  (function(){
+    var cellsData = [];
+    document.querySelectorAll('.cell').forEach(function(cell){
+      var frames = cell.querySelectorAll('.frame');
+      var dots = cell.querySelectorAll('.dots span');
+      if(frames.length > 1){
+        cellsData.push({frames: frames, dots: dots, cur: 0});
+      }
+    });
+    if(cellsData.length === 0) return;
+    setInterval(function(){
+      cellsData.forEach(function(d){
+        d.frames[d.cur].classList.remove('active');
+        if(d.dots[d.cur]) d.dots[d.cur].classList.remove('active');
+        d.cur = (d.cur + 1) % d.frames.length;
+        d.frames[d.cur].classList.add('active');
+        if(d.dots[d.cur]) d.dots[d.cur].classList.add('active');
+      });
+    }, 2600);
+  })();
 </script>
 
 </body>
