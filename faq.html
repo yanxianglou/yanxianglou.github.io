@@ -1,0 +1,108 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常見問題 — 炎香樓 yanxianglou</title>
+{% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E{% endif %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#14120E;--black2:#1F1B15;--accent:#3B0503;--accent-light:#5A100D;
+    --text-warm:#D9C7A8;--muted:#8A8370;--muted-light:#B9AC92;--line:#3A3427;--on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  .logo-slot.has-image{border:none;}
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
+
+  .page-head{padding:70px 48px 20px;text-align:center;}
+  .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
+  .page-head p{font-size:14px;color:var(--muted-light);max-width:520px;margin:0 auto;}
+
+  .faq-wrap{max-width:800px;margin:50px auto 100px;padding:0 48px;}
+
+  .faq-category{margin-bottom:44px;}
+  .faq-category:last-child{margin-bottom:0;}
+  .faq-category h2{
+    font-size:17px;font-weight:700;color:var(--text-warm);
+    padding-bottom:12px;margin-bottom:8px;border-bottom:1px solid var(--line);
+  }
+
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    list-style:none;cursor:pointer;
+    padding:20px 4px;
+    display:flex;align-items:flex-start;gap:14px;
+    font-size:15px;font-weight:500;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .q-mark{
+    font-family:'Oswald', sans-serif;font-size:13px;color:var(--accent-light);
+    border:1px solid var(--accent-light);border-radius:50%;
+    width:22px;height:22px;flex:none;display:flex;align-items:center;justify-content:center;
+  }
+  .faq-item summary .q-text{flex:1;padding-top:1px;}
+  .faq-item summary .toggle{
+    font-family:'Oswald', sans-serif;font-size:18px;color:var(--muted-light);
+    transition:transform .3s ease;flex:none;
+  }
+  .faq-item[open] summary .toggle{transform:rotate(45deg);}
+  .faq-item .a-text{
+    padding:0 4px 22px 50px;font-size:13.5px;line-height:1.9;color:var(--muted-light);
+  }
+
+  @media(max-width:600px){
+    .page-head{padding:50px 24px 16px;}
+    .faq-wrap{padding:0 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}" href="{{ '/' | relative_url }}" title="回首頁">
+    {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+      <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+    {% else %}
+      上傳 LOGO
+    {% endif %}
+  </a>
+  <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">FAQ</span>
+  <h1>{{ site.data.faq.page_title | default: "常見問題" }}</h1>
+  {% if site.data.faq.intro and site.data.faq.intro != "" %}<p>{{ site.data.faq.intro }}</p>{% endif %}
+</div>
+
+<div class="faq-wrap">
+  {% for cat in site.data.faq.categories %}
+  <div class="faq-category">
+    <h2>{{ cat.name }}</h2>
+    {% for item in cat.questions %}
+    <details class="faq-item">
+      <summary>
+        <span class="q-mark">Q</span>
+        <span class="q-text">{{ item.question }}</span>
+        <span class="toggle">+</span>
+      </summary>
+      <div class="a-text">{{ item.answer }}</div>
+    </details>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>
