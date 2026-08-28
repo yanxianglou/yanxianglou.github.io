@@ -147,13 +147,16 @@ collections:
             name: "dishes"
             widget: "list"
             fields:
-              - {label: "菜名（必填）", name: "name", widget: "string"}
-              - {label: "副標／食材說明（選填）", name: "subtitle", widget: "string", required: false}
-              - label: "照片／影片（可新增多張，會自動輪播；支援 jpg/png/gif/mp4）"
+              - {label: "菜名（必填，用途：CMS清單顯示用，也是照片沒填自己說明時的預設文字）", name: "name", widget: "string"}
+              - {label: "副標／食材說明（選填，同上，照片沒填自己說明時會用這個）", name: "subtitle", widget: "string", required: false}
+              - label: "照片／影片（可新增多張，每張各自輪播並顯示自己的菜名說明；支援 jpg/png/gif/mp4）"
                 name: "images"
                 widget: "list"
                 required: false
-                field: {label: "檔案", name: "src", widget: "file"}
+                fields:
+                  - {label: "檔案", name: "src", widget: "file"}
+                  - {label: "這張照片的菜名", name: "name", widget: "string", required: false}
+                  - {label: "這張照片的副標／說明文字", name: "subtitle", widget: "string", required: false}
           - label: "橫幅 Banner"
             name: "banner"
             widget: "object"
