@@ -162,8 +162,6 @@
       frames[cur].classList.add('active');
       if(dots[cur]) dots[cur].classList.add('active');
     }
-    cell.addEventListener('mouseenter', function(){ clearInterval(timer); });
-    cell.addEventListener('mouseleave', function(){ timer = setInterval(next, 2600); });
   });
 </script>
 
