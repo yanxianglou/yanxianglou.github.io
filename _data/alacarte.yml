@@ -12,42 +12,60 @@ dishes:
       - src: /assets/img/uploads/image_s雲吞濃雞湯hot.png
         name: 雲吞濃雞湯
         subtitle: 濃醇雞湯慢熬鮮香，手工雲吞飽滿，口口溫潤。
+  - name: 炎香燒鵝三吃(預訂)
+    subtitle: 脆皮果香馥郁、鵝腿嫩香、鵝丁鍋飯濃香十足！
+    images:
+      - src: /assets/img/uploads/image_s燒鵝三吃-2-.png
+        name: ""
+        subtitle: ""
+      - src: /assets/img/uploads/image_s炎香御藏叉燒.png
+        name: 炎香御藏叉燒
+        subtitle: 油花豐潤柔嫩，秘製醬香入味，炙燒焦香回甘。
+      - src: /assets/img/uploads/lmage_s川椒牛小排hot.png
+        name: 川椒牛小排
+        subtitle: 花椒麻香馥郁，牛小排大火煸炒，鮮嫩多汁。
+  - name: 冰玉南非鮑(私人訂製)
+    subtitle: 鮑魚厚實Q彈，酒香醇厚，檸檬冰沙添清爽酸香。
+    images:
+      - src: /assets/img/uploads/image_s冰玉南非鮑.png
+      - src: /assets/img/uploads/image_s金湯奶油蝦-小饅頭-1-.png
+        name: 金湯奶油蝦+小饅頭
+        subtitle: 奶油金湯濃醇滑順，鮮蝦嫩甜，小饅頭吸汁更香。
+      - src: /assets/img/uploads/image_s避風塘軟殼蟹hot.png
+        name: 避風塘軟殼蟹
+        subtitle: 蒜酥香氣馥郁，軟殼蟹連殼酥脆甜，越嚼越香。
   - name: 清爽果絲鴨(私人訂製)
     subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
     images:
       - src: /assets/img/uploads/image_s清爽果絲鴨.png
-        name: ""
-        subtitle: ""
-  - name: 西施龍皇泡飯
-    subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
-    images:
-      - src: /assets/img/uploads/image_s西施龍皇泡飯1.png
-        name: ""
-        subtitle: ""
-  - name: 黑蒜炒波龍
-    subtitle: 黑蒜醇香入味，波龍鮮嫩彈牙，鮮香濃郁、層次十足
-    images:
       - src: /assets/img/uploads/lmage_s黑蒜炒波龍hot-1-.png
-        name: ""
-        subtitle: ""
-  - name: 三臘聚香飯 (訂製)
-    subtitle: 淋上秘製臘味醬汁，臘香、醬香、米香與蔥香層層綻放
+        name: 黑蒜炒波龍
+        subtitle: 黑蒜醇香入味，波龍鮮嫩彈牙，鮮香濃郁、層次十足。
+      - src: /assets/img/uploads/image_s鮑韻松露燒烏雞.png
+        name: 鮑韻松露燒烏雞(私人訂製)
+        subtitle: 薄脆烏雞鎖住鮮嫩，鮑魚Q彈鮮美，松露香氣縈繞。
+  - name: 火焰脆皮雞(預訂)
+    subtitle: 高粱烈焰炙香，酥脆雞皮與濃郁雞油香交織。
     images:
-      - src: /assets/img/uploads/image_s三臘聚香飯.png
-        name: ""
-        subtitle: ""
+      - src: /assets/img/uploads/s火焰脆皮雞.jpg
+      - src: /assets/img/uploads/image_s西施龍皇泡飯1.png
+        name: 西施龍皇泡飯
+        subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
+      - src: /assets/img/uploads/image_s冰封鵝肝玉雪-1-.png
+        name: 冰封鵝肝玉雪(私人訂製)
+        subtitle: 冰霜般絲滑鵝肝，揉入白蘭地酒香，酥脆甜筒相襯。
   - name: 沙母蚧炒糯米飯 (訂製)
-    subtitle: 沙母蟹膏鮮香入米，大火鑊氣交織，粒粒糯米吸滿蟹鮮，入口濃郁鮮甜、油潤不膩。
+    subtitle: 蟹膏鮮香入米，鑊氣十足，糯米粒粒吸滿蟹鮮。
     images:
       - src: /assets/img/uploads/image_s沙母蚧炒糯米飯hot.png
         name: ""
         subtitle: ""
-  - name: 清爽果絲鴨 (訂製)
-    subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
-    images:
-      - src: /assets/img/uploads/image_s清爽果絲鴨.png
-        name: ""
-        subtitle: ""
+      - src: /assets/img/uploads/image_三臘聚香飯.png
+        name: 三臘聚香飯(私人訂製)
+        subtitle: 淋上秘製臘味醬汁，臘香、醬香、米香與蔥香層層綻放。
+      - src: /assets/img/uploads/image_s黑鑽鴨皮叉燒-cut.png
+        name: 黑鑽鴨皮叉燒(私人訂製)
+        subtitle: 鴨皮焦香酥脆，叉燒柔嫩豐腴，一口盡享雙重風味。
 banner:
   image: ""
   caption: TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖
