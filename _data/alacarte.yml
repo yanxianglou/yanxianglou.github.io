@@ -1,23 +1,29 @@
 cta_pdf_link: assets/menu-alacarte.pdf
 dishes:
-  - images: /assets/img/uploads/image_s順德生滾龍虎魚湯-1-hot.png
-    name: 順德生滾龍虎魚湯
+  - name: 順德生滾龍虎魚湯
     subtitle: 龍虎魚肉鮮嫩，湯醇鮮甜，富含膠質，濃郁順滑。
+    images:
+      - /assets/img/uploads/image_s順德生滾龍虎魚湯-1-hot.png
   - name: 炎香燒鵝三吃(需預訂)
     subtitle: 脆皮果香馥郁、鵝腿嫩香、鵝丁鍋飯濃香十足！
-    images: /assets/img/uploads/image_s燒鵝三吃-2-.png
+    images:
+      - /assets/img/uploads/image_s燒鵝三吃-2-.png
   - name: 西施龍皇泡飯
     subtitle: 金黃炸米遇上鮮醇龍皇湯， 一沖、一泡，海味與米香瞬間交融。
-    images: /assets/img/uploads/image_s西施龍皇泡飯1.png
+    images:
+      - /assets/img/uploads/image_s西施龍皇泡飯1.png
   - name: 黑蒜炒波龍
     subtitle: 黑蒜醇香入味，波龍鮮嫩彈牙，鮮香濃郁、層次十足
-    images: /assets/img/uploads/lmage_s黑蒜炒波龍hot-1-.png
+    images:
+      - /assets/img/uploads/lmage_s黑蒜炒波龍hot-1-.png
   - name: 三臘聚香飯 (訂製)
     subtitle: 淋上秘製臘味醬汁，臘香、醬香、米香與蔥香層層綻放
-    images: /assets/img/uploads/image_s三臘聚香飯.png
+    images:
+      - /assets/img/uploads/image_s三臘聚香飯.png
   - name: 沙母蚧炒糯米飯 (訂製)
     subtitle: 沙母蟹膏鮮香入米，大火鑊氣交織，粒粒糯米吸滿蟹鮮，入口濃郁鮮甜、油潤不膩。
-    images: /assets/img/uploads/image_s沙母蚧炒糯米飯hot.png
+    images:
+      - /assets/img/uploads/image_s沙母蚧炒糯米飯hot.png
   - name: 清爽果絲鴨 (訂製)
     subtitle: 細緻鴨絲酥炸，拌入雙果泥與洋蔥，酥香果酸交織，清新不膩。
     images:
