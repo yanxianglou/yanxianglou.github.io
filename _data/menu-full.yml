@@ -6,18 +6,8 @@ cards:
     image: ""
     link: menu-alacarte.html
     pdf_link: assets/menu-alacarte.pdf
-  - title: test4-5
+  - title: 多人套餐
     description: 多人套餐與客製化宴席，適合家庭聚會、商務宴請與6人以上隱藏版菜單體驗。
-    image: /assets/img/uploads/4-5.jpg
+    image: ""
     link: menu-set.html
     pdf_link: assets/menu-set.pdf
-  - title: test6-7
-    description: 巨龍宴
-    image: /assets/img/uploads/6-7.jpg
-    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
-    link: assets/menu-alacarte.pdf
-  - title: test8-9
-    description: 尾牙
-    image: /assets/img/uploads/8-9.jpg
-    link: assets/menu-alacarte.pdf
-    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
