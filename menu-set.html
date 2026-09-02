@@ -29,43 +29,72 @@
   .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
   .page-head p{font-size:14px;color:var(--muted-light);max-width:560px;margin:0 auto;}
 
-  .carousel-wrap{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;}
-  .carousel{position:relative;height:440px;overflow:hidden;border:1px solid var(--line);}
-  .c-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;display:flex;align-items:flex-end;background-size:cover;background-position:center;}
-  .c-slide.active{opacity:1;}
-  .c-slide.placeholder{background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.4), transparent 50%), linear-gradient(160deg,#2A1512,#100E0A);}
-  .c-slide .tag{
-    position:relative;padding:36px 40px 28px;width:100%;
-    background:linear-gradient(to top, rgba(0,0,0,.8), transparent);
-    font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.15em;color:var(--muted-light);
+  /* 分類頁籤 */
+  .cat-tabs{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+    max-width:1100px;margin:0 auto 40px;padding:0 48px;
   }
-  .c-arrow{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:44px;height:44px;border-radius:50%;
-    background:var(--black2);border:1px solid var(--line);color:var(--text-warm);
-    display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;z-index:5;
+  .cat-tab{
+    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.08em;
+    padding:10px 22px;border:1px solid var(--line);background:transparent;color:var(--muted-light);
+    cursor:pointer;transition:all .25s ease;
   }
-  .c-arrow:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
-  .c-arrow.prev{left:16px;}
-  .c-arrow.next{right:16px;}
-  .c-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;}
-  .c-dots span{width:7px;height:7px;border-radius:50%;background:rgba(217,199,168,.35);cursor:pointer;}
-  .c-dots span.active{background:var(--text-warm);}
+  .cat-tab:hover{border-color:var(--accent-light);color:var(--text-warm);}
+  .cat-tab.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 
-  .set-info{max-width:1100px;margin:40px auto 100px;padding:0 48px;text-align:center;}
+  /* 自適應版面（直式橫式都自然顯示，不裁切） */
+  .gallery-group{display:none;max-width:1100px;margin:0 auto;padding:0 48px;}
+  .gallery-group.active{display:block;}
+  .gallery{column-count:3;column-gap:16px;}
+  .gallery-item{
+    break-inside:avoid;margin-bottom:16px;border:1px solid var(--line);
+    overflow:hidden;cursor:zoom-in;position:relative;background:var(--black2);
+  }
+  .gallery-item img, .gallery-item video{width:100%;display:block;height:auto;}
+  .gallery-item .g-cap{
+    padding:12px 14px;font-size:12.5px;color:var(--muted-light);
+    background:var(--black2);border-top:1px solid var(--line);
+  }
+  .gallery-empty{
+    text-align:center;padding:60px 20px;color:var(--muted);
+    font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:.08em;
+    border:1px dashed var(--line);
+  }
+
+  @media(max-width:900px){ .gallery{column-count:2;} }
+  @media(max-width:560px){ .gallery{column-count:1;} }
+
+  /* 燈箱（點擊放大） */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(10,8,6,.94);z-index:999;
+    display:none;align-items:center;justify-content:center;padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-content{max-width:100%;max-height:100%;text-align:center;}
+  .lightbox-content img, .lightbox-content video{max-width:100%;max-height:88vh;display:block;margin:0 auto;}
+  .lightbox-close{
+    position:absolute;top:22px;right:32px;font-size:32px;line-height:1;
+    color:var(--text-warm);cursor:pointer;font-family:'Oswald', sans-serif;
+  }
+
+  .set-info{max-width:1100px;margin:70px auto 0;padding:0 48px;text-align:center;}
   .set-info h2{font-size:24px;font-weight:700;margin-bottom:14px;}
   .set-info p{font-size:13.5px;color:var(--muted-light);max-width:600px;margin:0 auto 28px;line-height:1.9;}
-  .btn-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-group{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:100px;}
   .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:'Oswald', sans-serif;font-size:13px;letter-spacing:0.12em;
-    padding:14px 30px;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);cursor:pointer;
+    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.1em;
+    padding:14px 32px;background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);
   }
-  .btn:hover{background:var(--accent-light);}
-  .btn.outline{background:none;border-color:var(--text-warm);color:var(--text-warm);}
-  .btn.outline:hover{background:var(--text-warm);color:var(--black);}
+  .btn.outline{background:transparent;color:var(--text-warm);border:1px solid var(--line);}
+  .btn:hover{background:var(--accent-light);border-color:var(--accent-light);}
+  .btn.outline:hover{border-color:var(--accent-light);color:var(--accent-light);}
 
-
+  @media(max-width:600px){
+    .page-head{padding:50px 24px 30px;}
+    .cat-tabs{padding:0 24px;}
+    .gallery-group{padding:0 24px;}
+    .set-info{padding:0 24px;}
+  }
 </style>
 </head>
 <body>
@@ -78,27 +107,53 @@
       上傳 LOGO
     {% endif %}
   </a>
-  <a class="back" href="index.html">← 回首頁</a>
+  <a class="back" href="{{ '/' | relative_url }}">← 回首頁</a>
 </header>
 
 <div class="page-head">
   <span class="eyebrow">SET MENU</span>
   <h1>{{ site.data.setmenu.page_title }}</h1>
-  <p>{{ site.data.setmenu.intro }}</p>
+  {% if site.data.setmenu.intro and site.data.setmenu.intro != "" %}<p>{{ site.data.setmenu.intro }}</p>{% endif %}
 </div>
 
-<div class="carousel-wrap">
-  <div class="carousel" id="setCarousel">
-    {% for slide in site.data.setmenu.slides %}
-    <a class="c-slide{% if forloop.first %} active{% endif %}{% unless slide.image and slide.image != "" %} placeholder{% endunless %}" href="{{ site.data.setmenu.pdf_link }}" target="_blank" data-i="{{ forloop.index0 }}"{% if slide.image and slide.image != "" %} style="background-image:url('{{ slide.image | relative_url }}');"{% endif %}>
-      <div class="tag">{{ slide.tag }}</div>
-    </a>
-    {% endfor %}
+{% if site.data.setmenu.categories and site.data.setmenu.categories.size > 0 %}
+<div class="cat-tabs">
+  {% for cat in site.data.setmenu.categories %}
+  <button class="cat-tab{% if forloop.first %} active{% endif %}" data-cat="{{ forloop.index0 }}">{{ cat.name }}</button>
+  {% endfor %}
+</div>
 
-    <div class="c-arrow prev" id="prevBtn">‹</div>
-    <div class="c-arrow next" id="nextBtn">›</div>
-    <div class="c-dots" id="setDots"></div>
+{% for cat in site.data.setmenu.categories %}
+<div class="gallery-group{% if forloop.first %} active{% endif %}" data-cat-group="{{ forloop.index0 }}">
+  {% if cat.items and cat.items.size > 0 %}
+  <div class="gallery">
+    {% for item in cat.items %}
+      {% assign ext = item.src | split: '.' | last | downcase %}
+      {% if ext == 'mp4' or ext == 'webm' or ext == 'mov' %}
+        <div class="gallery-item" data-src="{{ item.src | relative_url }}" data-type="video">
+          <video src="{{ item.src | relative_url }}" muted autoplay loop playsinline></video>
+          {% if item.caption and item.caption != "" %}<div class="g-cap">{{ item.caption }}</div>{% endif %}
+        </div>
+      {% else %}
+        <div class="gallery-item" data-src="{{ item.src | relative_url }}" data-type="image">
+          <img src="{{ item.src | relative_url }}" alt="{{ cat.name }}" loading="lazy">
+          {% if item.caption and item.caption != "" %}<div class="g-cap">{{ item.caption }}</div>{% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
+  {% else %}
+  <div class="gallery-empty">這個分類還沒有上傳照片／影片</div>
+  {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<div class="gallery-empty" style="max-width:1100px;margin:0 auto;">尚未新增分類，請至後台「套餐餐品頁」新增</div>
+{% endif %}
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">&times;</div>
+  <div class="lightbox-content" id="lightboxContent"></div>
 </div>
 
 <div class="set-info">
@@ -106,30 +161,51 @@
   <p>{{ site.data.setmenu.info.body }}</p>
   <div class="btn-group">
     <a class="btn" href="{{ site.data.setmenu.info.cta_link }}">{{ site.data.setmenu.info.cta_text }} →</a>
-    <a class="btn outline" href="{{ site.data.setmenu.pdf_link }}" target="_blank">查看桌宴菜單 →</a>
+    <a class="btn outline" href="{{ site.data.setmenu.pdf_link | relative_url }}" target="_blank">查看桌宴菜單 →</a>
   </div>
 </div>
 
 <script>
   (function(){
-    var slides = document.querySelectorAll('#setCarousel .c-slide');
-    var dotsWrap = document.getElementById('setDots');
-    var current = 0;
-    slides.forEach(function(s, i){
-      var dot = document.createElement('span');
-      if(i === 0) dot.classList.add('active');
-      dot.addEventListener('click', function(e){ e.preventDefault(); goTo(i); });
-      dotsWrap.appendChild(dot);
+    // 分類頁籤切換
+    document.querySelectorAll('.cat-tab').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelectorAll('.gallery-group').forEach(function(g){ g.classList.remove('active'); });
+        tab.classList.add('active');
+        var target = document.querySelector('.gallery-group[data-cat-group="' + tab.getAttribute('data-cat') + '"]');
+        if(target) target.classList.add('active');
+      });
     });
-    function goTo(i){
-      slides[current].classList.remove('active');
-      dotsWrap.children[current].classList.remove('active');
-      current = (i + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      dotsWrap.children[current].classList.add('active');
+
+    // 點擊放大燈箱
+    var lightbox = document.getElementById('lightbox');
+    var lightboxContent = document.getElementById('lightboxContent');
+    function openLightbox(src, type){
+      lightboxContent.innerHTML = '';
+      if(type === 'video'){
+        var v = document.createElement('video');
+        v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+        lightboxContent.appendChild(v);
+      } else {
+        var img = document.createElement('img');
+        img.src = src;
+        lightboxContent.appendChild(img);
+      }
+      lightbox.classList.add('open');
     }
-    document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
-    document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightboxContent.innerHTML = '';
+    }
+    document.querySelectorAll('.gallery-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        openLightbox(item.getAttribute('data-src'), item.getAttribute('data-type'));
+      });
+    });
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
   })();
 </script>
 

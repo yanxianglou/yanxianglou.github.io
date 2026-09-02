@@ -147,13 +147,16 @@ collections:
             name: "dishes"
             widget: "list"
             fields:
-              - {label: "菜名（必填）", name: "name", widget: "string"}
-              - {label: "副標／食材說明（選填）", name: "subtitle", widget: "string", required: false}
-              - label: "照片／影片（可一次選取多張，會自動輪播；支援 jpg/png/gif/mp4）（選填）"
+              - {label: "菜名（必填，用途：CMS清單顯示用，也是照片沒填自己說明時的預設文字）", name: "name", widget: "string"}
+              - {label: "副標／食材說明（選填，同上，照片沒填自己說明時會用這個）", name: "subtitle", widget: "string", required: false}
+              - label: "照片／影片（可新增多張，每張各自輪播並顯示自己的菜名說明；支援 jpg/png/gif/mp4）"
                 name: "images"
-                widget: "file"
-                multiple: true
+                widget: "list"
                 required: false
+                fields:
+                  - {label: "檔案", name: "src", widget: "file"}
+                  - {label: "這張照片的菜名", name: "name", widget: "string", required: false}
+                  - {label: "這張照片的副標／說明文字", name: "subtitle", widget: "string", required: false}
           - label: "橫幅 Banner"
             name: "banner"
             widget: "object"
@@ -176,13 +179,19 @@ collections:
         fields:
           - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
           - {label: "說明文字（選填）", name: "intro", widget: "text", required: false}
-          - label: "輪播（可自由增減張數，手動箭頭切換）"
-            name: "slides"
+          - label: "分類（可自訂名稱、自由新增分類；每個分類底下可放多張照片／影片，直式橫式都可以，支援 jpg/png/gif/mp4）"
+            name: "categories"
             widget: "list"
             fields:
-              - {label: "照片（選填）", name: "image", widget: "image", required: false}
-              - {label: "備註文字（選填）", name: "tag", widget: "string", required: false}
-          - {label: "完整菜單PDF（輪播圖點擊後跳轉）（必填）", name: "pdf_link", widget: "file"}
+              - {label: "分類名稱（必填）", name: "name", widget: "string"}
+              - label: "這個分類的照片／影片（可自由新增多筆）"
+                name: "items"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "檔案（必填）", name: "src", widget: "file"}
+                  - {label: "說明文字（選填）", name: "caption", widget: "string", required: false}
+          - {label: "完整菜單PDF（必填）", name: "pdf_link", widget: "file"}
           - label: "下方說明區塊"
             name: "info"
             widget: "object"
@@ -255,3 +264,24 @@ collections:
               - {label: "影片標題（必填）", name: "title", widget: "string"}
               - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID）（必填）", name: "video_url", widget: "string"}
               - {label: "說明文字（選填）", name: "description", widget: "text", required: false}
+
+  - name: "faq"
+    label: "常見問題頁（完整版）"
+    files:
+      - file: "_data/faq.yml"
+        label: "常見問題頁內容"
+        name: "faq"
+        fields:
+          - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
+          - {label: "頁面說明文字（選填）", name: "intro", widget: "text", required: false}
+          - label: "分類（可自由增減）"
+            name: "categories"
+            widget: "list"
+            fields:
+              - {label: "分類名稱（必填）", name: "name", widget: "string"}
+              - label: "這個分類底下的問題（可自由增減）"
+                name: "questions"
+                widget: "list"
+                fields:
+                  - {label: "問題（必填）", name: "question", widget: "string"}
+                  - {label: "答案（必填）", name: "answer", widget: "text"}
