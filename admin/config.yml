@@ -179,13 +179,19 @@ collections:
         fields:
           - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
           - {label: "說明文字（選填）", name: "intro", widget: "text", required: false}
-          - label: "輪播（可自由增減張數，手動箭頭切換）"
-            name: "slides"
+          - label: "分類（可自訂名稱、自由新增分類；每個分類底下可放多張照片／影片，直式橫式都可以，支援 jpg/png/gif/mp4）"
+            name: "categories"
             widget: "list"
             fields:
-              - {label: "照片（選填）", name: "image", widget: "image", required: false}
-              - {label: "備註文字（選填）", name: "tag", widget: "string", required: false}
-          - {label: "完整菜單PDF（輪播圖點擊後跳轉）（必填）", name: "pdf_link", widget: "file"}
+              - {label: "分類名稱（必填）", name: "name", widget: "string"}
+              - label: "這個分類的照片／影片（可自由新增多筆）"
+                name: "items"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "檔案（必填）", name: "src", widget: "file"}
+                  - {label: "說明文字（選填）", name: "caption", widget: "string", required: false}
+          - {label: "完整菜單PDF（必填）", name: "pdf_link", widget: "file"}
           - label: "下方說明區塊"
             name: "info"
             widget: "object"
