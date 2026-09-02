@@ -45,9 +45,10 @@
   /* 自適應版面（直式橫式都自然顯示，不裁切） */
   .gallery-group{display:none;max-width:1100px;margin:0 auto;padding:0 48px;}
   .gallery-group.active{display:block;}
-  .gallery{column-count:3;column-gap:16px;}
+  .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;}
   .gallery-item{
-    break-inside:avoid;margin-bottom:16px;border:1px solid var(--line);
+    width:440px;max-width:100%;
+    border:1px solid var(--line);
     overflow:hidden;cursor:zoom-in;position:relative;background:var(--black2);
   }
   .gallery-item img, .gallery-item video{width:100%;display:block;height:auto;}
@@ -61,8 +62,7 @@
     border:1px dashed var(--line);
   }
 
-  @media(max-width:900px){ .gallery{column-count:2;} }
-  @media(max-width:560px){ .gallery{column-count:1;} }
+  @media(max-width:900px){ .gallery-item{width:380px;} }
 
   /* 燈箱（點擊放大） */
   .lightbox{
@@ -94,6 +94,9 @@
     .cat-tabs{padding:0 24px;}
     .gallery-group{padding:0 24px;}
     .set-info{padding:0 24px;}
+    .lightbox{padding:14px;}
+    .lightbox-content img, .lightbox-content video{max-height:92vh;}
+    .lightbox-close{top:10px;right:16px;}
   }
 </style>
 </head>
