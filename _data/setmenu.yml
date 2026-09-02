@@ -6,6 +6,19 @@ slides:
   - image: /assets/img/uploads/4-5.jpg
     tag: TODO — 宴席包廂情境照 · 點擊可查看完整菜單
   - image: /assets/img/uploads/6-7.jpg
+categories:
+  - items:
+      - caption: 10人
+        src: /assets/img/uploads/4-5.jpg
+    name: 巨籠宴
+  - name: 私宴
+    items:
+      - src: /assets/img/uploads/6-7.jpg
+        caption: 客製化
+  - items:
+      - src: /assets/img/uploads/8-9.jpg
+        caption: 多人套餐
+    name: 套餐
 pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
 info:
   heading: 客製化宴席，量身而定
