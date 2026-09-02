@@ -1,14 +1,23 @@
-page_title: "美饌全菜單"
-intro: "炎香樓提供單點餐品與多人套餐兩種用餐形式，點選下方分類查看詳細內容與完整菜單。"
-
+page_title: 美饌全菜單
+intro: 炎香樓提供單點餐品與多人套餐兩種用餐形式，點選下方分類查看詳細內容與完整菜單。
 cards:
-  - title: "單點餐品"
-    description: "個人／小桌用餐首選，六道招牌菜色一次呈現，適合平日輕鬆用餐。"
+  - title: 單點餐品
+    description: 個人／小桌用餐首選，六道招牌菜色一次呈現，適合平日輕鬆用餐。
     image: ""
-    link: "menu-alacarte.html"
-    pdf_link: "assets/menu-alacarte.pdf"
-  - title: "套餐餐品"
-    description: "多人套餐與客製化宴席，適合家庭聚會、商務宴請與6人以上隱藏版菜單體驗。"
-    image: ""
-    link: "menu-set.html"
-    pdf_link: "assets/menu-set.pdf"
+    link: menu-alacarte.html
+    pdf_link: assets/menu-alacarte.pdf
+  - title: test4-5
+    description: 多人套餐與客製化宴席，適合家庭聚會、商務宴請與6人以上隱藏版菜單體驗。
+    image: /assets/img/uploads/4-5.jpg
+    link: menu-set.html
+    pdf_link: assets/menu-set.pdf
+  - title: test6-7
+    description: 巨龍宴
+    image: /assets/img/uploads/6-7.jpg
+    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
+    link: assets/menu-alacarte.pdf
+  - title: test8-9
+    description: 尾牙
+    image: /assets/img/uploads/8-9.jpg
+    link: assets/menu-alacarte.pdf
+    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
