@@ -10,7 +10,8 @@ categories:
   - items:
       - caption: 須提前3-5日預定，可加人、加價
         src: /assets/img/uploads/4-5.jpg
-    name: 巨籠宴
+      - src: /assets/img/uploads/line小巨龍菜單-1.jpg
+    name: 海鮮巨籠宴
   - name: 私宴
     items:
       - src: /assets/img/uploads/6-7.jpg
@@ -20,7 +21,7 @@ categories:
         caption: 平日午間供應
       - src: /assets/img/uploads/8-9.jpg
         caption: 套餐可加人、加價
-    name: 2~4人套餐
+    name: 2~10人套餐
 pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
 info:
   heading: 客製化宴席，量身而定
