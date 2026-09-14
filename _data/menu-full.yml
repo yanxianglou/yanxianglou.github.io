@@ -2,7 +2,11 @@ page_title: 美饌全菜單
 intro: 炎香樓提供單點餐品與多人套餐兩種用餐形式，點選下方分類查看詳細內容與完整菜單。
 cards:
   - title: 單點餐品
-    description: 個人／小桌用餐首選，六道招牌菜色一次呈現，適合平日輕鬆用餐。
+    description: |-
+      招牌燒臘—炎香燒鵝三吃
+      第1吃：脆皮果香馥郁
+      第2吃：鵝腿嫩香
+      第3吃：鵝丁鍋飯濃香十足
     image: ""
     link: menu-alacarte.html
     pdf_link: assets/menu-alacarte.pdf
