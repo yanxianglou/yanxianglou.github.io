@@ -4,14 +4,12 @@ cards:
   - title: 單點餐品
     description: |-
       招牌必點—炎香燒鵝三吃
-      第1吃：脆皮果香馥郁
-      第2吃：鵝腿嫩香
-      第3吃：鵝丁鍋飯濃香十足
+      1吃：脆皮果香馥郁 / 2吃：鵝腿嫩香 / 3吃：鵝丁鍋飯濃香十足
     image: /assets/img/uploads/image_s燒鵝三吃-2-.png
     link: menu-alacarte.html
-    pdf_link: assets/menu-alacarte.pdf
+    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
   - title: 多人套餐
     description: 多人套餐與客製化宴席，適合家庭聚會、商務宴請與6人以上隱藏版菜單體驗。
     image: ""
     link: menu-set.html
-    pdf_link: assets/menu-set.pdf
+    pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
