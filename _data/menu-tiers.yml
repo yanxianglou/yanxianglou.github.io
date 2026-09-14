@@ -1,24 +1,26 @@
 tiers:
   - name: 商務雙人雅饌
     audience: 2人
-    price: "1680"
+    price: NT$1,680
     availability: 平日午間限定
     description: 商務會面、好友相聚，讓一席午餐，多一份從容與講究。
     image: /assets/img/uploads/3.最新消息640-x-800px_商務套餐.jpg
     visible: true
-  - name: 個人化私人訂製
-    audience: 個人／2人以內
-    price: TODO
-    availability: 需預約
-    description: 沿用午間套餐的個人份量邏輯，每人低消提高，多一分細緻與彈性。
-    image: ""
+  - name: 客製桌宴訂製
+    audience: 4人以上
+    price: 依預算
+    availability: 需提前預約
+    description: 告訴我們您的預算、人數與需求，由專人為您規劃菜單，從經典招牌到主廚隱藏料理，都能客製搭配，打造專屬於您的饗宴。
+    image: /assets/img/uploads/2.最新消息640-x-800px_私人訂製-解壓縮-.jpg
     visible: true
-  - name: 4人套餐
-    audience: 4人固定
-    price: TODO
+  - name: 海鮮蒸籠宴
+    audience: 4-10人
+    price: NT$5,880~NT$38,800
     availability: 需預約
-    description: 標準團體用餐，適合家庭聚會與朋友小酌。
-    image: ""
+    description: |-
+      海鮮與燒臘一次滿足，才是真正的豪華聚餐！
+      一米巨籠，蒸的是鮮，吃的是澎湃！
+    image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
     visible: true
   - name: 隱藏版菜單
     audience: 6人以上
@@ -26,4 +28,4 @@ tiers:
     availability: 洽詢預約
     description: 真正的私人訂製，僅限6人以上開放，搭配大轉輪蒸籠上桌儀式。
     image: ""
-    visible: true
+    visible: false
