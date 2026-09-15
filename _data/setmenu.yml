@@ -12,19 +12,19 @@ categories:
         caption: 須提前1-3日預定
       - caption: 須提前3-5日預定，可加人、加價
         src: /assets/img/uploads/4-5.jpg
-    name: 海鮮巨籠宴
+    name: 4人海鮮宴、10人巨籠宴
   - items:
-      - src: /assets/img/uploads/尾牙方案_line.png
-        caption: 早鳥訂桌加贈紅酒
-      - src: /assets/img/uploads/8-9.jpg
-        caption: 套餐可加人、加價
       - src: /assets/img/uploads/0819雙人商業套餐菜單.jpg
         caption: 平日午間供應
-    name: 2~10人套餐
-  - name: 私宴
+      - src: /assets/img/uploads/8-9.jpg
+        caption: 套餐可加人、加價
+    name: 2、4人套餐
+  - name: 節慶粵宴、私宴
     items:
       - src: /assets/img/uploads/6-7.jpg
         caption: 須提前3-5日預定
+      - src: /assets/img/uploads/尾牙方案_line.png
+        caption: ① 即日起至10/10—超早鳥訂桌加贈紅酒1支  ② 10/11~10/31—早鳥訂桌加贈凍檸茶1壺
 pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
 info:
   heading: 客製化宴席，量身而定
@@ -39,5 +39,5 @@ info:
 
 
     讓每一道菜都成為款待賓客的心意，將體面、講究與情誼，一席之間悉數呈現。
-  cta_text: 桌宴洽詢
+  cta_text: 宴席洽詢
   cta_link: https://lin.ee/T8JM4Q8
