@@ -396,16 +396,23 @@
   </section>
 
   <!-- 四格卡片 -->
+  {% assign visible_tiers = site.data['menu-tiers'].tiers | where: 'visible', true %}
+  {% if visible_tiers.size > 0 %}
   <section class="tier-section">
     <div class="tier-grid">
-      {% assign visible_tiers = site.data['menu-tiers'].tiers | where: 'visible', true %}
       {% for tier in visible_tiers %}
       <div class="tier-card">
         <div class="head">{{ tier.name }}</div>
         <div class="visual">
+          {% if tier.link and tier.link != "" %}
+          <a class="v-image" href="{{ tier.link }}" target="_blank" rel="noopener"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
+            {% unless tier.image and tier.image != "" %}尚未上傳照片{% endunless %}
+          </a>
+          {% else %}
           <div class="v-image"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
             {% unless tier.image and tier.image != "" %}尚未上傳照片{% endunless %}
           </div>
+          {% endif %}
           <div class="v-text">
             <span class="avail">{{ tier.audience }} · {{ tier.availability }}</span>
             <div class="price">{{ tier.price }}</div>
@@ -416,6 +423,7 @@
       {% endfor %}
     </div>
   </section>
+  {% endif %}
 
   <!-- 最新消息(格子式) -->
   <section class="news" id="news">
