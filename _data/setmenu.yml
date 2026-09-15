@@ -21,10 +21,10 @@ categories:
     name: 2人精緻午宴、4人分享宴
   - name: 節慶粵宴、私宴
     items:
-      - src: /assets/img/uploads/6-7.jpg
-        caption: 須提前3-5日預定
       - src: /assets/img/uploads/尾牙方案_line.png
         caption: ① 即日起至10/10—超早鳥訂桌加贈紅酒1支  ② 10/11~10/31—早鳥訂桌加贈凍檸茶1壺
+      - src: /assets/img/uploads/6-7.jpg
+        caption: 須提前3-5日預定
 pdf_link: /assets/img/uploads/2026.04.炎香樓菜本.pdf
 info:
   heading: 客製化宴席，量身而定
