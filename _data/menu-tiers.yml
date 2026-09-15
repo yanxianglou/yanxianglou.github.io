@@ -6,7 +6,7 @@ tiers:
     description: 商務會面、好友相聚，讓一席午餐，多一份從容與講究。
     image: /assets/img/uploads/3.最新消息640-x-800px_商務套餐.jpg
     link: ""
-    visible: true
+    visible: false
   - name: 客製桌宴訂製
     audience: 4人以上
     price: 依預算
@@ -14,7 +14,7 @@ tiers:
     description: 告訴我們您的預算、人數與需求，由專人為您規劃菜單，從經典招牌到主廚隱藏料理，都能客製搭配，打造專屬於您的饗宴。
     image: /assets/img/uploads/2.最新消息640-x-800px_私人訂製-解壓縮-.jpg
     link: ""
-    visible: true
+    visible: false
   - name: 海鮮蒸籠宴
     audience: 4-10人
     price: NT$5,880~NT$38,800
@@ -24,7 +24,7 @@ tiers:
       一米巨籠，蒸的是鮮，吃的是澎湃！
     image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
     link: ""
-    visible: true
+    visible: false
   - name: 隱藏版菜單
     audience: 6人以上
     price: TODO
