@@ -68,7 +68,7 @@ dishes:
         subtitle: 鴨皮焦香酥脆，叉燒柔嫩豐腴，一口盡享雙重風味。
 banner:
   image: https://api.ocard.co/lineauth/yanxianglou
-  caption: TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖
+  caption: 橫幅Banner：限定推薦或活動宣傳圖
 cta_card:
   text: 想看更完整的菜色？
   link: https://drive.google.com/file/d/1IHdT4EuJJcdMMJ8qVzwZx6i6WG8RIpiF/view?usp=sharing
