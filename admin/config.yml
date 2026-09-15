@@ -163,6 +163,7 @@ collections:
             fields:
               - {label: "照片（選填）", name: "image", widget: "image", required: false}
               - {label: "備用文字（沒放照片時顯示）（選填）", name: "caption", widget: "string", required: false}
+              - {label: "點擊跳轉連結（選填，填了整張banner可點擊）", name: "link", widget: "string", required: false}
           - label: "右下角 CTA 卡"
             name: "cta_card"
             widget: "object"
@@ -210,6 +211,7 @@ collections:
         fields:
           - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
           - {label: "說明文字（選填）", name: "intro", widget: "text", required: false}
+          - {label: "完整菜單PDF（必填）", name: "pdf_link", widget: "file"}
           - label: "分類卡片"
             name: "cards"
             widget: "list"
@@ -218,7 +220,6 @@ collections:
               - {label: "說明文字（選填）", name: "description", widget: "text", required: false}
               - {label: "照片（選填）", name: "image", widget: "image", required: false}
               - {label: "查看連結（必填）", name: "link", widget: "string"}
-              - {label: "完整菜單PDF（必填）", name: "pdf_link", widget: "file"}
 
   - name: "story"
     label: "品牌故事"
