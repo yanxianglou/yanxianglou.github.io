@@ -118,6 +118,7 @@ collections:
               - {label: "供應時段／備註（必填）", name: "availability", widget: "string"}
               - {label: "說明文字（滑鼠移入卡片時顯示）（選填）", name: "description", widget: "text", required: false}
               - {label: "預設圖片（滑鼠移入前顯示）（選填）", name: "image", widget: "image", required: false}
+              - {label: "點擊圖片跳轉連結（選填，填了點圖片就會前往這個網址）", name: "link", widget: "string", required: false}
 
   - name: "news"
     label: "最新消息"
@@ -129,7 +130,15 @@ collections:
       - {label: "日期（必填）", name: "date", widget: "datetime"}
       - {label: "下架時間（過了這個時間，首頁與消息列表就不會再顯示這則，留空則永久顯示）（選填）", name: "expire_date", widget: "datetime", required: false}
       - {label: "摘要（首頁卡片會顯示這段）（必填）", name: "excerpt", widget: "text"}
-      - {label: "圖片（選填）", name: "image", widget: "image", required: false}
+      - {label: "圖片（選填，單張封面圖；若下方「附圖」有設定內容，畫面會以附圖為主）", name: "image", widget: "image", required: false}
+      - label: "附圖（可新增多張，每張可各自開關顯示、設定點擊跳轉連結；若全部關閉顯示或都沒上傳，這個區塊在頁面上不會佔任何版面）"
+        name: "images"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "顯示", name: "visible", widget: "boolean", default: true}
+          - {label: "圖片（必填）", name: "src", widget: "image"}
+          - {label: "點擊跳轉連結（選填，填了這張圖片就能點擊前往）", name: "link", widget: "string", required: false}
       - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID，選填）", name: "video_url", widget: "string", required: false}
       - {label: "內文（選填）", name: "body", widget: "markdown", required: false}
 
