@@ -67,7 +67,7 @@ dishes:
         name: 黑鑽鴨皮叉燒(私人訂製)
         subtitle: 鴨皮焦香酥脆，叉燒柔嫩豐腴，一口盡享雙重風味。
 banner:
-  image: ""
+  image: /assets/img/uploads/招募會員bn.png
   caption: TODO — 橫幅Banner：可放季節限定推薦或活動宣傳圖
 cta_card:
   text: 想看更完整的菜色？
