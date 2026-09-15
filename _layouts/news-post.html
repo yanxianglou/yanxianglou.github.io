@@ -19,17 +19,22 @@
   body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
   a{color:inherit;text-decoration:none;}
   .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
-  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;position:relative;}
+  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
   .logo-slot.has-image{border:none;}
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
 
   .wrap{max-width:760px;margin:0 auto;padding:70px 48px 120px;}
-  .date{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:.12em;color:var(--accent-light);display:block;margin-bottom:16px;}
+  .date{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:.12em;color:#C6273D;display:block;margin-bottom:16px;}
   h1{font-size:28px;font-weight:700;line-height:1.6;margin-bottom:28px;}
-  .thumb{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#2A1512,#100E0A);margin-bottom:32px;overflow:hidden;}
+  .thumb{width:100%;aspect-ratio:4/5;background:linear-gradient(135deg,#2A1512,#100E0A);margin-bottom:32px;overflow:hidden;}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .attach-gallery{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;margin-bottom:32px;}
+  .attach-item{aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);background:var(--black2);display:block;}
+  .attach-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s ease;}
+  a.attach-item{cursor:pointer;}
+  a.attach-item:hover img{opacity:.85;}
   .video{width:100%;aspect-ratio:16/9;margin-bottom:32px;background:var(--black2);border:1px solid var(--line);}
   .video iframe{width:100%;height:100%;border:0;display:block;}
   .content{font-size:15px;line-height:2.1;color:var(--muted-light);}
@@ -55,7 +60,34 @@
   <span class="date">{{ page.date | date: "%Y.%m.%d" }}</span>
   <h1>{{ page.title }}</h1>
 
-  {% if page.image and page.image != "" %}
+  {% assign visible_count = 0 %}
+  {% for img in page.images %}
+    {% unless img.visible == false %}
+      {% if img.src and img.src != "" %}
+        {% assign visible_count = visible_count | plus: 1 %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if visible_count > 0 %}
+    <div class="attach-gallery">
+      {% for img in page.images %}
+        {% unless img.visible == false %}
+          {% if img.src and img.src != "" %}
+            {% if img.link and img.link != "" %}
+            <a class="attach-item" href="{{ img.link }}" target="_blank" rel="noopener">
+              <img src="{{ img.src | relative_url }}" alt="{{ page.title }}">
+            </a>
+            {% else %}
+            <div class="attach-item">
+              <img src="{{ img.src | relative_url }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% elsif page.image and page.image != "" %}
     <div class="thumb"><img src="{{ page.image | relative_url }}" alt="{{ page.title }}"></div>
   {% endif %}
 
