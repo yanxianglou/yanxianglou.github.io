@@ -68,12 +68,13 @@
 
   .extra-row{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:20px;}
   .banner-cell{
-    background:radial-gradient(circle at 30% 30%, rgba(90,16,13,.4), transparent 55%), linear-gradient(160deg,#241511,#100D0A);
-    background-size:cover;background-position:center;
+    background-image:radial-gradient(circle at 30% 30%, rgba(90,16,13,.4), transparent 55%), linear-gradient(160deg,#241511,#100D0A);
+    background-size:cover;background-position:center;background-repeat:no-repeat;
     border:1px solid var(--line);min-height:200px;
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.1em;color:var(--muted-light);text-align:center;padding:20px;
   }
+  a.banner-cell{cursor:pointer;}
   .cta-cell{
     background:var(--black2);border:1px solid var(--line);min-height:200px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;
@@ -147,9 +148,16 @@
   </div>
 
   <div class="extra-row">
+    {% assign banner_link = site.data.alacarte.banner.link %}
+    {% if banner_link and banner_link != "" %}
+    <a class="banner-cell" href="{{ banner_link }}" target="_blank" rel="noopener"{% if site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %} style="background-image:url('{{ site.data.alacarte.banner.image | relative_url }}');"{% endif %}>
+      {% unless site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %}{{ site.data.alacarte.banner.caption }}{% endunless %}
+    </a>
+    {% else %}
     <div class="banner-cell"{% if site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %} style="background-image:url('{{ site.data.alacarte.banner.image | relative_url }}');"{% endif %}>
       {% unless site.data.alacarte.banner.image and site.data.alacarte.banner.image != "" %}{{ site.data.alacarte.banner.caption }}{% endunless %}
     </div>
+    {% endif %}
     <div class="cta-cell">
       <div class="t">{{ site.data.alacarte.cta_card.text }}</div>
       <a class="btn" href="{{ site.data.alacarte.cta_card.link }}" target="_blank">查看完整菜單 →</a>

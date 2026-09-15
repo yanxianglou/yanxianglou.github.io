@@ -78,9 +78,10 @@
   <span class="eyebrow">FULL MENU</span>
   <h1>{{ site.data['menu-full'].page_title }}</h1>
   <p>{{ site.data['menu-full'].intro }}</p>
-  {% if site.data['menu-full'].pdf_link and site.data['menu-full'].pdf_link != "" %}
+  {% assign full_pdf_link = site.data['menu-full'].pdf_link | default: site.data['menu-full'].cards[0].pdf_link %}
+  {% if full_pdf_link and full_pdf_link != "" %}
   <div class="full-pdf">
-    <a class="btn outline" href="{{ site.data['menu-full'].pdf_link }}" target="_blank">完整菜單PDF</a>
+    <a class="btn outline" href="{{ full_pdf_link }}" target="_blank">完整菜單PDF</a>
   </div>
   {% endif %}
 </div>

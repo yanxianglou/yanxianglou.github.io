@@ -39,7 +39,7 @@
   .site-header{
     background:var(--black);
     color:var(--text-warm);
-    display:flex;justify-content:flex-end;align-items:center;gap:48px;
+    display:flex;justify-content:center;align-items:center;gap:48px;
     padding:20px 48px;position:relative;z-index:50;
   }
   .logo-slot{cursor:pointer;
@@ -48,7 +48,6 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.1em;
     color:var(--muted);text-align:center;line-height:1.4;
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
   }
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   .logo-slot.has-image{border:none;}
@@ -129,8 +128,8 @@
   .tier-card .visual{position:relative;aspect-ratio:4/5;overflow:hidden;}
   .tier-card .v-image{
     position:absolute;inset:0;
-    background-size:cover;background-position:center;
-    background:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#241511,#100D0A);
+    background-image:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#241511,#100D0A);
+    background-size:cover;background-position:center;background-repeat:no-repeat;
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:16px;
     transition:transform .4s ease, opacity .4s ease;
@@ -260,7 +259,7 @@
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
-    .site-header{padding:16px 20px;justify-content:flex-end;}
+    .site-header{padding:16px 20px;justify-content:space-between;}
     .hero-frame{padding:20px 12px 32px;}
     .statement{padding:56px 24px 90px;}
     .statement h2{font-size:19px;line-height:1.65;margin-bottom:18px;}

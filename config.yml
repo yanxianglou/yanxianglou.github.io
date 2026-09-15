@@ -163,6 +163,7 @@ collections:
             fields:
               - {label: "照片（選填）", name: "image", widget: "image", required: false}
               - {label: "備用文字（沒放照片時顯示）（選填）", name: "caption", widget: "string", required: false}
+              - {label: "點擊跳轉連結（選填，填了整張banner可點擊）", name: "link", widget: "string", required: false}
           - label: "右下角 CTA 卡"
             name: "cta_card"
             widget: "object"

@@ -42,7 +42,7 @@
   .cat-tab:hover{border-color:var(--accent-light);color:var(--text-warm);}
   .cat-tab.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 
-  /* 自適應版面（直式橫式都自然顯示，不裁切） */
+  /* 自適應版面（統一畫框尺寸，圖片完整顯示不裁切） */
   .gallery-group{display:none;max-width:1100px;margin:0 auto;padding:0 48px;}
   .gallery-group.active{display:block;}
   .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;}
@@ -50,11 +50,20 @@
     width:440px;max-width:100%;
     border:1px solid var(--line);
     overflow:hidden;cursor:zoom-in;position:relative;background:var(--black2);
+    display:flex;flex-direction:column;
   }
-  .gallery-item img, .gallery-item video{width:100%;display:block;height:auto;}
+  .gallery-item .img-wrap{
+    width:100%;aspect-ratio:4/3;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--black2);overflow:hidden;
+  }
+  .gallery-item .img-wrap img, .gallery-item .img-wrap video{
+    max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;margin:0 auto;
+  }
   .gallery-item .g-cap{
-    padding:12px 14px;font-size:12.5px;color:var(--muted-light);
+    padding:12px 14px;font-size:12.5px;color:var(--muted-light);line-height:1.6;
     background:var(--black2);border-top:1px solid var(--line);
+    min-height:64px;display:flex;align-items:center;
   }
   .gallery-empty{
     text-align:center;padding:60px 20px;color:var(--muted);
@@ -134,12 +143,12 @@
       {% assign ext = item.src | split: '.' | last | downcase %}
       {% if ext == 'mp4' or ext == 'webm' or ext == 'mov' %}
         <div class="gallery-item" data-src="{{ item.src | relative_url }}" data-type="video">
-          <video src="{{ item.src | relative_url }}" muted autoplay loop playsinline></video>
+          <div class="img-wrap"><video src="{{ item.src | relative_url }}" muted autoplay loop playsinline></video></div>
           {% if item.caption and item.caption != "" %}<div class="g-cap">{{ item.caption }}</div>{% endif %}
         </div>
       {% else %}
         <div class="gallery-item" data-src="{{ item.src | relative_url }}" data-type="image">
-          <img src="{{ item.src | relative_url }}" alt="{{ cat.name }}" loading="lazy">
+          <div class="img-wrap"><img src="{{ item.src | relative_url }}" alt="{{ cat.name }}" loading="lazy"></div>
           {% if item.caption and item.caption != "" %}<div class="g-cap">{{ item.caption }}</div>{% endif %}
         </div>
       {% endif %}
