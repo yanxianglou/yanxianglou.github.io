@@ -19,8 +19,8 @@
   body{font-family:'Noto Serif TC', serif;background:var(--black);color:var(--text-warm);}
   a{color:inherit;text-decoration:none;}
   .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted-light);}
-  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);}
+  header{padding:16px 48px;border-bottom:1px solid var(--line);display:flex;justify-content:flex-end;align-items:center;position:relative;}
+  .logo-slot{cursor:pointer;width:100px;height:36px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:9px;letter-spacing:0.1em;color:var(--muted);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
   .logo-slot.has-image{border:none;}
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   header a.back{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--muted-light);}
@@ -28,6 +28,7 @@
   .page-head{padding:70px 48px 20px;text-align:center;}
   .page-head h1{font-size:32px;font-weight:700;margin:14px 0 12px;}
   .page-head p{font-size:14px;color:var(--muted-light);max-width:520px;margin:0 auto;}
+  .page-head .full-pdf{margin-top:24px;}
 
   .hub-grid{
     max-width:1000px;margin:50px auto 100px;padding:0 48px;
@@ -77,6 +78,11 @@
   <span class="eyebrow">FULL MENU</span>
   <h1>{{ site.data['menu-full'].page_title }}</h1>
   <p>{{ site.data['menu-full'].intro }}</p>
+  {% if site.data['menu-full'].pdf_link and site.data['menu-full'].pdf_link != "" %}
+  <div class="full-pdf">
+    <a class="btn outline" href="{{ site.data['menu-full'].pdf_link }}" target="_blank">完整菜單PDF</a>
+  </div>
+  {% endif %}
 </div>
 
 <div class="hub-grid">
@@ -88,7 +94,6 @@
       <p>{{ card.description }}</p>
       <div class="links">
         <a class="btn" href="{{ card.link }}">查看菜色 →</a>
-        <a class="btn outline" href="{{ card.pdf_link }}" target="_blank">完整菜單PDF</a>
       </div>
     </div>
   </div>

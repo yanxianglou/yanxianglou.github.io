@@ -39,7 +39,7 @@
   .site-header{
     background:var(--black);
     color:var(--text-warm);
-    display:flex;justify-content:center;align-items:center;gap:48px;
+    display:flex;justify-content:flex-end;align-items:center;gap:48px;
     padding:20px 48px;position:relative;z-index:50;
   }
   .logo-slot{cursor:pointer;
@@ -48,6 +48,7 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.1em;
     color:var(--muted);text-align:center;line-height:1.4;
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
   }
   .logo-slot img{max-width:100%;max-height:100%;display:block;}
   .logo-slot.has-image{border:none;}
@@ -122,10 +123,10 @@
   /* ===== 四格卡片 ===== */
   .tier-section{background:var(--black);padding:40px 48px 100px;}
   .tier-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:20px;max-width:1200px;margin:0 auto;}
-  .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;height:260px;transition:transform .35s ease, box-shadow .35s ease;}
+  .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;transition:transform .35s ease, box-shadow .35s ease;}
   .tier-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(0,0,0,0.4);}
   .tier-card .head{background:var(--accent);color:var(--on-accent);padding:18px 20px;font-size:15px;font-weight:700;text-align:center;position:relative;z-index:3;}
-  .tier-card .visual{position:relative;height:calc(100% - 56px);overflow:hidden;}
+  .tier-card .visual{position:relative;aspect-ratio:4/5;overflow:hidden;}
   .tier-card .v-image{
     position:absolute;inset:0;
     background-size:cover;background-position:center;
@@ -160,7 +161,7 @@
     display:flex;flex-direction:column;overflow:hidden;
   }
   .news-card .thumb{
-    height:260px;
+    aspect-ratio:4/5;
     background:linear-gradient(135deg, #E9E2D0, #D8CFB6);
     display:flex;align-items:center;justify-content:center;
     font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);
@@ -259,7 +260,7 @@
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
-    .site-header{padding:16px 20px;justify-content:space-between;}
+    .site-header{padding:16px 20px;justify-content:flex-end;}
     .hero-frame{padding:20px 12px 32px;}
     .statement{padding:56px 24px 90px;}
     .statement h2{font-size:19px;line-height:1.65;margin-bottom:18px;}

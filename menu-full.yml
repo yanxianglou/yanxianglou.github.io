@@ -1,0 +1,14 @@
+page_title: 美饌全菜單
+intro: ""
+pdf_link: https://drive.google.com/file/d/1IHdT4EuJJcdMMJ8qVzwZx6i6WG8RIpiF/view?usp=sharing
+cards:
+  - title: 單點餐品
+    description: |-
+      招牌必點—炎香燒鵝三吃，
+      1吃：脆皮果香馥郁 / 2吃：鵝腿嫩香 / 3吃：鵝丁鍋飯濃香十足
+    image: /assets/img/uploads/image_s燒鵝三吃-2-.png
+    link: menu-alacarte.html
+  - title: 多人套餐
+    description: 從共享套餐、巨籠宴到私人訂製，依人數與預算靈活安排，以精緻粵饌款待每一場歡聚，為重要時刻成就一席好宴。
+    image: /assets/img/uploads/套餐示意圖-外帶年菜-2026-.png
+    link: menu-set.html
