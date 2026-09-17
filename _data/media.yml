@@ -1,7 +1,19 @@
 carousel:
-  - image: /assets/img/uploads/0120-170125-0011_orig.jpg
+  - image: /assets/img/uploads/感謝台中市觀光局局長-陳盛山局長-香港詠藜園董事長、世界中餐名廚交流協會名譽主席-楊王小玲一同蒞臨炎香樓！.jpg
     video_url: ""
-    caption: TODO — 媒體採訪／得獎情境照或影片，可放照片也可放YouTube影片
+    caption: 感謝台中市觀光局局長-陳盛山局長 香港詠藜園董事長、世界中餐名廚交流協會名譽主席-楊王小玲一同蒞臨炎香樓！
+  - image: /assets/img/uploads/感謝二位前市長聞香而來.jpg
+    caption: 感謝二位前市長聞香而來
+  - image: /assets/img/uploads/感謝中天主播周玉琴蒞臨.jpg
+    caption: 感謝中天主播周玉琴蒞臨
+  - image: /assets/img/uploads/感謝美食評鑑家胡天蘭蒞臨.jpg
+    caption: 感謝美食評鑑家胡天蘭蒞臨
+  - image: /assets/img/uploads/張立東.jpg
+    caption: 張立東:超好吃der~~
+  - image: /assets/img/uploads/3公斤龍蝦買一送一.jpg
+    caption: 3公斤龍蝦買一送一
+  - image: /assets/img/uploads/午后時光：炎香樓推出精緻港點下午茶，點綴您的午後食光.jpg
+    caption: 午后時光：炎香樓推出精緻港點下午茶，點綴您的午後食光
 intro:
   heading: 媒體報導
   body: |
