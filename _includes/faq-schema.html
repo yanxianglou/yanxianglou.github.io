@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% assign first = true %}
+    {% for cat in site.data.faq.categories %}
+      {% for item in cat.questions %}
+        {% unless first %},{% endunless %}
+        {% assign first = false %}
+        {
+          "@type": "Question",
+          "name": {{ item.question | strip_html | strip_newlines | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.answer | strip_html | strip_newlines | jsonify }}
+          }
+        }
+      {% endfor %}
+    {% endfor %}
+  ]
+}
+</script>
