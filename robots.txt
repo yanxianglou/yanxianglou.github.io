@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /assets/img/uploads/
+
+Sitemap: https://yanxianglou.com.tw/sitemap.xml
