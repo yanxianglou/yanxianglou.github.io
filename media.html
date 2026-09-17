@@ -30,7 +30,7 @@
 
   /* 上方輪播（照片或影片皆可，手動箭頭） */
   .carousel-wrap{max-width:1100px;margin:40px auto 0;padding:0 48px;position:relative;}
-  .carousel{position:relative;height:440px;overflow:hidden;border:1px solid var(--line);background:var(--black2);}
+  .carousel{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);background:var(--black2);}
   .c-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
   .c-slide.active{opacity:1;}
   .c-slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
@@ -75,7 +75,6 @@
   .video-card p{font-size:12.5px;line-height:1.8;color:var(--muted-light);}
 
   @media(max-width:700px){
-    .carousel{height:260px;}
     .video-grid{grid-template-columns:1fr;}
     .page-head{padding:50px 24px 20px;}
     .intro{padding:0 24px;margin:50px auto;}
