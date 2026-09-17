@@ -1,1 +1,32 @@
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "炎香樓",
+  "url": "https://yanxianglou.com.tw",
+  "telephone": "{{ site.data['site-settings'].footer.phone_tel }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ site.data['site-settings'].footer.address }}",
+    "addressLocality": "台中市",
+    "addressRegion": "台中市",
+    "addressCountry": "TW"
+  },
+  "servesCuisine": "Cantonese",
+  "priceRange": "$$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "14:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "17:00",
+      "closes": "21:30"
+    }
+  ]
+}
+</script>
