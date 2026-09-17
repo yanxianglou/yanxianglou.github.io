@@ -16,12 +16,16 @@ carousel:
     caption: 午后時光：炎香樓推出精緻港點下午茶，點綴您的午後食光
 intro:
   heading: 媒體報導
-  body: |
-    TODO — 這裡可以編輯一段整體介紹文字，例如各家媒體採訪炎香樓的背景說明， 支援基本排版（可分段落）。
+  body: |-
+    **｜節目影音｜**
+    透過鏡頭走進炎香樓，看見料理現場、主廚手藝，以及餐桌之外的精彩故事。
+
+    **｜品牌紀錄｜**
+    重要活動、名廚交流與精彩企劃，記錄炎香樓一路走來的每一個重要時刻。
 videos:
-  - title: TODO 影片標題 1
-    video_url: "123"
-    description: TODO 簡短說明文字
+  - title: 【來自LA-BuzzFeedVideo Worth it團隊】 Chicken．Taiwan 招牌古法叫化雞專訪
+    video_url: https://www.youtube.com/embed/JCHttVEG_Lk?si=mEYsdJF3Zubhb1hn
+    description: ""
   - title: TODO 影片標題 2
     video_url: "223"
     description: TODO 簡短說明文字
