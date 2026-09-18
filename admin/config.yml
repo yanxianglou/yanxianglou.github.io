@@ -256,7 +256,10 @@ collections:
                 name: "text"
                 widget: "object"
                 fields:
-                  - {label: "內容（必填，可分段落）", name: "content", widget: "markdown"}
+                  - label: "內容（必填，可分段落）"
+                    name: "content"
+                    widget: "markdown"
+                    hint: "選用「H.」標題功能時，字級已統一釘死：Heading 1=24px、Heading 2=20px、Heading 3=18px、Heading 4=16px、Heading 5=15px、Heading 6=14px。換行請直接按 Enter，不要在行尾打反斜線 \\，否則會被誤判成程式碼區塊。"
               - label: "圖片"
                 name: "image"
                 widget: "object"
