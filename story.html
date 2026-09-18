@@ -70,6 +70,15 @@
   .block-text{font-family:'Noto Sans TC', sans-serif;font-size:16.5px;line-height:2.1;color:var(--muted-light);}
   .block-text p{margin-bottom:1.3em;}
   .block-text p:last-child{margin-bottom:0;}
+  /* 選用 Heading 1~6 時，統一釘死字級，不受瀏覽器預設值影響（跟最新消息文章頁一致） */
+  .block-text h1{font-size:24px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1.2em 0 0.6em;}
+  .block-text h2{font-size:20px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1.2em 0 0.6em;}
+  .block-text h3{font-size:18px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1.1em 0 0.5em;}
+  .block-text h4{font-size:16px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1em 0 0.5em;}
+  .block-text h5{font-size:15px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1em 0 0.4em;}
+  .block-text h6{font-size:14px;font-weight:700;color:var(--text-warm);line-height:1.6;margin:1em 0 0.4em;}
+  .block-text h1:first-child, .block-text h2:first-child, .block-text h3:first-child,
+  .block-text h4:first-child, .block-text h5:first-child, .block-text h6:first-child{margin-top:0;}
   .block-image img{width:100%;height:auto;display:block;border:1px solid var(--line);}
   .block-image .b-cap, .block-video .b-cap{
     margin-top:10px;font-family:'Noto Sans TC', sans-serif;font-size:13px;color:var(--muted);text-align:center;
