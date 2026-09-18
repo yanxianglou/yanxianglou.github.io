@@ -192,6 +192,30 @@
   .flip-front .qtext{font-family:'Noto Sans TC', sans-serif;font-size:15px;}
   .flip-back{background:var(--black2);color:var(--text-warm);transform:rotateY(180deg);font-family:'Noto Sans TC', sans-serif;font-size:14px;line-height:1.7;border:1px solid var(--accent);}
 
+  /* ===== FAQ 手機版彈窗 ===== */
+  .faq-modal{
+    position:fixed;inset:0;background:rgba(10,8,6,.78);z-index:999;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .faq-modal.open{display:flex;}
+  .faq-modal-box{
+    position:relative;max-width:480px;width:100%;
+    background:var(--black2);border:1px solid var(--accent);
+    padding:40px 26px 28px;
+  }
+  .faq-modal-close{
+    position:absolute;top:10px;right:14px;font-size:28px;line-height:1;
+    color:var(--text-warm);cursor:pointer;font-family:'Oswald', sans-serif;
+  }
+  .faq-modal-q{
+    font-family:'Noto Sans TC', sans-serif;font-weight:700;font-size:17px;
+    color:var(--text-warm);margin-bottom:14px;line-height:1.6;
+  }
+  .faq-modal-a{
+    font-family:'Noto Sans TC', sans-serif;font-size:15px;line-height:1.9;
+    color:var(--muted-light);
+  }
+
   /* ===== 結尾CTA ===== */
   .cta-banner{height:300px;background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.35), transparent 50%), linear-gradient(200deg, #241512 0%, #0F0D09 75%);display:flex;align-items:center;justify-content:center;}
   .cta-banner .box{border:1px solid var(--text-warm);color:var(--text-warm);padding:20px 40px;font-size:18px;letter-spacing:0.05em;}
@@ -265,6 +289,8 @@
     .statement h2{font-size:19px;line-height:1.65;margin-bottom:18px;}
     .statement p{font-size:13.5px;}
     .hamburger{display:flex;}
+    .flip:hover .flip-inner{transform:none;}
+    .flip{cursor:pointer;}
   }
   @media(max-width:400px){
     .social-icons a{width:28px;height:28px;}
@@ -474,7 +500,7 @@
     <span class="eyebrow">FAQ</span>
     <div class="faq-grid">
       {% for item in site.data['site-settings'].faq %}
-      <div class="flip">
+      <div class="flip" data-q="{{ item.question | escape }}" data-a="{{ item.answer | escape }}">
         <div class="flip-inner">
           <div class="flip-front"><div class="q">Q</div><div class="qtext">{{ item.question }}</div></div>
           <div class="flip-back">{{ item.answer }}</div>
@@ -484,6 +510,15 @@
     </div>
     <a class="faq-more" href="{{ 'faq.html' | relative_url }}">查看完整 FAQ →</a>
   </section>
+
+  <!-- FAQ 手機版彈窗（點擊卡片顯示完整問答，右上角X關閉） -->
+  <div class="faq-modal" id="faqModal">
+    <div class="faq-modal-box">
+      <div class="faq-modal-close" id="faqModalClose">&times;</div>
+      <div class="faq-modal-q" id="faqModalQ"></div>
+      <div class="faq-modal-a" id="faqModalA"></div>
+    </div>
+  </div>
 
   <!-- 結尾CTA -->
   <a class="cta-banner" href="{{ site.data['site-settings'].floating_cta.booking_link | default: '#' }}" target="_blank"><div class="box">立即訂位，品味粵菜真味</div></a>
@@ -542,6 +577,30 @@
         card.classList.toggle('flipped');
       });
     });
+  })();
+
+  // FAQ：手機版點擊卡片彈出完整問答，右上角X或點擊背景關閉
+  (function(){
+    var modal = document.getElementById('faqModal');
+    var modalQ = document.getElementById('faqModalQ');
+    var modalA = document.getElementById('faqModalA');
+    var modalClose = document.getElementById('faqModalClose');
+    if(!modal) return;
+
+    function isMobile(){ return window.matchMedia('(max-width:900px)').matches; }
+
+    document.querySelectorAll('.faq-grid .flip').forEach(function(card){
+      card.addEventListener('click', function(){
+        if(!isMobile()) return;
+        modalQ.textContent = card.getAttribute('data-q');
+        modalA.textContent = card.getAttribute('data-a');
+        modal.classList.add('open');
+      });
+    });
+
+    modalClose.addEventListener('click', function(){ modal.classList.remove('open'); });
+    modal.addEventListener('click', function(e){ if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') modal.classList.remove('open'); });
   })();
 </script>
 </body>
