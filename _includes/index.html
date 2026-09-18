@@ -1,0 +1,608 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+{% include ga-tag.html %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>炎香樓 yanxianglou｜台中西區粵式桌宴、私人訂製宴客</title>
+{% if site.data['site-settings'].favicon and site.data['site-settings'].favicon != "" %}<link rel="icon" href="{{ site.data['site-settings'].favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233B0503'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23D9C7A8' font-family='serif'%3E炎%3C/text%3E%3C/svg%3E">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#14120E;
+    --black2:#1F1B15;
+    --accent:#3B0503;
+    --accent-light:#5A100D;
+    --text-warm:#D9C7A8;
+    --paper:#F4F0E6;
+    --ink-dark:#221F1A;
+    --muted:#8A8370;
+    --muted-light:#B9AC92;
+    --line:#3A3427;
+    --on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Serif TC', serif;background:var(--paper);color:var(--ink-dark);overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{font-family:'Oswald', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Oswald', sans-serif;font-size:13px;letter-spacing:0.12em;
+    padding:14px 28px;border:1px solid currentColor;cursor:pointer;background:none;
+  }
+  .btn.solid{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+
+  /* ===== 頁首 ===== */
+  .site-header{
+    background:var(--black);
+    color:var(--text-warm);
+    display:flex;justify-content:center;align-items:center;gap:48px;
+    padding:20px 48px;position:relative;z-index:50;
+  }
+  .logo-slot{cursor:pointer;
+    width:120px;height:44px;
+    border:1px dashed var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:0.1em;
+    color:var(--muted);text-align:center;line-height:1.4;
+  }
+  .logo-slot img{max-width:100%;max-height:100%;display:block;}
+  .logo-slot.has-image{border:none;}
+
+  .nav-social-group{display:flex;align-items:center;gap:28px;}
+  .site-nav{display:flex;align-items:center;gap:32px;}
+  .nav-item{position:relative;}
+  .nav-item > a{
+    font-family:'Oswald', sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--muted-light);
+    display:flex;align-items:center;gap:4px;padding:8px 0;
+  }
+  .nav-item:hover > a{color:var(--text-warm);}
+  .nav-item .caret{font-size:9px;transition:transform .2s;}
+  .nav-item:hover .caret{transform:rotate(180deg);}
+  .dropdown{
+    position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    background:var(--black2);border:1px solid var(--line);
+    min-width:160px;padding:8px 0;
+    opacity:0;visibility:hidden;translate:0 -6px;
+    transition:opacity .2s, translate .2s, visibility .2s;
+  }
+  .nav-item:hover .dropdown{opacity:1;visibility:visible;translate:0 0;}
+  .dropdown a{
+    display:block;padding:10px 20px;font-family:'Oswald', sans-serif;
+    font-size:13px;letter-spacing:0.08em;color:var(--muted-light);white-space:nowrap;
+  }
+  .dropdown a:hover{color:var(--on-accent);background:var(--accent);}
+
+  .social-icons{display:flex;gap:12px;}
+  .social-icons a{
+    width:32px;height:32px;border-radius:50%;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:10px;
+    font-family:'Oswald', sans-serif;color:var(--on-accent);
+  }
+  .social-icons a:hover{background:var(--accent-light);}
+
+  /* ===== Hero 輪播(固定尺寸 1400x600，等比例縮放) ===== */
+  .hero-frame{background:var(--black);padding:32px 24px 48px;display:flex;justify-content:center;}
+  .hero-carousel{position:relative;width:100%;max-width:1400px;aspect-ratio:1400/600;overflow:hidden;}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:block;pointer-events:none;}
+  .slide.active{opacity:1;pointer-events:auto;}
+  .slide .bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#100E0A;}
+  .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,.68) 100%);}
+
+  .hero-dots{position:absolute;bottom:16px;right:20px;display:flex;gap:10px;z-index:6;}
+  .hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(217,199,168,0.4);cursor:pointer;}
+  .hero-dots span.active{background:var(--text-warm);}
+
+  /* ===== 品牌宣言(接續Hero) ===== */
+  .statement{background:var(--black);color:var(--text-warm);padding:80px 48px 120px;text-align:center;}
+  .statement-inner{max-width:820px;margin:0 auto;}
+  .statement h2{font-size:28px;font-weight:700;line-height:1.7;margin-bottom:24px;color:var(--text-warm);}
+  .statement p{font-family:'Noto Sans TC', sans-serif;font-size:17px;line-height:2;color:var(--muted-light);margin-bottom:40px;}
+
+  /* ===== 匠心工藝 敘述 ===== */
+  .craft{background:var(--black);color:var(--text-warm);padding:100px 48px 60px;position:relative;overflow:hidden;}
+  .craft-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+  .craft-inner{text-align:center;}
+  .chef-photo{width:96px;height:96px;border-radius:50%;overflow:hidden;border:1px solid var(--line);margin:0 auto 24px;}
+  .chef-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .craft .eyebrow{color:var(--muted-light);margin-bottom:18px;}
+  .craft h2{font-size:34px;font-weight:700;margin-bottom:28px;}
+  .craft h3{font-size:18px;font-weight:500;color:var(--text-warm);margin-bottom:20px;}
+  .craft p{font-family:'Noto Sans TC', sans-serif;font-size:16.5px;line-height:2;color:var(--muted-light);text-align:left;margin-bottom:20px;word-break:normal;overflow-wrap:break-word;}
+  .craft p:last-child{margin-bottom:0;}
+  .craft-deco{position:absolute;right:-60px;top:-40px;width:520px;height:520px;opacity:0.5;}
+  .craft-video{position:relative;width:100%;aspect-ratio:16/9;background:var(--black2);border:1px solid var(--line);overflow:hidden;}
+  .craft-video iframe{width:100%;height:100%;border:0;display:block;}
+  .craft-video.empty{display:flex;align-items:center;justify-content:center;font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:20px;}
+  @media(max-width:900px){.craft-grid{grid-template-columns:1fr;}}
+
+  /* ===== 四格卡片 ===== */
+  .tier-section{background:var(--black);padding:40px 48px 100px;}
+  .tier-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:20px;max-width:1200px;margin:0 auto;}
+  .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;transition:transform .35s ease, box-shadow .35s ease;}
+  .tier-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(0,0,0,0.4);}
+  .tier-card .head{background:var(--accent);color:var(--on-accent);padding:18px 20px;font-size:15px;font-weight:700;text-align:center;position:relative;z-index:3;}
+  .tier-card .visual{position:relative;aspect-ratio:4/5;overflow:hidden;}
+  .tier-card .v-image{
+    position:absolute;inset:0;
+    background-image:radial-gradient(circle at 30% 20%, rgba(90,16,13,.35), transparent 50%), linear-gradient(160deg,#241511,#100D0A);
+    background-size:cover;background-position:center;background-repeat:no-repeat;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:16px;
+    transition:transform .4s ease, opacity .4s ease;
+  }
+  .tier-card:hover .v-image{transform:translateY(-100%);opacity:0;}
+  .tier-card.flipped .v-image{transform:translateY(-100%);opacity:0;}
+  .tier-card .v-text{
+    position:absolute;inset:0;padding:20px;
+    display:flex;flex-direction:column;justify-content:center;
+    transform:translateY(100%);opacity:0;
+    transition:transform .4s ease, opacity .4s ease;
+  }
+  .tier-card:hover .v-text{transform:translateY(0);opacity:1;}
+  .tier-card.flipped .v-text{transform:translateY(0);opacity:1;}
+  .tier-card .avail{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--muted-light);text-transform:uppercase;margin-bottom:10px;display:block;}
+  .tier-card .price{font-family:'Oswald', sans-serif;font-size:20px;color:var(--text-warm);margin-bottom:10px;}
+  .tier-card .desc{font-family:'Noto Sans TC', sans-serif;font-size:14.5px;line-height:1.8;color:var(--muted-light);}
+
+  /* ===== 最新消息(格子式，米白底) ===== */
+  .news{background:var(--paper);color:var(--ink-dark);padding:100px 48px;position:relative;}
+  .news-inner{max-width:1100px;position:relative;z-index:2;margin:0 auto;}
+  .news-inner-head{text-align:center;margin-bottom:56px;position:relative;}
+  .news-inner-head > .eyebrow{color:var(--muted);margin-bottom:14px;display:block;}
+  .news-inner-head > h2{font-size:32px;font-weight:700;}
+  .news-list{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;}
+  .news-card{
+    background:#fff;border:1px solid #E4DECE;border-top:3px solid var(--accent);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .news-card .thumb{
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg, #E9E2D0, #D8CFB6);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Oswald', sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted);
+  }
+  .news-card .info{padding:22px 24px;display:flex;flex-direction:column;gap:8px;}
+  .news-card .date{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.14em;color:var(--accent);}
+  .news-card h4{font-size:16px;font-weight:500;color:var(--ink-dark);}
+  .news-card p{font-family:'Noto Sans TC', sans-serif;font-size:15px;color:var(--muted);line-height:1.8;}
+  .news-card .more{font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.1em;color:var(--accent);margin-top:6px;}
+  @media(max-width:900px){.news-list{grid-template-columns:1fr;}}
+
+  /* ===== FAQ ===== */
+  .faq{background:var(--paper);padding:100px 48px;text-align:center;}
+  .faq h2{font-size:28px;margin-bottom:10px;}
+  .faq .eyebrow{color:var(--muted);margin-bottom:44px;display:block;}
+  .faq-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:18px;max-width:900px;margin:0 auto;perspective:1200px;}
+  .faq-more{
+    display:inline-block;margin-top:36px;
+    font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.12em;
+    color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:3px;
+  }
+  .faq-more:hover{color:var(--accent-light);border-color:var(--accent-light);}
+  .flip{height:120px;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+  .flip:hover .flip-inner{transform:rotateY(180deg);}
+  .flip-front, .flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;}
+  .flip-front{background:linear-gradient(135deg, var(--accent-light), var(--accent));color:var(--on-accent);}
+  .flip-front .q{font-family:'Oswald', sans-serif;font-size:24px;margin-bottom:6px;}
+  .flip-front .qtext{font-family:'Noto Sans TC', sans-serif;font-size:15px;}
+  .flip-back{background:var(--black2);color:var(--text-warm);transform:rotateY(180deg);font-family:'Noto Sans TC', sans-serif;font-size:14px;line-height:1.7;border:1px solid var(--accent);}
+
+  /* ===== FAQ 手機版彈窗 ===== */
+  .faq-modal{
+    position:fixed;inset:0;background:rgba(10,8,6,.78);z-index:999;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .faq-modal.open{display:flex;}
+  .faq-modal-box{
+    position:relative;max-width:480px;width:100%;
+    background:var(--black2);border:1px solid var(--accent);
+    padding:40px 26px 28px;
+  }
+  .faq-modal-close{
+    position:absolute;top:10px;right:14px;font-size:28px;line-height:1;
+    color:var(--text-warm);cursor:pointer;font-family:'Oswald', sans-serif;
+  }
+  .faq-modal-q{
+    font-family:'Noto Sans TC', sans-serif;font-weight:700;font-size:17px;
+    color:var(--text-warm);margin-bottom:14px;line-height:1.6;
+  }
+  .faq-modal-a{
+    font-family:'Noto Sans TC', sans-serif;font-size:15px;line-height:1.9;
+    color:var(--muted-light);
+  }
+
+  /* ===== 結尾CTA ===== */
+  .cta-banner{height:300px;background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.35), transparent 50%), linear-gradient(200deg, #241512 0%, #0F0D09 75%);display:flex;align-items:center;justify-content:center;}
+  .cta-banner .box{border:1px solid var(--text-warm);color:var(--text-warm);padding:20px 40px;font-size:18px;letter-spacing:0.05em;}
+
+  /* ===== 頁尾 ===== */
+  .site-footer{background:var(--black);color:var(--text-warm);padding:60px 48px 24px;}
+  .footer-logo{text-align:center;margin-bottom:36px;}
+  .footer-logo .mark{color:var(--text-warm);font-size:22px;letter-spacing:0.2em;margin-bottom:6px;}
+  .footer-info{display:flex;justify-content:center;gap:80px;flex-wrap:wrap;font-family:'Oswald', sans-serif;font-size:12.5px;letter-spacing:0.04em;color:var(--muted-light);margin-bottom:32px;}
+  .footer-info div{line-height:2;}
+  .footer-bottom{text-align:center;border-top:1px solid var(--line);padding-top:20px;font-family:'Oswald', sans-serif;font-size:11px;letter-spacing:0.06em;color:var(--muted);}
+  .footer-credit{margin-top:10px;font-size:10px;letter-spacing:0.2em;color:var(--muted);opacity:.7;}
+
+  /* ===== 浮動CTA滾輪(icon固定，文字統一向右滑出) ===== */
+  .float-reel{position:fixed;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:100;align-items:flex-start;}
+  .float-item{
+    display:flex;align-items:center;
+    height:50px;width:50px;border-radius:25px;
+    background:var(--black2);border:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;
+    transition:width .32s ease, background .32s ease;cursor:pointer;
+  }
+  .float-item:hover{width:150px;background:var(--accent);}
+  .float-item .icon-wrap{
+    width:50px;height:50px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .float-item .icon{width:22px;height:22px;stroke:var(--text-warm);fill:none;}
+  .float-item:hover .icon{stroke:var(--on-accent);}
+  .float-item .label{
+    font-family:'Oswald', sans-serif;font-size:14px;letter-spacing:0.04em;
+    color:var(--on-accent);white-space:nowrap;margin-left:-6px;
+    opacity:0;transform:translateX(-8px);
+    transition:opacity .25s ease .08s, transform .25s ease .08s;
+  }
+  .float-item:hover .label{opacity:1;transform:translateX(0);}
+
+  /* ===== 手機版：漢堡選單 + 下拉導覽（跟桌機版同一套品項） ===== */
+  .hamburger{
+    display:none;width:32px;height:32px;border:none;background:none;cursor:pointer;
+    flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  }
+  .hamburger span{width:22px;height:2px;background:var(--text-warm);transition:transform .25s ease, opacity .25s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-nav-panel{
+    display:none;
+    position:absolute;top:100%;left:0;right:0;z-index:60;
+    background:var(--black2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    flex-direction:column;padding:8px 0;
+  }
+  .mobile-nav-panel.open{display:flex;}
+  .mobile-nav-panel a{
+    padding:14px 24px;font-family:'Oswald', sans-serif;font-size:14px;letter-spacing:.08em;
+    color:var(--muted-light);border-bottom:1px solid var(--line);
+  }
+  .mobile-nav-panel a:last-child{border-bottom:none;}
+  .mobile-nav-panel a.sub{padding-left:40px;font-size:13px;color:var(--muted);}
+  .mobile-nav-panel a:active{color:var(--text-warm);}
+
+  @media(max-width:900px){
+    .tier-grid{grid-template-columns:repeat(2, 1fr);}
+    .faq-grid{grid-template-columns:1fr;}
+    .footer-info{gap:32px;}
+    .site-nav{display:none;}
+    .site-header{padding:16px 20px;justify-content:space-between;}
+    .hero-frame{padding:20px 12px 32px;}
+    .statement{padding:56px 24px 90px;}
+    .statement h2{font-size:19px;line-height:1.65;margin-bottom:18px;}
+    .statement p{font-size:13.5px;}
+    .hamburger{display:flex;}
+    .flip:hover .flip-inner{transform:none;}
+    .flip{cursor:pointer;}
+  }
+  @media(max-width:400px){
+    .social-icons a{width:28px;height:28px;}
+  }
+</style>
+{% include restaurant-schema.html %}
+</head>
+<body>
+
+  <!-- 浮動CTA滾輪：icon固定在左，文字統一向右滑出 -->
+  <div class="float-reel">
+    <a class="float-item" href="{{ site.data['site-settings'].floating_cta.line_link | default: '#' }}" title="LINE官方帳號" target="_blank">
+      <span class="icon-wrap">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9-.1.7-.5 2.3-.6 2.7 0 0-.1.5.2.6.3.1.7-.1.7-.1.9-.6 4.9-3.3 6.7-5.6.1-.1.2-.2.3-.3C20.2 14.9 22 13.1 22 11c0-4.4-4.5-8-10-8z" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="label">專人服務</span>
+    </a>
+    <a class="float-item" href="tel:{{ site.data['site-settings'].footer.phone_tel }}" title="點擊直接撥打">
+      <span class="icon-wrap">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="label">電話預訂</span>
+    </a>
+    <a class="float-item" href="{{ site.data['site-settings'].floating_cta.booking_link | default: '#' }}" title="線上訂位" target="_blank">
+      <span class="icon-wrap">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1" stroke-width="1.6"/><path d="M4 9h16M8 3v4M16 3v4" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="label">線上訂位</span>
+    </a>
+  </div>
+
+  <!-- 頁首 -->
+  <header class="site-header">
+    <a class="logo-slot{% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %} has-image{% endif %}" href="{{ '/' | relative_url }}" title="回首頁">
+      {% if site.data['site-settings'].header_logo and site.data['site-settings'].header_logo != "" %}
+        <img src="{{ site.data['site-settings'].header_logo | relative_url }}" alt="炎香樓">
+      {% else %}
+        上傳 LOGO
+      {% endif %}
+    </a>
+    <div class="nav-social-group">
+      <nav class="site-nav">
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a></div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a></div>
+        <div class="nav-item">
+          <a href="menu-full.html">菜單參考 <span class="caret">▾</span></a>
+          <div class="dropdown">
+            <a href="menu-full.html">美饌全菜單</a>
+            <a href="menu-alacarte.html">單點餐品</a>
+            <a href="menu-set.html">多人套餐</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a></div>
+        <div class="nav-item"><a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a></div>
+      </nav>
+      <div class="social-icons">
+        <a href="{{ site.data['site-settings'].social.facebook | default: '#' }}" title="Facebook" target="_blank">FB</a>
+        <a href="{{ site.data['site-settings'].social.instagram | default: '#' }}" title="Instagram" target="_blank">IG</a>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="選單"><span></span><span></span><span></span></button>
+    <nav class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="{{ site.data['site-settings'].nav_promo.link }}">{{ site.data['site-settings'].nav_promo.label }}</a>
+      <a href="{{ site.data['site-settings'].nav_takeout.link }}">{{ site.data['site-settings'].nav_takeout.label }}</a>
+      <a href="menu-full.html">菜單參考</a>
+      <a class="sub" href="menu-full.html">美饌全菜單</a>
+      <a class="sub" href="menu-alacarte.html">單點餐品</a>
+      <a class="sub" href="menu-set.html">多人套餐</a>
+      <a href="{{ site.data['site-settings'].nav_press.link }}">{{ site.data['site-settings'].nav_press.label }}</a>
+      <a href="{{ site.data['site-settings'].nav_story.link }}">{{ site.data['site-settings'].nav_story.label }}</a>
+    </nav>
+  </header>
+
+  <!-- Hero 輪播(固定 1400x600 比例) -->
+  <div class="hero-frame">
+    <div class="hero-carousel" id="heroCarousel">
+      {% assign slides = site.data['site-settings'].hero_slides %}
+      <a class="slide active" href="{{ slides[0].link | default: '#' }}" data-index="0">
+        <div class="bg" style="{% if slides[0].image %}background-image:url('{{ slides[0].image | relative_url }}');{% else %}background:radial-gradient(circle at 30% 20%, rgba(90,16,13,0.35), transparent 45%), linear-gradient(160deg, #2A1512 0%, #100E0A 70%);{% endif %}"></div>
+      </a>
+      <a class="slide" href="{{ slides[1].link | default: '#' }}" data-index="1">
+        <div class="bg" style="{% if slides[1].image %}background-image:url('{{ slides[1].image | relative_url }}');{% else %}background:radial-gradient(circle at 70% 30%, rgba(90,16,13,0.4), transparent 45%), linear-gradient(160deg,#221310,#0E0C09);{% endif %}"></div>
+      </a>
+      <a class="slide" href="{{ slides[2].link | default: '#' }}" data-index="2">
+        <div class="bg" style="{% if slides[2].image %}background-image:url('{{ slides[2].image | relative_url }}');{% else %}background:radial-gradient(circle at 50% 60%, rgba(90,16,13,0.3), transparent 50%), linear-gradient(160deg,#241511,#100D0A);{% endif %}"></div>
+      </a>
+
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+  </div>
+
+  <!-- 品牌宣言(接續Hero，標題+內文+CTA) -->
+  <section class="statement">
+    <div class="statement-inner">
+      <h2>{{ site.data['site-settings'].statement.heading_line1 }}<br>{{ site.data['site-settings'].statement.heading_line2 }}</h2>
+      <p>{{ site.data['site-settings'].statement.body }}</p>
+      <a class="btn solid" href="{{ site.data['site-settings'].statement.cta_link }}">{{ site.data['site-settings'].statement.cta_text }} →</a>
+    </div>
+  </section>
+
+  <!-- 匠心工藝 敘述 -->
+  <section class="craft">
+    <svg class="craft-deco" viewBox="0 0 520 520">
+      <path d="M0 260 C 150 150, 200 400, 340 300 S 450 120, 520 220" stroke="#D9C7A8" stroke-width="1.2" fill="none" opacity="0.35"/>
+      <path d="M0 300 C 150 190, 220 440, 360 340 S 470 160, 520 260" stroke="#5A100D" stroke-width="1" fill="none" opacity="0.6"/>
+    </svg>
+    <div class="craft-grid">
+      <div class="craft-inner">
+        {% if site.data.chef.photo and site.data.chef.photo != "" %}
+          <div class="chef-photo"><img src="{{ site.data.chef.photo | relative_url }}" alt="炎香樓主廚"></div>
+        {% endif %}
+        <span class="eyebrow">YANXIANGLOU</span>
+        <h2>匠心工藝</h2>
+        <h3>{{ site.data.chef.title }}</h3>
+        {% assign bio_paragraphs = site.data.chef.bio | split: "
+" %}
+        {% for para in bio_paragraphs %}
+          {% assign para_trimmed = para | strip %}
+          {% if para_trimmed != "" %}
+            <p>{{ para_trimmed }}</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if site.data.chef.video_url and site.data.chef.video_url != "" %}
+        <div class="craft-video"><iframe src="{{ site.data.chef.video_url }}" title="炎香樓介紹影片" allowfullscreen loading="lazy"></iframe></div>
+      {% else %}
+        <div class="craft-video empty">尚未設定影片<br>可在後台「主廚介紹」貼上 YouTube 嵌入連結</div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- 四格卡片 -->
+  {% assign visible_tiers = site.data['menu-tiers'].tiers | where: 'visible', true %}
+  {% if visible_tiers.size > 0 %}
+  <section class="tier-section">
+    <div class="tier-grid">
+      {% for tier in visible_tiers %}
+      <div class="tier-card">
+        <div class="head">{{ tier.name }}</div>
+        <div class="visual">
+          {% if tier.link and tier.link != "" %}
+          <a class="v-image" href="{{ tier.link }}" target="_blank" rel="noopener"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
+            {% unless tier.image and tier.image != "" %}尚未上傳照片{% endunless %}
+          </a>
+          {% else %}
+          <div class="v-image"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
+            {% unless tier.image and tier.image != "" %}尚未上傳照片{% endunless %}
+          </div>
+          {% endif %}
+          <div class="v-text">
+            <span class="avail">{{ tier.audience }} · {{ tier.availability }}</span>
+            <div class="price">{{ tier.price }}</div>
+            <p class="desc">{{ tier.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- 最新消息(格子式) -->
+  <section class="news" id="news">
+    <div class="news-inner">
+      <div class="news-inner-head">
+        <span class="eyebrow">NEWS</span>
+        <h2>最新消息</h2>
+      </div>
+      <div class="news-list" id="newsList">
+        {% assign news_sorted = site.news | sort: 'date' | reverse %}
+        {% assign shown_count = 0 %}
+        {% for post in news_sorted %}
+          {% if shown_count < 3 %}
+            {% assign is_expired = false %}
+            {% if post.expire_date and post.expire_date != "" %}
+              {% if post.expire_date < site.time %}
+                {% assign is_expired = true %}
+              {% endif %}
+            {% endif %}
+            {% unless is_expired %}
+              {% assign shown_count = shown_count | plus: 1 %}
+        <div class="news-card">
+          <div class="thumb">
+            {% if post.image and post.image != "" %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
+            {% else %}
+              TODO 圖片
+            {% endif %}
+          </div>
+          <div class="info">
+            <span class="date">{{ post.date | date: "%Y.%m.%d" }}</span>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.excerpt }}</p>
+            <a class="more" href="{{ post.url | relative_url }}">了解更多 →</a>
+          </div>
+        </div>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>常見問題</h2>
+    <span class="eyebrow">FAQ</span>
+    <div class="faq-grid">
+      {% for item in site.data['site-settings'].faq %}
+      <div class="flip" data-q="{{ item.question | escape }}" data-a="{{ item.answer | escape }}">
+        <div class="flip-inner">
+          <div class="flip-front"><div class="q">Q</div><div class="qtext">{{ item.question }}</div></div>
+          <div class="flip-back">{{ item.answer }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="faq-more" href="{{ 'faq.html' | relative_url }}">查看完整 FAQ →</a>
+  </section>
+
+  <!-- FAQ 手機版彈窗（點擊卡片顯示完整問答，右上角X關閉） -->
+  <div class="faq-modal" id="faqModal">
+    <div class="faq-modal-box">
+      <div class="faq-modal-close" id="faqModalClose">&times;</div>
+      <div class="faq-modal-q" id="faqModalQ"></div>
+      <div class="faq-modal-a" id="faqModalA"></div>
+    </div>
+  </div>
+
+  <!-- 結尾CTA -->
+  <a class="cta-banner" href="{{ site.data['site-settings'].floating_cta.booking_link | default: '#' }}" target="_blank"><div class="box">立即訂位，品味粵菜真味</div></a>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <div class="mark">炎香樓</div>
+      <span class="eyebrow" style="color:var(--muted)">YANXIANGLOU</span>
+    </div>
+    <div class="footer-info">
+      <div>地址：{{ site.data['site-settings'].footer.address }}<br>電話：{{ site.data['site-settings'].footer.phone }}</div>
+      <div>營業時間：{{ site.data['site-settings'].footer.hours }}<br>LINE：{{ site.data['site-settings'].footer.line_id }}</div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2026 yanxianglou. All rights reserved.
+      <div class="footer-credit">DESIGNED FOR EN</div>
+    </div>
+  </footer>
+
+<script>
+  (function(){
+    const slides = document.querySelectorAll('#heroCarousel .slide');
+    const dotsWrap = document.getElementById('heroDots');
+    let current = 0;
+    slides.forEach((s, i) => {
+      const dot = document.createElement('span');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    function goTo(i){
+      slides[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
+    setInterval(() => { goTo((current + 1) % slides.length); }, 4000);
+  })();
+
+  (function(){
+    const btn = document.getElementById('hamburgerBtn');
+    const panel = document.getElementById('mobileNavPanel');
+    if(!btn || !panel) return;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      panel.classList.toggle('open');
+    });
+  })();
+
+  // 四格卡片：點擊切換圖片/文字（手機不用長按，桌機仍保留 hover）
+  (function(){
+    document.querySelectorAll('.tier-card').forEach(function(card){
+      card.addEventListener('click', function(){
+        card.classList.toggle('flipped');
+      });
+    });
+  })();
+
+  // FAQ：手機版點擊卡片彈出完整問答，右上角X或點擊背景關閉
+  (function(){
+    var modal = document.getElementById('faqModal');
+    var modalQ = document.getElementById('faqModalQ');
+    var modalA = document.getElementById('faqModalA');
+    var modalClose = document.getElementById('faqModalClose');
+    if(!modal) return;
+
+    function isMobile(){ return window.matchMedia('(max-width:900px)').matches; }
+
+    document.querySelectorAll('.faq-grid .flip').forEach(function(card){
+      card.addEventListener('click', function(){
+        if(!isMobile()) return;
+        modalQ.textContent = card.getAttribute('data-q');
+        modalA.textContent = card.getAttribute('data-a');
+        modal.classList.add('open');
+      });
+    });
+
+    modalClose.addEventListener('click', function(){ modal.classList.remove('open'); });
+    modal.addEventListener('click', function(e){ if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') modal.classList.remove('open'); });
+  })();
+</script>
+</body>
+</html>
