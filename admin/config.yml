@@ -140,7 +140,11 @@ collections:
           - {label: "圖片（必填）", name: "src", widget: "image"}
           - {label: "點擊跳轉連結（選填，填了這張圖片就能點擊前往）", name: "link", widget: "string", required: false}
       - {label: "YouTube 嵌入影片網址（格式：https://www.youtube.com/embed/影片ID，選填）", name: "video_url", widget: "string", required: false}
-      - {label: "內文（選填）", name: "body", widget: "markdown", required: false}
+      - label: "內文（選填）"
+        name: "body"
+        widget: "markdown"
+        required: false
+        hint: "選用「H.」標題功能時，字級已統一釘死：Heading 1=24px、Heading 2=20px、Heading 3=18px、Heading 4=16px、Heading 5=15px、Heading 6=14px。換行請直接按 Enter，不要在行尾打反斜線 \\，否則會被誤判成程式碼區塊。"
 
   - name: "alacarte"
     label: "單點餐品頁"
@@ -238,8 +242,33 @@ collections:
         name: "story"
         fields:
           - {label: "頁面標題（必填）", name: "page_title", widget: "string"}
-          - {label: "主視覺照片（選填）", name: "hero_image", widget: "image", required: false}
-          - {label: "品牌故事內文（可分段落）（必填）", name: "body", widget: "markdown"}
+          - label: "頂部主視覺（可上傳多張，前台為手動輪播，每張依原始比例完整顯示，不裁切）"
+            name: "hero_slides"
+            widget: "list"
+            fields:
+              - {label: "圖片（必填）", name: "image", widget: "image"}
+              - {label: "說明文字（選填）", name: "caption", widget: "string", required: false}
+          - label: "內容區塊（可自由新增文字／圖片／影片，並拖曳排序調整版面）"
+            name: "content_blocks"
+            widget: "list"
+            types:
+              - label: "文字段落"
+                name: "text"
+                widget: "object"
+                fields:
+                  - {label: "內容（必填，可分段落）", name: "content", widget: "markdown"}
+              - label: "圖片"
+                name: "image"
+                widget: "object"
+                fields:
+                  - {label: "圖片（必填）", name: "image", widget: "image"}
+                  - {label: "說明文字（選填）", name: "caption", widget: "string", required: false}
+              - label: "影片"
+                name: "video"
+                widget: "object"
+                fields:
+                  - {label: "YouTube 嵌入連結（格式：https://www.youtube.com/embed/影片ID）（必填）", name: "video_url", widget: "string"}
+                  - {label: "說明文字（選填）", name: "caption", widget: "string", required: false}
           - label: "大事紀（可自由增減）"
             name: "milestones"
             widget: "list"
