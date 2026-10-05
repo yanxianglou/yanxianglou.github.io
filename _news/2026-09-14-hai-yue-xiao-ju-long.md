@@ -9,9 +9,9 @@ image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
 
 **🎬[食記分享](https://www.instagram.com/p/DeE4yO_hFG5/)、 🎬[短片介紹](https://www.youtube.com/shorts/u73n2mplDJw)**
 
-### 🔥 NT$5,880＋10%
+#### 🔥 NT$5,880＋10%
 
- 🔥NT$11,880＋10%
+####  🔥NT$11,880＋10%
 
 ### 10/31前預訂享凍檸茶1壺🍋🥤
 
