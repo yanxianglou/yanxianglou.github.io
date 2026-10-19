@@ -7,15 +7,15 @@ image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
 ---
 ### **DEBUT. 海粵小巨籠**｜4人歡聚享宴 🧺🦐
 
-**🎬[食記分享](https://www.instagram.com/p/DeE4yO_hFG5/)、 🎬[短片介紹](https://www.youtube.com/shorts/u73n2mplDJw)**
+**🎬[食記分享](https://www.instagram.com/p/DeMAH99xGow/)、 🎬[短片介紹](https://www.youtube.com/shorts/u73n2mplDJw)**
 
-## **🔥[海味四喜](https://www.instagram.com/p/DeMAH99xGow/) [NT$5,880＋10%](https://www.instagram.com/p/DeMAH99xGow/)**
+## **🔥[海味四喜](https://www.instagram.com/p/DeeZu0UthG-/) [NT$5,880＋10%](https://www.instagram.com/p/DeeZu0UthG-/)**🎬
 
 #### ★需1日前預訂**(點擊看食記分享)**
 
 
 
-## **🔥[極鮮御宴 ](https://www.instagram.com/p/DeE4yO_hFG5/)****[NT$11,880＋10% ](https://www.instagram.com/p/DeE4yO_hFG5/)**
+## **🔥[極鮮御宴 ](https://www.instagram.com/p/DeE4yO_hFG5/)****[NT$11,880＋10% ](https://www.instagram.com/p/DeE4yO_hFG5/)**🎬
 
 #### ★需3日前預訂**(點擊看食記分享)**
 
