@@ -23,14 +23,14 @@ categories:
     name: 2人精緻午宴、4人分享宴
   - name: 節慶(尾牙/春節/春酒)桌宴、私宴
     items:
-      - src: /assets/img/uploads/尾牙方案_line.png
-        caption: ① 即日起至10/10—超早鳥訂桌加贈紅酒1支  ② 10/11~10/31—早鳥訂桌加贈凍檸茶1壺，請於官LINE提前預定
-      - src: /assets/img/uploads/6-7.jpg
-        caption: 尾牙/春酒宴席，請於官LINE提前3-5日預定
       - src: /assets/img/uploads/2027年菜訂桌-fb_10人桌宴.jpg
         caption: 除夕圍爐10人宴席，請於官LINE提前預定
       - src: /assets/img/uploads/2027年菜訂桌-fb_6人桌宴.jpg
         caption: 除夕圍爐6人宴席，請於官LINE提前預定
+      - src: /assets/img/uploads/尾牙方案_line.png
+        caption: ① 即日起至10/10—超早鳥訂桌加贈紅酒1支  ② 10/11~10/31—早鳥訂桌加贈凍檸茶1壺，請於官LINE提前預定
+      - src: /assets/img/uploads/6-7.jpg
+        caption: 尾牙/春酒宴席，請於官LINE提前3-5日預定
 pdf_link: https://drive.google.com/file/d/1IHdT4EuJJcdMMJ8qVzwZx6i6WG8RIpiF/view?usp=sharing
 info:
   heading: 客製化宴席，量身而定
