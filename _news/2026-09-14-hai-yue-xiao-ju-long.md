@@ -47,9 +47,15 @@ image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
 
 ### ▶ 食記短片介紹 🎬
 
-#### **⚑ [台中粉   ](https://www.instagram.com/p/DeE4yO_hFG5/)⚑ [朵朵帶你到處吃喝玩樂 ](https://www.instagram.com/p/DeeZu0UthG-/)   [ ](https://www.instagram.com/p/DeeZu0UthG-/)⚑ [仙咕ㄦ](https://www.youtube.com/shorts/7qhC0Dgqbx8)**
+#### **⚑ [台中粉   ](https://www.instagram.com/p/DeE4yO_hFG5/)**
 
-#### **✦ [遮住臉的美國生蠔](https://www.youtube.com/shorts/7qhC0Dgqbx8)   ✦ [中秋換吃這桌!海鮮滿籠](https://www.youtube.com/shorts/yW0rens_-Rw)**
+#### **⚑ [朵朵帶你到處吃喝玩樂 ](https://www.instagram.com/p/DeeZu0UthG-/)**   
+
+#### **⚑ [仙咕ㄦ](https://www.youtube.com/shorts/7qhC0Dgqbx8)**
+
+#### **✦ [遮住臉的美國生蠔](https://www.youtube.com/shorts/7qhC0Dgqbx8)**  
+
+#### **✦ [中秋換吃這桌!海鮮滿籠](https://www.youtube.com/shorts/yW0rens_-Rw)**
 
 \-——————————
 
