@@ -43,23 +43,19 @@ image: /assets/img/uploads/5.最新消息640-x-800px_小巨籠.jpg
 
 「海粵小巨籠」就是為了解決這個問題：同樣的蒸籠宴儀式感，縮成4人份，一樓4至10人客席就能舒服入座。從家人聚餐、朋友小聚到情侶雙人約會加朋友，都能用更輕鬆的人數，體驗炎香樓的海鮮粵菜。
 
-
-
 ### ▶ 食記短片介紹 🎬
 
 #### **⚑ [台中粉   ](https://www.instagram.com/p/DeE4yO_hFG5/)**
 
-#### **⚑ [朵朵帶你到處吃喝玩樂 ](https://www.instagram.com/p/DeeZu0UthG-/)**   
+#### **⚑ [朵朵帶你到處吃喝玩樂 ](https://www.instagram.com/p/DeeZu0UthG-/)**
 
 #### **⚑ [仙咕ㄦ](https://www.youtube.com/shorts/7qhC0Dgqbx8)**
 
-#### **✦ [遮住臉的美國生蠔](https://www.youtube.com/shorts/7qhC0Dgqbx8)**  
+#### **✦ [遮住臉的美國生蠔](https://www.youtube.com/shorts/7qhC0Dgqbx8)**
 
 #### **✦ [中秋換吃這桌!海鮮滿籠](https://www.youtube.com/shorts/yW0rens_-Rw)**
 
 \-——————————
-
-
 
 ![台中4人聚餐、台中聚餐推薦、台中海鮮餐廳、台中海鮮聚餐、台中巨籠宴、台中小巨籠、台中中菜餐廳、台中粵菜、台中西區、台中美食、台中家庭聚餐、台中朋友聚餐](/assets/img/uploads/小巨籠上桌-800.jpg "台中4人聚餐推薦 海粵小巨籠一家四口、兩對朋友或小型聚餐推薦")
 
@@ -171,5 +167,5 @@ A：巷弄內不好停車，建議停在附近立體停車場步行前往。從�
 
 • 炎香樓巨籠宴\
 • [炎香樓尾牙春酒桌宴](https://yanxianglou.com.tw/news/%E5%B0%BE%E7%89%99-%E6%98%A5%E9%85%92-%E5%A5%BD%E5%AE%B4%E9%96%8B%E5%B8%AD/)\
-• [炎香樓2027春節桌宴](https://yanxianglou.com.tw/news/2027%E5%9C%8D%E7%88%90%E5%9C%98%E5%9C%93-%E6%98%A5%E7%AF%80%E6%A1%8C%E5%AE%B4%E6%96%B9%E6%A1%88/)\
+• [炎香樓2027春節桌宴](https://yanxianglou.com.tw/news/%E7%82%8E%E9%A6%99%E6%A8%93%E7%B2%B5%E5%BC%8F%E6%96%99%E7%90%86-%E5%8F%B0%E4%B8%AD%E6%98%A5%E7%AF%80%E5%9C%8D%E7%88%90%E6%8E%A8%E8%96%A6-2027%E7%BE%8A%E5%B9%B4%E6%A1%8C%E5%AE%B4-%E7%A6%8F%E7%BE%8A%E8%BF%8E%E6%98%A5%E6%B5%B7%E9%99%B8%E5%AE%B4-%E7%91%9E%E7%BE%8A%E5%91%88%E7%A5%A5%E9%BE%8D%E9%B3%B3%E5%AE%B4-6%E4%BA%BA10%E4%BA%BA%E5%B8%AD%E5%8A%A0%E5%A4%96%E5%B8%B6%E5%B9%B4%E8%8F%9C%E5%A5%97%E7%B5%84/)\
 • [台中西區美食網友推薦](https://www.instagram.com/p/DeMAH99xGow/)
