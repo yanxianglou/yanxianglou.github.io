@@ -113,6 +113,7 @@ collections:
             fields:
               - {label: "顯示於首頁", name: "visible", widget: "boolean", default: true}
               - {label: "名稱（必填）", name: "name", widget: "string"}
+              - {label: "點擊標題跳轉連結（選填，填文章網址，點卡片上方紅色標題就會前往；留空則沿用下方「點擊圖片跳轉連結」）", name: "title_link", widget: "string", required: false}
               - {label: "適用對象（必填）", name: "audience", widget: "string"}
               - {label: "價格（必填）", name: "price", widget: "string"}
               - {label: "供應時段／備註（必填）", name: "availability", widget: "string"}
