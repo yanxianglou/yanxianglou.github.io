@@ -126,6 +126,8 @@
   .tier-card{background:var(--black2);border:1px solid var(--line);overflow:hidden;position:relative;transition:transform .35s ease, box-shadow .35s ease;}
   .tier-card:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(0,0,0,0.4);}
   .tier-card .head{background:var(--accent);color:var(--on-accent);padding:18px 20px;font-size:15px;font-weight:700;text-align:center;position:relative;z-index:3;}
+  .tier-card a.head-link{display:block;text-decoration:none;cursor:pointer;transition:color .25s ease;}
+  .tier-card a.head-link:hover{color:var(--text-warm);text-decoration:underline;text-underline-offset:4px;}
   .tier-card .visual{position:relative;aspect-ratio:4/5;overflow:hidden;}
   .tier-card .v-image{
     position:absolute;inset:0;
@@ -280,7 +282,12 @@
   .mobile-nav-panel a:active{color:var(--text-warm);}
 
   @media(max-width:900px){
-    .tier-grid{grid-template-columns:repeat(2, 1fr);}
+    /* 四格卡片手機版：一張一行；點開後文字完整顯示，卡片高度隨文字長度自動撐開（最少維持 4:5） */
+    .tier-section{padding:32px 20px 72px;}
+    .tier-grid{grid-template-columns:1fr;gap:16px;}
+    .tier-card .visual{display:grid;aspect-ratio:auto;}
+    .tier-card .visual::before{content:"";grid-area:1/1;aspect-ratio:4/5;}
+    .tier-card .v-image,.tier-card .v-text{position:relative;inset:auto;grid-area:1/1;}
     .faq-grid{grid-template-columns:1fr;}
     .footer-info{gap:32px;}
     .site-nav{display:none;}
@@ -429,8 +436,13 @@
   <section class="tier-section">
     <div class="tier-grid">
       {% for tier in visible_tiers %}
+      {% assign tier_title_link = tier.title_link | default: tier.link %}
       <div class="tier-card">
+        {% if tier_title_link and tier_title_link != "" %}
+        <a class="head head-link" href="{{ tier_title_link }}">{{ tier.name }}</a>
+        {% else %}
         <div class="head">{{ tier.name }}</div>
+        {% endif %}
         <div class="visual">
           {% if tier.link and tier.link != "" %}
           <a class="v-image" href="{{ tier.link }}" target="_blank" rel="noopener"{% if tier.image and tier.image != "" %} style="background-image:url('{{ tier.image | relative_url }}');"{% endif %}>
@@ -574,7 +586,8 @@
   // 四格卡片：點擊切換圖片/文字（手機不用長按，桌機仍保留 hover）
   (function(){
     document.querySelectorAll('.tier-card').forEach(function(card){
-      card.addEventListener('click', function(){
+      card.addEventListener('click', function(e){
+        if(e.target.closest('.head-link')) return; // 點標題直接前往文章，不翻卡
         card.classList.toggle('flipped');
       });
     });
